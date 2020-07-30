@@ -65,6 +65,7 @@
 #define RAMBLER "soul rambler"
 #define PLAGUEMOUSE "plague mouse"
 #define STREAMER "streamer"
+#define DDANOP "Discount Dan Representative"
 
 #define GREET_DEFAULT		"default"
 #define GREET_ROUNDSTART	"roundstart"

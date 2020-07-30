@@ -633,3 +633,30 @@
 	my_fac.HandleRecruitedRole(new_role)
 	new_role.Greet(GREET_DEFAULT)
 	new_role.AnnounceObjectives()
+
+
+//////////////////////////////////////////////
+//                                          //
+//  DISCOUNT DAN REPRESENTATIVE             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                 Minor Role               //
+//////////////////////////////////////////////
+
+/datum/dynamic_ruleset/midround/from_ghosts/ddanop
+	name = "Discount Dan Representative"
+	role_category = /datum/role/ddanop
+	required_candidates = 1
+	weight = 1
+	cost = 0
+	requirements = list(0,0,0,0,0,0,0,0,0,0)
+	high_population_requirement = 0
+	logo = "discount-logo"
+	flags = MINOR_RULESET
+
+/datum/dynamic_ruleset/midround/from_ghosts/ddanop/acceptable(var/population=0,var/threat=0)
+	if(mode.threat>50) //We're threatening enough!
+		message_admins("Rejected discount dan ruleset, [mode.threat] threat was over 50.")
+		return FALSE
+	if(!..())
+		message_admins("Rejected discount dan ruleset. Not enough threat somehow??")
+		return FALSE
+	return TRUE
