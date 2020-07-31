@@ -18,7 +18,10 @@
 	H.dna.ResetUI()
 	H.regenerate_icons()
 	equip_ddanop(H)
-	var/datum/money_account/M = create_account("Discount Dan",0,FALSE,0,1,TRUE)
+	//var/datum/money_account/M = create_account("Discount Dan",0,FALSE,0,1,TRUE)
+
+/datum/role/ddanop/ForgeObjectives()
+	AppendObjective(/datum/objective/stealcash)
 
 /proc/equip_ddanop(var/mob/living/carbon/human/H)
 	//Special radio setup
