@@ -61,7 +61,6 @@
 /datum/role/ddanop
 	name = DDANOP
 	id = DDANOP
-	faction = DDANOP
 	required_pref = DDANOP
 	special_role = DDANOP
 	logo_state = "discount-logo"

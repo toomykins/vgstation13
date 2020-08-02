@@ -643,7 +643,7 @@
 
 /datum/dynamic_ruleset/midround/from_ghosts/faction_based/discountdan
 	name = "Discount Dan Representative"
-	role_category = /datum/role/ddanop
+	role_category = /datum/role/ddanrep
 	my_fac = /datum/faction/discountdan
 	required_candidates = 1
 	weight = 1
