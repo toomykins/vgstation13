@@ -638,12 +638,13 @@
 //////////////////////////////////////////////
 //                                          //
 //  DISCOUNT DAN REPRESENTATIVE             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                 Minor Role               //
+//                 & DISCOUNT DAN OPS       //
 //////////////////////////////////////////////
 
-/datum/dynamic_ruleset/midround/from_ghosts/ddanop
+/datum/dynamic_ruleset/midround/from_ghosts/faction_based/discountdan
 	name = "Discount Dan Representative"
 	role_category = /datum/role/ddanop
+	my_fac = /datum/faction/discountdan
 	required_candidates = 1
 	weight = 1
 	cost = 0
@@ -652,7 +653,8 @@
 	logo = "discount-logo"
 	flags = MINOR_RULESET
 
-/datum/dynamic_ruleset/midround/from_ghosts/ddanop/acceptable(var/population=0,var/threat=0)
+
+/datum/dynamic_ruleset/midround/from_ghosts/faction_based/discountdan/acceptable(var/population=0,var/threat=0)
 	if(mode.threat>50) //We're threatening enough!
 		message_admins("Rejected discount dan ruleset, [mode.threat] threat was over 50.")
 		return FALSE
