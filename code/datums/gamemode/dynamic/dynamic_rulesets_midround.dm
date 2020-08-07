@@ -647,6 +647,7 @@
 	my_fac = /datum/faction/discountdan
 	required_candidates = 1
 	weight = 1
+	repeatable = TRUE
 	cost = 0
 	requirements = list(0,0,0,0,0,0,0,0,0,0)
 	high_population_requirement = 0
@@ -662,3 +663,17 @@
 		message_admins("Rejected discount dan ruleset. Not enough threat somehow??")
 		return FALSE
 	return TRUE
+
+/datum/dynamic_ruleset/midround/from_ghosts/faction_based/discountdan/execute()
+	var/datum/faction/F = find_active_faction_by_type(/datum/faction/discountdan)
+	if(F && F.members.len >= 1)
+		required_candidates = 2
+		role_category = /datum/role/ddanop
+	. = ..()
+
+/datum/dynamic_ruleset/midround/from_ghosts/faction_based/setup_role(var/datum/role/new_role)
+	my_fac.HandleRecruitedRole(new_role)
+	new_role.ForgeObjectives()
+	new_role.OnPostSetup()
+	new_role.Greet()
+	new_role.AnnounceObjectives()

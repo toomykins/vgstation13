@@ -433,6 +433,11 @@ proc/process_adminbus_teleport_locs()
 	icon_state = "yellow"
 	requires_power = 0
 
+/area/shuttle/discount/station
+	name = "\improper Discount Operatives Shuttle"
+	icon_state = "yellow"
+	requires_power = 0
+
 /area/shuttle/salvage
 	name = "\improper Salvage Ship"
 	icon_state = "yellow"

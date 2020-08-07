@@ -41,10 +41,9 @@
 	W.registered_name = H.real_name
 	W.name = "[H.real_name]'s ID Card ([W.assignment])"
 	W.access = list(access_maint_tunnels)
-	W.icon_state = "discount"	//placeholder until revamp
+	W.icon_state = "discount"
+	W.desc = "A flimsy Nanotrasen ID Card. It's clearly a forgery."
 	H.equip_to_slot_or_del(W, slot_wear_id)
-
-	spawn(1)
 	for(var/datum/objective/O in objustives)
 		if(istype(O,/datum/objective/stealcash))
 			s = O
@@ -54,7 +53,7 @@
 		dansdebit.desc = "A flimsy piece of plastic with cheap near field circuitry backed by digits representing funds in a bank account.<br>On the back is a handwritten message:<br><i>Lose this and you're dead. -DD</i>"
 		dansdebit.authorized_name = "Discount Dan INC."
 		dansdebit.associated_account_number = s.discdanacc.account_number
-		H.equip_to_slot_or_del(dansdebit, slot_in_backpack)
+		H.equip_to_slot_or_drop(dansdebit, slot_in_backpack)
 	AnnounceArrival(H,W.assignment)
 
 
@@ -68,14 +67,20 @@
 
 /datum/role/ddanop/OnPostSetup()
 	var/mob/living/carbon/human/H = antag.current
+	H.forceMove(pick(discountstart))
 	H.dna.ResetUI()
 	H.regenerate_icons()
 	equip_ddanop(H)
 	//var/datum/money_account/M = create_account("Discount Dan",0,FALSE,0,1,TRUE)
 
+
+/datum/role/ddanop/Greet()
+	to_chat(antag.current, "<B><span class='warning'>You are a thug in employment of the Discount Dan company!</span></B>")
+	to_chat(antag.current, "Discount Dan's representative requires your help to achieve their goals.")
+	to_chat(antag.current, "Assist them in any way you can.")
+
+
 /datum/role/ddanop/proc/equip_ddanop(var/mob/living/carbon/human/H)
-	var/datum/objective_holder/objust = objectives
-	var/list/objustives = objust.objectives
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset(src), slot_ears)
 	var/list/shirts = list(/obj/item/clothing/under/color/red,/obj/item/clothing/under/color/blue,/obj/item/clothing/under/color/green)
 	var/chosen_shirt = pick(shirts)
@@ -92,17 +97,3 @@
 	W.icon_state = "discount"
 	W.desc = "A flimsy Nanotrasen ID Card. It's clearly a forgery."
 	H.equip_to_slot_or_del(W, slot_wear_id)
-
-	spawn(1)
-
-	for(var/datum/objective/O in objustives)
-		if(istype(O,/datum/objective/stealcash))
-			s = O
-	if(s)
-		var/obj/item/weapon/card/debit/dansdebit = new
-		dansdebit.name = "Discount Dan Debit Card"
-		dansdebit.desc = "A flimsy piece of plastic with cheap near field circuitry backed by digits representing funds in a bank account.<br>On the back is a handwritten message:<br><i>Lose this and you're dead. -DD</i>"
-		dansdebit.authorized_name = "Discount Dan INC."
-		dansdebit.associated_account_number = s.discdanacc.account_number
-		H.equip_to_slot_or_del(dansdebit, slot_in_backpack)
-	AnnounceArrival(H,W.assignment)
