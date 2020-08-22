@@ -19,6 +19,7 @@
 #define CLOCKWORK "clockwork"
 #define PLAGUEMICE "plague mice invasion"
 #define SPIDERCLAN "spider clan"
+#define DISCOUNTDAN "discount dan"
 //-------
 #define HIVEMIND "changeling hivemind"
 #define WIZFEDERATION "wizard federation"
@@ -66,6 +67,8 @@
 #define RAMBLER "soul rambler"
 #define PLAGUEMOUSE "plague mouse"
 #define STREAMER "streamer"
+#define DDANOP "Discount Dan Operative"
+#define DDANREP "Discount Dan Representative"
 
 #define GREET_DEFAULT		"default"
 #define GREET_ROUNDSTART	"roundstart"

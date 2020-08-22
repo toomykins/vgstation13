@@ -735,6 +735,11 @@ proc/process_adminbus_teleport_locs()
 	name = "\improper Prison Supply Closet"
 	icon_state = "dk_yellow"
 
+/area/shuttle/discount/station
+	name = "\improper Discount Operatives Shuttle"
+	icon_state = "yellow"
+	requires_power = 0
+
 /area/prison/hallway
 	holomap_color = HOLOMAP_AREACOLOR_HALLWAYS
 
@@ -2809,34 +2814,3 @@ var/list/the_station_areas = list (
 		/datum/ambience/dorf,
 		/datum/ambience/minecraft,
 		/datum/ambience/torvusmusic)
-
-// BEGIN Horizon
-/area/hallway/primary/foreport
-	name = "Fore Port"
-	icon_state = "hallP"
-
-/area/hallway/primary/forestarboard
-	name = "Fore Starboard"
-	icon_state = "hallS"
-
-/area/hallway/primary/upperstarboard
-	name = "Upper Starboard"
-	icon_state = "hallS"
-
-/area/hallway/primary/upperport
-	name = "Upper Port"
-	icon_state = "hallP"
-
-/area/hallway/secondary/podescape1
-	name = "Upper Port"
-	icon_state = "escape"
-
-/area/hallway/secondary/podescape2
-	name = "Upper Port"
-	icon_state = "escape"
-
-/area/hallway/secondary/exit2
-	name = "Escape Shuttle Hallway Right"
-	icon_state = "escape"
-
-// END Horizon
