@@ -735,6 +735,11 @@ proc/process_adminbus_teleport_locs()
 	name = "\improper Prison Supply Closet"
 	icon_state = "dk_yellow"
 
+/area/shuttle/discount/station
+	name = "\improper Discount Operatives Shuttle"
+	icon_state = "yellow"
+	requires_power = 0
+
 /area/prison/hallway
 	holomap_color = HOLOMAP_AREACOLOR_HALLWAYS
 
@@ -2842,3 +2847,4 @@ var/list/the_station_areas = list (
 	icon_state = "escape"
 
 // END Horizon
+

@@ -633,3 +633,54 @@
 	my_fac.HandleRecruitedRole(new_role)
 	new_role.Greet(GREET_DEFAULT)
 	new_role.AnnounceObjectives()
+
+
+//////////////////
+
+
+
+
+//////////////////////////////////////////////
+//                                          //
+//  DISCOUNT DAN REPRESENTATIVE             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                 & DISCOUNT DAN OPS       //
+//////////////////////////////////////////////
+
+/datum/dynamic_ruleset/midround/from_ghosts/faction_based/discountdan
+	name = "Discount Dan Representative"
+	role_category = /datum/role/ddanrep
+	my_fac = /datum/faction/discountdan
+	required_candidates = 1
+	weight = 1
+	repeatable = TRUE
+	cost = 0
+	requirements = list(0,0,0,0,0,0,0,0,0,0)
+	high_population_requirement = 0
+	logo = "discount-logo"
+	flags = MINOR_RULESET
+
+
+/datum/dynamic_ruleset/midround/from_ghosts/faction_based/discountdan/acceptable(var/population=0,var/threat=0)
+	if(mode.threat>50) //We're threatening enough!
+		message_admins("Rejected discount dan ruleset, [mode.threat] threat was over 50.")
+		return FALSE
+	if(!..())
+		message_admins("Rejected discount dan ruleset. Not enough threat somehow??")
+		return FALSE
+	return TRUE
+
+/datum/dynamic_ruleset/midround/from_ghosts/faction_based/discountdan/execute()
+	var/datum/faction/F = find_active_faction_by_type(/datum/faction/discountdan)
+	if(F && F.members.len >= 1)
+		required_candidates = 2
+		role_category = /datum/role/ddanop
+	. = ..()
+
+/datum/dynamic_ruleset/midround/from_ghosts/faction_based/setup_role(var/datum/role/new_role)
+	my_fac.HandleRecruitedRole(new_role)
+	new_role.ForgeObjectives()
+	new_role.OnPostSetup()
+	new_role.Greet()
+	new_role.AnnounceObjectives()
+
+/////////

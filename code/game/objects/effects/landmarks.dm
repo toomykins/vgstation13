@@ -90,6 +90,9 @@
 			
 		if("ninjastart")
 			ninjastart += loc
+
+		if("discountstart")
+			discountstart += loc
 	return 1
 
 /obj/effect/landmark/Destroy()

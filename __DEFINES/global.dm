@@ -148,6 +148,7 @@ var/list/prisonwarped = list()	//list of players already warped
 var/list/blobstart = list()
 var/list/ninjastart = list()
 var/list/voxstart = list() //Vox raider spawn points
+var/list/discountstart = list()
 var/list/voxlocker = list() //Vox locker spawn points
 //	list/traitors = list()	//traitor list
 var/list/cardinal = list( NORTH, SOUTH, EAST, WEST )
