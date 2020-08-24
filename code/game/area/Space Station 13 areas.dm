@@ -740,6 +740,11 @@ proc/process_adminbus_teleport_locs()
 	icon_state = "yellow"
 	requires_power = 0
 
+/area/discount_dan_base
+	name = "\improper Discount Dan Base of Operations"
+	icon_state = "dk_yellow"
+	requires_power = 0
+
 /area/prison/hallway
 	holomap_color = HOLOMAP_AREACOLOR_HALLWAYS
 
