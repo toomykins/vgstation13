@@ -542,6 +542,19 @@ var/global/num_vending_terminals = 1
 			loadCustomItem(W)
 			src.updateUsrDialog()
 
+	else if(istype(W,/obj/item/weapon/garbagegun) && (istype(src,/obj/machinery/vending/discount) || istype(src,/obj/machinery/vending/groans)))
+		var/obj/item/weapon/garbagegun/G = W
+		if(!user.Adjacent(src))
+			return 0
+		if(G.shots >= G.max_shots)
+			to_chat(user, "<span class='notice'>The gun is already fully loaded up.</span>") //finish this
+			return 0
+		while(G.shots < G.max_shots)
+			if(!user.Adjacent(src) || !istype(src))
+				return 0
+			if(do_after(user, src, 10))
+				G.shots++
+
 /obj/machinery/vending/proc/loadCustomItem(var/obj/item/item)
 	for(var/datum/data/vending_product/VP in product_records)
 		if(VP.custom && VP.product_name == item.product_name())
