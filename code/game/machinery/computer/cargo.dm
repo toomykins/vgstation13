@@ -267,10 +267,10 @@ For vending packs, see vending_packs.dm*/
 			orders_list.Add(list(list("ordernum" = SO.ordernum, "supply_type" = SO.object.name, "orderedby" = SO.orderedby, "authorized_name" = SO.authorized_name, "comment" = SO.comment)))
 	data["orders"] = orders_list
 
-	var/centcomm_list[0]
-	for(var/datum/centcomm_order/O in SSsupply_shuttle.centcomm_orders)
-		centcomm_list.Add(list(list("id" = O.id, "requested" = O.getRequestsByName(), "fulfilled" = O.getFulfilledByName(), "name" = O.name, "worth" = O.worth, "to" = O.acct_by_string)))
-	data["centcomm_orders"] = centcomm_list
+	var/centcom_list[0]
+	for(var/datum/centcom_order/O in SSsupply_shuttle.centcom_orders)
+		centcom_list.Add(list(list("id" = O.id, "requested" = O.getRequestsByName(), "fulfilled" = O.getFulfilledByName(), "name" = O.name, "worth" = O.worth, "to" = O.acct_by_string)))
+	data["centcom_orders"] = centcom_list
 
 	var/datum/money_account/account = current_acct["account"]
 	data["name_of_source_account"] = account.owner_name
@@ -313,7 +313,7 @@ For vending packs, see vending_packs.dm*/
 		return 1
 	//Calling the shuttle
 	else if(href_list["send"])
-		if(!map.linked_to_centcomm)
+		if(!map.linked_to_centcom)
 			to_chat(usr, "<span class='warning'>You aren't able to establish contact with central command, so the shuttle won't move.</span>")
 		else if(!SSsupply_shuttle.can_move())
 			to_chat(usr, "<span class='warning'>For safety reasons the automated supply shuttle cannot transport live organisms, classified nuclear weaponry or homing beacons.</span>")

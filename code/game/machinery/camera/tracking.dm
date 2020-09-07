@@ -149,7 +149,7 @@
 	var/turf/T = get_turf(target)
 	if(!T)
 		return FALSE
-	if(T.z == map.zCentcomm || T.z > 6)
+	if(T.z == map.zCentCom || T.z > 6)
 		return FALSE
 
 	if(!check_HUD_visibility(target, src))

@@ -2208,7 +2208,7 @@ mob/proc/on_foot()
 		return 0
 	if((target_turf.z != our_turf.z) || target.stat!=CONSCIOUS) //Not on the same zlevel as us or they're dead.
 		//to_chat(world, "[(target_turf.z != our_turf.z) ? "not on the same zlevel as [target]" : "[target] is not concious"]")
-		if(target_turf.z != map.zCentcomm)
+		if(target_turf.z != map.zCentCom)
 			to_chat(src, "The target mind is too faint...")//Prevent "The mind of Admin is too faint..."
 
 		return 0

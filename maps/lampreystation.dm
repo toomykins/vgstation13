@@ -12,7 +12,7 @@
 	tDomeZ = 2
 	zLevels = list(
 		/datum/zLevel/station,
-		/datum/zLevel/centcomm,
+		/datum/zLevel/centcom,
 		/datum/zLevel/space{
 			name = "derelict" ;
 			},

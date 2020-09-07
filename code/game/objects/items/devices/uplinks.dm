@@ -27,7 +27,7 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 		uses = 20
 	else
 		welcome = "THANKS FOR MAPPING IN THIS THING AND NOT CHECKING FOR RUNTIMES BUDDY"
-		uses = 90 // Because this is only happening on centcomm's snowflake uplink
+		uses = 90 // Because this is only happening on centcom's snowflake uplink
 
 /obj/item/device/uplink/proc/refund(mob/living/carbon/human/user, obj/item/I)
 	if(!user || !I)

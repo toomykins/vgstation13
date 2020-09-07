@@ -26,7 +26,7 @@
 	var/nameLong = ""
 	var/list/zLevels = list()
 	var/zMainStation = 1
-	var/zCentcomm = 2
+	var/zCentCom = 2
 	var/zTCommSat = 3
 	var/zDerelict = 4
 	var/zAsteroid = 5
@@ -49,7 +49,7 @@
 
 	//Fuck the preprocessor
 	var/dorf = 0
-	var/linked_to_centcomm = 1
+	var/linked_to_centcom = 1
 
 	//Disable holominimaps on generation, map-wide. If you're just testing things out, change config.txt instead.
 	var/disable_holominimap_generation = 0
@@ -220,9 +220,9 @@ var/global/list/accessable_z_levels = list()
 	movementChance = ZLEVEL_BASE_CHANCE * ZLEVEL_STATION_MODIFIER
 
 
-/datum/zLevel/centcomm
+/datum/zLevel/centcom
 
-	name = "centcomm"
+	name = "centcom"
 	teleJammed = 1
 	movementJammed = 1
 	bluespace_jammed = 1
@@ -293,7 +293,7 @@ var/global/list/accessable_z_levels = list()
 	for(var/datum/zLevel/level in map.zLevels)
 		to_chat(src, "  * [level.name], Telejammed : [level.teleJammed], Movejammed : [level.movementJammed]")
 	to_chat(src, "* Main station Z: [map.zMainStation]")
-	to_chat(src, "* Centcomm Z: [map.zCentcomm]")
+	to_chat(src, "* CentCom Z: [map.zCentCom]")
 	to_chat(src, "* Thunderdome coords: ([map.tDomeX],[map.tDomeY],[map.tDomeZ])")
 	to_chat(src, "* Space movement chances: [accessable_z_levels]")
 	for(var/z in accessable_z_levels)

@@ -432,7 +432,7 @@ var/list/uplink_items = list()
 	cost = 5
 
 /datum/uplink_item/device_tools/cipherkey
-	name = "Centcomm Encryption Key"
+	name = "CentCom Encryption Key"
 	desc = "A key that, when inserted into any radio headset, allows you to listen to and talk on all known Nanotrasen radio channels using their respective communications keys. Screwdriver to replace encryption keys not included."
 	item = /obj/item/device/encryptionkey/syndicate/hacked
 	cost = 4
@@ -660,7 +660,7 @@ var/list/uplink_items = list()
 
 /datum/uplink_item/jobspecific/command_security/briefcase_smg/on_item_spawned(var/obj/I, var/mob/user)
 	if(gives_discount(user.job))
-		I.icon_state = "briefcase-centcomm"
+		I.icon_state = "briefcase-centcom"
 	return
 
 /datum/uplink_item/jobspecific/command_security/knifeboot

@@ -12,7 +12,7 @@
 	tDomeZ = 2
 	zLevels = list(
 		/datum/zLevel/hyperspace,
-		/datum/zLevel/centcomm,
+		/datum/zLevel/centcom,
 		/datum/zLevel/space{
 			name = "spaceOldSat" ;
 			},

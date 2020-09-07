@@ -17,21 +17,21 @@
 	var/callshuttle = 0
 
 	for(var/obj/machinery/computer/communications/commconsole in machines)
-		if(commconsole.z == map.zCentcomm)
+		if(commconsole.z == map.zCentCom)
 			continue
 		if(istype(commconsole.loc,/turf))
 			break
 		callshuttle++
 
 	for(var/obj/item/weapon/circuitboard/communications/commboard in communications_circuitboards)
-		if(commboard.z == map.zCentcomm)
+		if(commboard.z == map.zCentCom)
 			continue
 		if(istype(commboard.loc,/turf) || istype(commboard.loc,/obj/item/weapon/storage))
 			break
 		callshuttle++
 
 	for(var/mob/living/silicon/ai/shuttlecaller in player_list)
-		if(shuttlecaller.z == map.zCentcomm)
+		if(shuttlecaller.z == map.zCentCom)
 			continue
 		if(!shuttlecaller.stat && shuttlecaller.client && istype(shuttlecaller.loc,/turf))
 			break

@@ -176,7 +176,7 @@ var/global/list/all_docking_ports = list()
 		base_turf_type = get_base_turf(src.z)
 
 	var/datum/zLevel/L = get_z_level(src)
-	if(istype(L,/datum/zLevel/centcomm)) //If the docking port is at z-level 2 (the one with the transit areas)
+	if(istype(L,/datum/zLevel/centcom)) //If the docking port is at z-level 2 (the one with the transit areas)
 		var/turf/T = get_turf(src)
 		if(istype(T, /turf/space))	//Placed on space
 			base_turf_type = T.type //This ensures that once a shuttle leaves transit, its turfs are replaced with MOVING SPACE instead of STATIC SPACE

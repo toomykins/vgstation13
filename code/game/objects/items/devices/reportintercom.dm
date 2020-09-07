@@ -15,7 +15,7 @@
 		to_chat(user, "<span class='notice'>You press the [src]'s button, but nothing happens.</span>")
 		return
 
-	if(!map.linked_to_centcomm)
+	if(!map.linked_to_centcom)
 		var/confirmation = alert("The station is not linked to central command by a relay. Blow your cover?",,"Yes","No")
 		if(confirmation == "No")
 			return

@@ -992,7 +992,7 @@
 	bible_name = "Space Law"
 	male_adept = "Nanotrasen Officer"
 	female_adept = "Nanotrasen Officer"
-	keys = list("security", "space law", "law", "nanotrasen", "centcomm")
+	keys = list("security", "space law", "law", "nanotrasen", "centcom")
 	convert_method = "performing a ritual with a flashbang and a screwdriver. You need to hold the flashbang, with its timer set to 5 seconds, your convert needs to hold the screwdriver and have a free empty hand."
 	preferred_incense = /obj/item/weapon/storage/fancy/incensebox/dense
 

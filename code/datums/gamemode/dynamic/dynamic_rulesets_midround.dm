@@ -195,7 +195,7 @@
 		if(isalien(player))
 			living_players -= player //Xenos don't bother with the syndicate
 			continue
-		if(player.z == map.zCentcomm)
+		if(player.z == map.zCentCom)
 			living_players -= player//we don't autotator people on Z=2
 			continue
 		if(player.mind && (player.mind.antag_roles.len > 0))
@@ -244,7 +244,7 @@
 		if(!isAI(player))
 			candidates -= player
 			continue
-		if(player.z == map.zCentcomm)
+		if(player.z == map.zCentCom)
 			candidates -= player//we don't autotator people on Z=2
 			continue
 		if(player.mind && (player.mind.antag_roles.len > 0))

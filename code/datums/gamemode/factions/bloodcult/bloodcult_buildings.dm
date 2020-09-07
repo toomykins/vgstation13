@@ -780,7 +780,7 @@
 
 		var/datum/faction/bloodcult/cult = find_active_faction_by_type(/datum/faction/bloodcult)
 		if (cult)
-			if (emergency_shuttle.direction == 2) // Going to centcomm
+			if (emergency_shuttle.direction == 2) // Going to centcom
 				cult.minor_victory()
 			else
 				cult.stage(CULT_ACT_III,T)

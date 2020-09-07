@@ -52,7 +52,7 @@
 	for(var/obj/effect/rune_legacy/R in rune_list_legacy)
 		if(R == src)
 			continue
-		if(R.word1 == my_cult.cult_words["travel"] && R.word2 == my_cult.cult_words["self"] && R.word3 == key && R.z != map.zCentcomm)
+		if(R.word1 == my_cult.cult_words["travel"] && R.word2 == my_cult.cult_words["self"] && R.word3 == key && R.z != map.zCentCom)
 			index++
 			allrunesloc.len = index
 			allrunesloc[index] = R.loc

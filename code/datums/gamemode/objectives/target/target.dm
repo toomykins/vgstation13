@@ -26,7 +26,7 @@
 
 /datum/objective/target/delayed/PostAppend()
 	if(emergency_shuttle.location || emergency_shuttle.direction == 2)
-		PostDelay() //If the shuttle is docked or en route to centcomm, no delay
+		PostDelay() //If the shuttle is docked or en route to centcom, no delay
 		return TRUE
 	spawn(delay)
 		PostDelay()
@@ -42,19 +42,19 @@
 /datum/objective/target/proc/get_targets()
 	var/list/targets = list()
 	for(var/datum/mind/possible_target in ticker.minds)
-		if(possible_target != owner && ishuman(possible_target.current) && (possible_target.current.z != map.zCentcomm) && (possible_target.current.stat != DEAD) && !(possible_target.assigned_role in bad_assassinate_targets))
+		if(possible_target != owner && ishuman(possible_target.current) && (possible_target.current.z != map.zCentCom) && (possible_target.current.stat != DEAD) && !(possible_target.assigned_role in bad_assassinate_targets))
 			targets += possible_target
 	return targets
 
 /datum/objective/target/proc/find_target_by_role(role, role_type = 0)//Option sets either to check assigned role or special role. Default to assigned.
 	for(var/datum/mind/possible_target in ticker.minds)
-		if((possible_target != owner) && ishuman(possible_target.current) && (possible_target.current.z != map.zCentcomm) && ((role_type ? possible_target.special_role : possible_target.assigned_role) == role) && !(possible_target.assigned_role in bad_assassinate_targets))
+		if((possible_target != owner) && ishuman(possible_target.current) && (possible_target.current.z != map.zCentCom) && ((role_type ? possible_target.special_role : possible_target.assigned_role) == role) && !(possible_target.assigned_role in bad_assassinate_targets))
 			target = possible_target
 			return TRUE
 	return FALSE
 
 /datum/objective/target/proc/is_valid_target(var/datum/mind/possible_target)
-	if(possible_target != owner && ishuman(possible_target.current) && (possible_target.current.z != map.zCentcomm) && (possible_target.current.stat != DEAD) && !(possible_target.assigned_role in bad_assassinate_targets))
+	if(possible_target != owner && ishuman(possible_target.current) && (possible_target.current.z != map.zCentCom) && (possible_target.current.stat != DEAD) && !(possible_target.assigned_role in bad_assassinate_targets))
 		return TRUE
 	return FALSE
 

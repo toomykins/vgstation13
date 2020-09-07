@@ -633,7 +633,7 @@ var/global/list/paper_folding_results = list ( \
 						Blood Type: [merchant.dna.b_type]<BR>
 						Fingerprint: [md5(merchant.dna.uni_identity)]</body></html>"}
 		display_y = 700
-		CentcommStamp(src)
+		CentComStamp(src)
 	..()
 
 /obj/item/weapon/paper/merchantreport/show_text(var/mob/user, var/links = FALSE, var/starred = FALSE)

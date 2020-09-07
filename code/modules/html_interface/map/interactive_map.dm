@@ -18,7 +18,7 @@
 /proc/get_zlevel_ui_buttons_js()
 	var/list/s = list("Z-Level:")
 	for(var/i in 1 to world.maxz)
-		if(i == map.zCentcomm) continue
+		if(i == map.zCentCom) continue
 		s += "<a href='javascript:changezlevel([i]);'>[i]</a>"
 	return s.Join()
 

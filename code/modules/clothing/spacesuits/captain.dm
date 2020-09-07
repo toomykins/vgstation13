@@ -44,8 +44,8 @@
 /obj/item/clothing/suit/space/rig/captain/old
 	icon_state = "oldcaparmor"
 
-/obj/item/clothing/suit/space/rig/centcomm
-	name = "Centcomm rig armor"
+/obj/item/clothing/suit/space/rig/centcom
+	name = "CentCom rig armor"
 	desc = "This bulky armor is the property of Nanotrasen's supreme leader. Witness and behold!"
 	icon_state = "centcom"
 	item_state = "centcom"
@@ -61,5 +61,5 @@
 	siemens_coefficient = 0
 	head_type = /obj/item/clothing/head/helmet/space/rig/capspace
 
-/obj/item/clothing/suit/space/rig/centcomm/old
+/obj/item/clothing/suit/space/rig/centcom/old
 	icon_state = "oldcentcom"

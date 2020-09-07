@@ -206,7 +206,7 @@
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "Nanotrasen Law, CentComm Officals, and the station's captain."
+	supervisors = "Nanotrasen Law, CentCom Officals, and the station's captain."
 	wage_payout = 55
 	selection_color = "#dddddd"
 	access = list(access_lawyer, access_court, access_heads, access_RC_announce, access_sec_doors, access_cargo, access_medical, access_bar, access_kitchen, access_hydroponics)

@@ -438,7 +438,7 @@
 			slot_ears_str = /obj/item/device/radio/headset/heads/captain,
 			slot_glasses_str = /obj/item/clothing/glasses/sunglasses,
 			slot_head_str = /obj/item/clothing/head/centhat,
-			slot_wear_suit_str = /obj/item/clothing/suit/space/rig/centcomm,
+			slot_wear_suit_str = /obj/item/clothing/suit/space/rig/centcom,
 		),
 	)
 	items_to_collect = list(

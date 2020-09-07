@@ -93,7 +93,7 @@
 	// how the scoreboard checked for escape-ness:
 	// if(istype(T.loc, /area/shuttle/escape/centcom) || istype(T.loc, /area/shuttle/escape_pod1/centcom) || istype(T.loc, /area/shuttle/escape_pod2/centcom) || istype(T.loc, /area/shuttle/escape_pod3/centcom) || istype(T.loc, /area/shuttle/escape_pod5/centcom))
 	// luckily this works for us:
-	if(M.z == map.zCentcomm)
+	if(M.z == map.zCentCom)
 		s.escaped = TRUE // not all survivors escape, and not all rounds end with the shuttle
 
 	if(M.mind)

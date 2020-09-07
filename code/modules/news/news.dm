@@ -69,7 +69,7 @@ var/setup_news = 0
 		return
 	var/datum/feed_channel/newChannel = new /datum/feed_channel
 	newChannel.channel_name = "Tau Ceti Daily"
-	newChannel.author = "CentComm Minister of Information"
+	newChannel.author = "CentCom Minister of Information"
 	newChannel.locked = 1
 	newChannel.is_admin_channel = 1
 	news_network.network_channels += newChannel

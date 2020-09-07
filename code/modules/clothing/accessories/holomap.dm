@@ -177,11 +177,11 @@ var/list/holomap_cache = list()
 	var/image/bgmap
 	var/holomap_bgmap
 
-	if(T.z == map.zCentcomm)
-		holomap_bgmap = "background_\ref[src]_[map.zCentcomm]"
+	if(T.z == map.zCentCom)
+		holomap_bgmap = "background_\ref[src]_[map.zCentCom]"
 
 		if(!(holomap_bgmap in holomap_cache))
-			holomap_cache[holomap_bgmap] = image(centcommMiniMaps["[holomap_filter]"])
+			holomap_cache[holomap_bgmap] = image(centcomMiniMaps["[holomap_filter]"])
 	else
 		holomap_bgmap = "background_\ref[src]_[T.z]"
 

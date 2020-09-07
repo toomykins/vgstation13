@@ -57,7 +57,7 @@ var/list/shuttle_log = list()
 	var/menu_state = COMM_SCREEN_MAIN
 	var/ai_menu_state = COMM_SCREEN_MAIN
 	var/message_cooldown = 0
-	var/centcomm_message_cooldown = 0
+	var/centcom_message_cooldown = 0
 	var/tmp_alertlevel = 0
 
 	var/status_display_freq = "1435"
@@ -157,7 +157,7 @@ var/list/shuttle_log = list()
 			setMenuState(usr,COMM_SCREEN_ERT)
 			return
 		if("request_emergency_team")
-			if(!map.linked_to_centcomm)
+			if(!map.linked_to_centcom)
 				to_chat(usr, "<span class='danger'>Error: No connection can be made to central command.</span>")
 				return
 			if(menu_state != COMM_SCREEN_ERT)
@@ -204,7 +204,7 @@ var/list/shuttle_log = list()
 
 		if("callshuttle")
 			if(authenticated || isAdminGhost(usr))
-				if(!map.linked_to_centcomm && !isAdminGhost(usr)) //We don't need a connection if we're an admin
+				if(!map.linked_to_centcom && !isAdminGhost(usr)) //We don't need a connection if we're an admin
 					to_chat(usr, "<span class='danger'>Error: No connection can be made to central command.</span>")
 					return
 				var/justification = stripped_input(usr, "Please input a concise justification for the shuttle call. Note that failure to properly justify a shuttle call may lead to recall or termination.", "Nanotrasen Anti-Comdom Systems")
@@ -217,7 +217,7 @@ var/list/shuttle_log = list()
 						post_status("shuttle")
 			setMenuState(usr,COMM_SCREEN_MAIN)
 		if("cancelshuttle")
-			if(!map.linked_to_centcomm && !isAdminGhost(usr))
+			if(!map.linked_to_centcom && !isAdminGhost(usr))
 				to_chat(usr, "<span class='danger'>Error: No connection can be made to central command.</span>")
 				return
 			if(issilicon(usr))
@@ -277,34 +277,34 @@ var/list/shuttle_log = list()
 			setMenuState(usr,COMM_SCREEN_STAT)
 
 		// OMG CENTCOMM LETTERHEAD
-		if("MessageCentcomm")
+		if("MessageCentCom")
 			if(authenticated==AUTH_CAPT)
-				if(!map.linked_to_centcomm)
+				if(!map.linked_to_centcom)
 					to_chat(usr, "<span class='danger'>Error: No connection can be made to central command.</span>")
 					return
-				if(centcomm_message_cooldown)
+				if(centcom_message_cooldown)
 					to_chat(usr, "<span class='warning'>Arrays recycling.  Please stand by for a few seconds.</span>")
 					return
-				var/input = stripped_input(usr, "Please choose a message to transmit to Centcomm via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination.  Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", "")
+				var/input = stripped_input(usr, "Please choose a message to transmit to CentCom via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination.  Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", "")
 				if(!input || !(usr in view(1,src)))
 					return
-				Centcomm_announce(input, usr)
+				CentCom_announce(input, usr)
 				to_chat(usr, "<span class='notice'>Message transmitted.</span>")
 				var/turf/T = get_turf(usr)
-				log_say("[key_name(usr)] (@[T.x],[T.y],[T.z]) has sent a bluespace message to Centcomm: [input]")
-				centcomm_message_cooldown = 1
+				log_say("[key_name(usr)] (@[T.x],[T.y],[T.z]) has sent a bluespace message to CentCom: [input]")
+				centcom_message_cooldown = 1
 				spawn(300)//30 seconds cooldown
-					centcomm_message_cooldown = 0
+					centcom_message_cooldown = 0
 			setMenuState(usr,COMM_SCREEN_MAIN)
 
 
 		// OMG SYNDICATE ...LETTERHEAD
 		if("MessageSyndicate")
 			if(src.authenticated==AUTH_CAPT && emagged)
-				if(!map.linked_to_centcomm)
+				if(!map.linked_to_centcom)
 					to_chat(usr, "<span class='danger'>Error: No connection can be made to \[ABNORMAL ROUTING CORDINATES\] .</span>")
 					return
-				if(centcomm_message_cooldown)
+				if(centcom_message_cooldown)
 					to_chat(usr, "<span class='warning'>Arrays recycling.  Please stand by for a few seconds.</span>")
 					return
 				var/input = stripped_input(usr, "Please choose a message to transmit to \[ABNORMAL ROUTING CORDINATES\] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination. Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", "")
@@ -314,9 +314,9 @@ var/list/shuttle_log = list()
 				to_chat(usr, "<span class='notice'>Message transmitted.</span>")
 				var/turf/T = get_turf(usr)
 				log_say("[key_name(usr)] (@[T.x],[T.y],[T.z]) has sent a bluespace message to the syndicate: [input]")
-				centcomm_message_cooldown = 1
+				centcom_message_cooldown = 1
 				spawn(300)//30 seconds cooldown
-					centcomm_message_cooldown = 0
+					centcom_message_cooldown = 0
 			setMenuState(usr,COMM_SCREEN_MAIN)
 
 		if("RestoreBackup")
@@ -525,7 +525,7 @@ var/list/shuttle_log = list()
 
 	if(!universe.OnShuttleCall(user))
 		return
-	if(!map.linked_to_centcomm)
+	if(!map.linked_to_centcom)
 		to_chat(usr, "<span class='danger'>Error: No connection can be made to central command .</span>")
 		return
 
@@ -617,7 +617,7 @@ var/list/shuttle_log = list()
 	if( ticker.mode.name == "blob" || ticker.mode.name == "meteor")
 		return
 
-	if(emergency_shuttle.direction != -1 && emergency_shuttle.online) //check that shuttle isn't already heading to centcomm
+	if(emergency_shuttle.direction != -1 && emergency_shuttle.online) //check that shuttle isn't already heading to centcom
 		emergency_shuttle.recall()
 		log_game("[key_name(user)] has recalled the shuttle.")
 		message_admins("[key_name_admin(user)] has recalled the shuttle - [formatJumpTo(user)].", 1)
@@ -667,15 +667,15 @@ var/list/shuttle_log = list()
 /obj/machinery/computer/communications/Destroy()
 
 	for(var/obj/machinery/computer/communications/commconsole in machines)
-		if(istype(commconsole.loc,/turf) && commconsole != src && commconsole.z != map.zCentcomm)
+		if(istype(commconsole.loc,/turf) && commconsole != src && commconsole.z != map.zCentCom)
 			return ..()
 
 	for(var/obj/item/weapon/circuitboard/communications/commboard in communications_circuitboards)
-		if((istype(commboard.loc,/turf) || istype(commboard.loc,/obj/item/weapon/storage)) && commboard.z != map.zCentcomm)
+		if((istype(commboard.loc,/turf) || istype(commboard.loc,/obj/item/weapon/storage)) && commboard.z != map.zCentCom)
 			return ..()
 
 	for(var/mob/living/silicon/ai/shuttlecaller in player_list)
-		if(!shuttlecaller.stat && shuttlecaller.client && istype(shuttlecaller.loc,/turf) && shuttlecaller.z != map.zCentcomm)
+		if(!shuttlecaller.stat && shuttlecaller.client && istype(shuttlecaller.loc,/turf) && shuttlecaller.z != map.zCentCom)
 			return ..()
 
 	if(ticker.mode.name == "revolution" || ticker.mode.name == "AI malfunction")
@@ -691,15 +691,15 @@ var/list/shuttle_log = list()
 /obj/item/weapon/circuitboard/communications/Destroy()
 	communications_circuitboards.Remove(src)
 	for(var/obj/machinery/computer/communications/commconsole in machines)
-		if(istype(commconsole.loc,/turf) && commconsole.z != map.zCentcomm)
+		if(istype(commconsole.loc,/turf) && commconsole.z != map.zCentCom)
 			return ..()
 
 	for(var/obj/item/weapon/circuitboard/communications/commboard in communications_circuitboards)
-		if((istype(commboard.loc,/turf) || istype(commboard.loc,/obj/item/weapon/storage)) && commboard != src && commboard.z != map.zCentcomm)
+		if((istype(commboard.loc,/turf) || istype(commboard.loc,/obj/item/weapon/storage)) && commboard != src && commboard.z != map.zCentCom)
 			return ..()
 
 	for(var/mob/living/silicon/ai/shuttlecaller in player_list)
-		if(!shuttlecaller.stat && shuttlecaller.client && istype(shuttlecaller.loc,/turf) && shuttlecaller.z != map.zCentcomm)
+		if(!shuttlecaller.stat && shuttlecaller.client && istype(shuttlecaller.loc,/turf) && shuttlecaller.z != map.zCentCom)
 			return ..()
 
 	if(ticker.mode.name == "revolution" || ticker.mode.name == "AI malfunction")

@@ -14158,18 +14158,18 @@
         "celsius"
       ]
     },
-    "centcomm": {
+    "centcom": {
       "wordlen": 1,
       "files": {
         "fem": {
-          "filename": "sound/vox_fem/centcomm.ogg",
+          "filename": "sound/vox_fem/centcom.ogg",
           "voice": "us-clb",
           "checksum": "83d552ec166a37060b6a304172cfd19b",
           "duration": 1.368,
           "size": 7944
         },
         "mas": {
-          "filename": "sound/vox_mas/centcomm.ogg",
+          "filename": "sound/vox_mas/centcom.ogg",
           "voice": "us-rms",
           "checksum": "abc0470390dd4a8d63ebe3efe9e710dd",
           "duration": 1.16,
@@ -14178,21 +14178,21 @@
       },
       "flags": [],
       "phrase": [
-        "centcomm"
+        "centcom"
       ]
     },
-    "centcomm's": {
+    "centcom's": {
       "wordlen": 1,
       "files": {
         "fem": {
-          "filename": "sound/vox_fem/centcomm_s.ogg",
+          "filename": "sound/vox_fem/centcom_s.ogg",
           "voice": "us-clb",
           "checksum": "5294a9af4b61bb042413b89c57703896",
           "duration": 1.304,
           "size": 7773
         },
         "mas": {
-          "filename": "sound/vox_mas/centcomm_s.ogg",
+          "filename": "sound/vox_mas/centcom_s.ogg",
           "voice": "us-rms",
           "checksum": "b1b4ff713068473afa11349e26ccbcad",
           "duration": 1.208,
@@ -14201,7 +14201,7 @@
       },
       "flags": [],
       "phrase": [
-        "centcomm's"
+        "centcom's"
       ]
     },
     "center": {

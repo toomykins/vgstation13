@@ -634,7 +634,7 @@ var/datum/controller/gameticker/ticker
 			bronze_tier += M
 	var/list/silver_tier = list()
 	for (var/mob/M in bronze_tier)
-		if(M.z == map.zCentcomm)
+		if(M.z == map.zCentCom)
 			silver_tier += M
 			bronze_tier -= M
 	var/list/gold_tier = list()

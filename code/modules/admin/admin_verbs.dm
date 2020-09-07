@@ -20,7 +20,7 @@ var/list/admin_verbs_admin = list(
 
 	/client/proc/set_base_turf,
 	/datum/admins/proc/delay,
-	/client/proc/SendCentcommFax,		/*sends a fax to all fax machines*/
+	/client/proc/SendCentComFax,		/*sends a fax to all fax machines*/
 	/client/proc/player_panel,			/*shows an interface for all players, with links to various panels (old style)*/
 	/client/proc/player_panel_new,		/*shows an interface for all players, with links to various panels*/
 	/client/proc/invisimin,				/*allows our mob to go invisible/visible*/
@@ -53,7 +53,7 @@ var/list/admin_verbs_admin = list(
 	/client/proc/jumptoturf,			/*allows us to jump to a specific turf*/
 	/client/proc/jumptomapelement,			/*allows us to jump to a specific vault*/
 	/client/proc/admin_call_shuttle,	/*allows us to call the emergency shuttle*/
-	/client/proc/admin_cancel_shuttle,	/*allows us to cancel the emergency shuttle, sending it back to centcomm*/
+	/client/proc/admin_cancel_shuttle,	/*allows us to cancel the emergency shuttle, sending it back to centcom*/
 	/client/proc/cmd_admin_direct_narrate,	/*send text directly to a player with no padding. Useful for narratives and fluff-text*/
 	/client/proc/cmd_admin_local_narrate,	/*send text locally to all players in view, similar to direct narrate*/
 	/client/proc/cmd_admin_world_narrate,	/*sends text to all players with no padding*/
@@ -1065,18 +1065,18 @@ var/list/admin_verbs_mod = list(
 
 	stop_all_media()
 
-/client/proc/SendCentcommFax()
+/client/proc/SendCentComFax()
 	set	category = "Fun"
 	set name = "Send Fax"
 	set desc = "Sends a fax to all fax machines."
 
-	var/sent = input(src, "Please enter a message send via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from Centcomm", "") as message|null
+	var/sent = input(src, "Please enter a message send via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from CentCom", "") as message|null
 	if(!sent)
 		return
 
 	var/sentname = input(src, "Pick a title for the report", "Title") as text|null
 
-	SendFax(sent, sentname, centcomm = 1)
+	SendFax(sent, sentname, centcom = 1)
 
 	log_admin("[key_name(src)] sent a fax to all machines.: [sent]")
 	message_admins("[key_name_admin(src)] sent a fax to all machines.", 1)

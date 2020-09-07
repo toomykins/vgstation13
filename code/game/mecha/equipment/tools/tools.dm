@@ -596,7 +596,7 @@
 	range = RANGED
 
 /obj/item/mecha_parts/mecha_equipment/teleporter/action(atom/target)
-	if(!action_checks(target) || src.loc.z == map.zCentcomm)
+	if(!action_checks(target) || src.loc.z == map.zCentCom)
 		return
 	var/turf/T = get_turf(target)
 	if(T)
@@ -617,7 +617,7 @@
 
 
 /obj/item/mecha_parts/mecha_equipment/wormhole_generator/action(atom/target)
-	if(!action_checks(target) || src.loc.z == map.zCentcomm)
+	if(!action_checks(target) || src.loc.z == map.zCentCom)
 		return
 	var/list/theareas = list()
 	for(var/area/AR in orange(100, chassis))

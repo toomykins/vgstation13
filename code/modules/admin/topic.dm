@@ -2505,7 +2505,7 @@
 						foo += text("<B>Is an AI</B> | ")
 					else
 						foo += text("<A HREF='?src=\ref[];makeai=\ref[]'>Make AI</A> | ", src, M)
-					if(M.z != map.zCentcomm)
+					if(M.z != map.zCentCom)
 						foo += text("<A HREF='?src=\ref[];sendtoprison=\ref[]'>Prison</A> | ", src, M)
 						foo += text("<A HREF='?src=\ref[];sendtomaze=\ref[]'>Maze</A> | ", src, M)
 					else
@@ -2894,10 +2894,10 @@
 
 		usr.client.cmd_admin_subtle_message(M)
 
-	else if(href_list["CentcommReply"])
-		var/mob/M = locate(href_list["CentcommReply"])
+	else if(href_list["CentComReply"])
+		var/mob/M = locate(href_list["CentComReply"])
 
-		output_to_msay("<span class = 'bold'>[key_name_admin(src.owner)] is replying to a Centcomm message from [key_name_admin(M)]</span>.")
+		output_to_msay("<span class = 'bold'>[key_name_admin(src.owner)] is replying to a CentCom message from [key_name_admin(M)]</span>.")
 
 		var/receive_type
 		if(istype(M, /mob/living/carbon/human))
@@ -2917,7 +2917,7 @@
 			return
 
 		to_chat(src.owner, "You sent <span class = 'bold'>\"[input]\"</span> to <span class = 'bold'>[M]</span> via a secure channel.")
-		log_admin("[src.owner] replied to [key_name(M)]'s Centcomm message with the message [input].")
+		log_admin("[src.owner] replied to [key_name(M)]'s CentCom message with the message [input].")
 		output_to_msay("<span class = 'bold'>[key_name_admin(src.owner)] replied to [key_name_admin(M)]'s Centcom message with:</span> \"[input]\"")
 		to_chat(M, "<span class='notice'>You hear something crackle from your [receive_type] for a moment before a voice speaks:</span>\n\"Please stand by for a message from Central Command. Message as follows.\"\n<span class = 'bold'>\"[input]\"</span>")
 
@@ -2948,33 +2948,33 @@
 		output_to_msay("<span class = 'bold'>[key_name_admin(src.owner)] replied to [key_name_admin(M)]'s Syndicate message with:</span> \"[input]\"")
 		to_chat(M, "<span class='notice'>You hear something crackle from your [receive_type] for a moment before a voice speaks:</span>\n\"Please stand by for a message from your benefactor, agent. Message as follows.\"\n<span class = 'bold'>\"[input]\"</span>")
 
-	else if(href_list["CentcommFaxView"])
-		var/obj/item/weapon/paper/P = locate(href_list["CentcommFaxView"])
+	else if(href_list["CentComFaxView"])
+		var/obj/item/weapon/paper/P = locate(href_list["CentComFaxView"])
 		var/info_2 = ""
 		if(P.img)
 			usr << browse_rsc(P.img.img, "tmp_photo.png")
 			info_2 = "<img src='tmp_photo.png' width='192' style='-ms-interpolation-mode:nearest-neighbor' /><br>"
-		usr << browse("<HTML><HEAD><TITLE>Centcomm Fax Message</TITLE></HEAD><BODY>[info_2][P.info][P.stamps]</BODY></HTML>", "window=Centcomm Fax Message")
+		usr << browse("<HTML><HEAD><TITLE>CentCom Fax Message</TITLE></HEAD><BODY>[info_2][P.info][P.stamps]</BODY></HTML>", "window=CentCom Fax Message")
 
-	else if(href_list["CentcommFaxReply"])
-		var/mob/living/carbon/human/H = locate(href_list["CentcommFaxReply"])
+	else if(href_list["CentComFaxReply"])
+		var/mob/living/carbon/human/H = locate(href_list["CentComFaxReply"])
 
 		output_to_msay("<span class = 'bold'>[key_name_admin(src.owner)] is replying to a fax message from [key_name_admin(H)].</span>")
 
-		var/sent = input(src.owner, "Please enter a message to reply to [key_name(H)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from Centcomm", "") as message|null
+		var/sent = input(src.owner, "Please enter a message to reply to [key_name(H)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from CentCom", "") as message|null
 		if(!sent)
 			return
 
 		var/sentname = input(src.owner, "Pick a title for the report", "Title") as text|null
 
-		var/obj/item/weapon/paper/replyfax = SendFax(sent, sentname, centcomm = 1)
+		var/obj/item/weapon/paper/replyfax = SendFax(sent, sentname, centcom = 1)
 		if(!istype(replyfax))
 			to_chat(src.owner, "<span class='warning'>Message reply to [key_name(H)] failed.</span>")
 			return
 
 		to_chat(src.owner, "<span class='notice'>Message reply to [key_name(H)] transmitted successfully.</span>")
 		log_admin("[key_name(src.owner)] replied to a fax message from [key_name(H)]: [sent]")
-		output_to_msay("<span class = 'bold'>[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]:</span> <a href='?_src_=holder;CentcommFaxView=\ref[replyfax]'>View Message</a>")
+		output_to_msay("<span class = 'bold'>[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]:</span> <a href='?_src_=holder;CentComFaxView=\ref[replyfax]'>View Message</a>")
 
 
 	else if(href_list["jumpto"])
@@ -3335,11 +3335,11 @@
 			if("breaklink")
 				log_admin("[key_name(usr)] broke the link with central command", 1)
 				message_admins("<span class='notice'>[key_name_admin(usr)] broke the link with central command</span>", 1)
-				unlink_from_centcomm()
+				unlink_from_centcom()
 			if("makelink")
 				log_admin("[key_name(usr)] created a link with central command", 1)
 				message_admins("<span class='notice'>[key_name_admin(usr)] created a link with central command</span>", 1)
-				link_to_centcomm()
+				link_to_centcom()
 			if("traitor_all")
 				if(!ticker)
 					alert("The game hasn't started yet!")

@@ -36,8 +36,8 @@
 			antag.current.hud_used.countdown_display.overlays.len = 0
 			var/first = round(countdown/10)
 			var/second = countdown%10
-			var/image/I1 = new('icons/obj/centcomm_stuff.dmi',src,"[first]",30)
-			var/image/I2 = new('icons/obj/centcomm_stuff.dmi',src,"[second]",30)
+			var/image/I1 = new('icons/obj/centcom_stuff.dmi',src,"[first]",30)
+			var/image/I2 = new('icons/obj/centcom_stuff.dmi',src,"[second]",30)
 			I1.pixel_x += 10 * PIXEL_MULTIPLIER
 			I2.pixel_x += 17 * PIXEL_MULTIPLIER
 			I1.pixel_y -= 11 * PIXEL_MULTIPLIER

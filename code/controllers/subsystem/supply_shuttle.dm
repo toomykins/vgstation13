@@ -20,7 +20,7 @@ var/datum/subsystem/supply_shuttle/SSsupply_shuttle
 	//var/credits_per_plasma = 0.5 // 2 plasma for 1 point
 	//control
 	var/ordernum
-	var/list/centcomm_orders = list()
+	var/list/centcom_orders = list()
 	var/list/shoppinglist = list()
 	var/list/requestlist = list()
 	var/list/supply_packs = list()
@@ -81,7 +81,7 @@ var/datum/subsystem/supply_shuttle/SSsupply_shuttle
 
 		if(!destination)
 			message_admins("WARNING: Cargo shuttle unable to find the station!")
-			warning("Cargo shuttle can't find centcomm")
+			warning("Cargo shuttle can't find centcom")
 	else //at station
 		for(var/obj/structure/shuttle/engine/propulsion/P in cargo_shuttle.linked_area)
 			spawn()
@@ -92,8 +92,8 @@ var/datum/subsystem/supply_shuttle/SSsupply_shuttle
 		at_station = 0
 
 		if(!destination)
-			message_admins("WARNING: Cargo shuttle unable to find centcomm!")
-			warning("Cargo shuttle can't find centcomm")
+			message_admins("WARNING: Cargo shuttle unable to find centcom!")
+			warning("Cargo shuttle can't find centcom")
 
 	cargo_shuttle.move_to_dock(destination)
 	moving = 0
@@ -112,14 +112,14 @@ var/datum/subsystem/supply_shuttle/SSsupply_shuttle
 	// Per-unit orders run last so they don't steal shit.
 	var/list/deferred_order_checks=list()
 	var/order_idx=0
-	for(var/datum/centcomm_order/O in centcomm_orders)
+	for(var/datum/centcom_order/O in centcom_orders)
 		order_idx++
-		if(istype(O,/datum/centcomm_order/per_unit))
+		if(istype(O,/datum/centcom_order/per_unit))
 			deferred_order_checks += order_idx
 		if(O.CheckShuttleObject(A,in_crate))
 			return
 	for(var/oid in deferred_order_checks)
-		var/datum/centcomm_order/O = centcomm_orders[oid]
+		var/datum/centcom_order/O = centcom_orders[oid]
 		if(O.CheckShuttleObject(A,in_crate))
 			return
 
@@ -193,10 +193,10 @@ var/datum/subsystem/supply_shuttle/SSsupply_shuttle
 			SellObjToOrders(MA,0)
 
 		// PAY UP BITCHES
-		for(var/datum/centcomm_order/O in centcomm_orders)
+		for(var/datum/centcom_order/O in centcom_orders)
 			if(O.CheckFulfilled())
 				O.Pay()
-				centcomm_orders.Remove(O)
+				centcom_orders.Remove(O)
 		qdel(MA)
 
 
@@ -314,7 +314,7 @@ var/datum/subsystem/supply_shuttle/SSsupply_shuttle
 	if(requisition) //This one's on the house, but Cargo gets no share because they're paying for it
 		if(cargo_acct.money >= P.cost)
 			requestlist.Cut(position,position+1)
-			cargo_acct.charge(P.cost,null,"Supply Order #[O.ordernum] ([P.name])",src.name,dest_name = "CentComm")
+			cargo_acct.charge(P.cost,null,"Supply Order #[O.ordernum] ([P.name])",src.name,dest_name = "CentCom")
 			shoppinglist += O
 		else
 			to_chat(user, "<span class='warning'>The department account does not have enough funds for this request.</span>")
@@ -324,14 +324,14 @@ var/datum/subsystem/supply_shuttle/SSsupply_shuttle
 			requestlist.Cut(position,position+1)
 			var/cargo_share = round(P.cost*0.2)
 			var/centcom_share = (P.cost)-cargo_share
-			A.charge(centcom_share,null,"Supply Order #[O.ordernum] ([P.name])",src.name,dest_name = "CentComm")
+			A.charge(centcom_share,null,"Supply Order #[O.ordernum] ([P.name])",src.name,dest_name = "CentCom")
 			A.charge(cargo_share,cargo_acct,"Order Tax",src.name)
 			shoppinglist += O
 		else
 			to_chat(user, "<span class='warning'>[O.orderedby] does not have enough funds for this request.</span>")
 
-/datum/subsystem/supply_shuttle/proc/add_centcomm_order(var/datum/centcomm_order/C)
-	centcomm_orders.Add(C)
+/datum/subsystem/supply_shuttle/proc/add_centcom_order(var/datum/centcom_order/C)
+	centcom_orders.Add(C)
 	var/name = "External order form - [C.name] order number [C.id]"
 	var/info = {"<h3>Central command supply requisition form</h3<><hr>
 	 			INDEX: #[C.id]<br>

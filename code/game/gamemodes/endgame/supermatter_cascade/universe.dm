@@ -143,7 +143,7 @@
 		if(istype(T, /turf/space))
 			T.overlays += image(icon = T.icon, icon_state = "end01")
 		else
-			if(T.z != map.zCentcomm)
+			if(T.z != map.zCentCom)
 				T.underlays += "end01"
 		CHECK_TICK
 
@@ -153,7 +153,7 @@
 		if (!C.active)
 			continue
 
-		if(C.z != map.zCentcomm)
+		if(C.z != map.zCentCom)
 			C.update_lumcount(LUMCOUNT_CASCADE[1], LUMCOUNT_CASCADE[2], LUMCOUNT_CASCADE[3])
 		CHECK_TICK
 	*/

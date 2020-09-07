@@ -36,7 +36,7 @@
 	var/num_recovered = 0
 	for(var/mob/living/simple_animal/hostile/retaliate/malf_drone/D in drones_list)
 		spark(D, 3, FALSE)
-		D.z = map.zCentcomm
+		D.z = map.zCentCom
 		D.has_loot = 0
 
 		qdel(D) // Drone deletion handles removal from drones list

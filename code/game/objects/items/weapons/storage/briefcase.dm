@@ -13,8 +13,8 @@
 	max_combined_w_class = 16
 	hitsound = "swing_hit"
 
-/obj/item/weapon/storage/briefcase/centcomm
-	icon_state = "briefcase-centcomm"
+/obj/item/weapon/storage/briefcase/centcom
+	icon_state = "briefcase-centcom"
 
 /obj/item/weapon/storage/briefcase/biogen
 	desc = "Smells faintly of potato."
@@ -23,7 +23,7 @@
 	to_chat(viewers(user), "<span class='danger'><b>[user] is smashing \his head inside the [src.name]! It looks like \he's  trying to commit suicide!</b></span>")
 	return (SUICIDE_ACT_BRUTELOSS)
 
-/obj/item/weapon/storage/briefcase/centcomm/New()
+/obj/item/weapon/storage/briefcase/centcom/New()
 	..()
 	new /obj/item/weapon/paper/demotion_key(src)
 	new /obj/item/weapon/paper/commendation_key(src)

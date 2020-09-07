@@ -124,7 +124,7 @@ var/CHARGELEVEL = 0.001 // Cap for how fast cells charge, as a percentage-per-ti
 var/list/WORLD_X_OFFSET = list()
 var/list/WORLD_Y_OFFSET = list()
 
-var/shuttle_z = map.zCentcomm	//default
+var/shuttle_z = map.zCentCom	//default
 var/airtunnel_start = 68 // default
 var/airtunnel_stop = 68 // default
 var/airtunnel_bottom = 72 // default
@@ -384,7 +384,7 @@ var/adminblob_beat = 'sound/effects/blob_pulse.ogg'
 
 //HUD MINIMAPS
 var/list/holoMiniMaps = list()
-var/list/centcommMiniMaps = list()
+var/list/centcomMiniMaps = list()
 var/list/extraMiniMaps = list()
 
 var/list/holomap_markers = list()

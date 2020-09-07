@@ -310,7 +310,7 @@ HOLOMAP PROCS
 	if(holomap_filter & (HOLOMAP_FILTER_VOX | HOLOMAP_FILTER_NUKEOPS))
 		var/holomap_bgmap = "cmc_\ref[src]_\ref[user]_2"
 		var/image/background = image('icons/480x480.dmi', "stationmap_blue")
-		var/image/station_outline = image(centcommMiniMaps["[holomap_filter]"])
+		var/image/station_outline = image(centcomMiniMaps["[holomap_filter]"])
 		station_outline.color = "#DEE7FF"
 		station_outline.alpha = 200
 		background.overlays += station_outline

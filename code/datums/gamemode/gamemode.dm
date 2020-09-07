@@ -46,7 +46,7 @@
 	var/RolesSuccess = CreateRoles()
 	return FactionSuccess && RolesSuccess
 
-//1 = station, 2 = centcomm
+//1 = station, 2 = centcom
 /datum/gamemode/proc/ShuttleDocked(var/state)
 	for(var/datum/faction/F in factions)
 		F.ShuttleDocked(state)

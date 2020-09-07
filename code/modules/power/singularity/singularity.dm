@@ -650,9 +650,9 @@ var/list/global_singularity_pool
 	return
 
 /*
-/obj/machinery/singularity/can_shuttle_move() //The days of destroying centcomm are gone
+/obj/machinery/singularity/can_shuttle_move() //The days of destroying centcom are gone
 	return
-*/ //Fuck you centcomm
+*/ //Fuck you centcom
 
 /obj/machinery/singularity/Destroy()
 	..()

@@ -10,8 +10,8 @@
 
 	if(!alert && !noalert)
 		alert = 'sound/AI/commandreport.ogg'
-	var/gibberish = map.linked_to_centcomm ? 0 : 1
-	var/gibberish_main = (map.linked_to_centcomm || force_report) ? 0 : 1
+	var/gibberish = map.linked_to_centcom ? 0 : 1
+	var/gibberish_main = (map.linked_to_centcom || force_report) ? 0 : 1
 	var/command
 	command += "<h1 class='alert'>[gibberish ? Gibberish(command_name(),70): command_name()] Update</h1>"
 	if (title && length(title) > 0)
@@ -24,7 +24,7 @@
 	for(var/mob/M in player_list)
 		if(!istype(M,/mob/new_player) && M.client)
 			to_chat(M, command)
-			if(!map.linked_to_centcomm)
+			if(!map.linked_to_centcom)
 				M << sound(pick(static_list), volume = 60)
 			else if(!noalert)
 				M << sound(alert, volume = 60)

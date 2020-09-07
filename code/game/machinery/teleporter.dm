@@ -158,7 +158,7 @@
 			var/turf/T = get_turf(M)
 			if(!T)
 				continue
-			if(T.z == map.zCentcomm)
+			if(T.z == map.zCentCom)
 				continue
 			var/tmpname = M.real_name
 			if(areaindex[tmpname])

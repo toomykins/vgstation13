@@ -188,7 +188,7 @@
 /datum/intercept_text/proc/build_nuke(datum/mind/correct_person)
 
 
-	src.text += {"<BR><BR>Centcomm recently received a report of a plot to destroy one of our stations in your area. We believe the Nuclear Authentication Disc
+	src.text += {"<BR><BR>CentCom recently received a report of a plot to destroy one of our stations in your area. We believe the Nuclear Authentication Disc
 		that is standard issue aboard your vessel may be a target. We recommend removal of this object, and it's storage in a safe
 		environment. As this may cause panic among the crew, all efforts should be made to keep this information a secret from all but
 		the most trusted crew-members."}

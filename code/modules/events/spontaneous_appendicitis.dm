@@ -10,7 +10,7 @@
 			foundAlready = 1
 		if(H.stat == 2 || foundAlready)
 			continue
-		if(H.z == map.zCentcomm) //Don't infect people on the centcomm z-level
+		if(H.z == map.zCentCom) //Don't infect people on the centcom z-level
 			continue
 
 		var/datum/disease/D = new /datum/disease/appendicitis

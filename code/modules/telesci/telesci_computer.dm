@@ -378,7 +378,7 @@ var/list/telesci_warnings = list(
 	x_co = rand(MIN_X, MAX_X)
 	y_co = rand(MIN_Y, MAX_Y)
 	var/new_z = rand(1, map.zLevels.len)
-	if(new_z != map.zCentcomm)
+	if(new_z != map.zCentCom)
 		z_co = new_z
 
 	if (cell && cell.charge < teleport_cell_usage)
@@ -428,7 +428,7 @@ var/list/telesci_warnings = list(
 
 	if(href_list["setz"])
 		var/new_z = input("Please input desired Z coordinate.", name, z_co) as num
-		if(new_z == map.zCentcomm || new_z < 1 || new_z > map.zLevels.len)
+		if(new_z == map.zCentCom || new_z < 1 || new_z > map.zLevels.len)
 			to_chat(usr, "<span class='caution'>Error: Invalid Z coordinate.</span>")
 		else
 			z_co = new_z

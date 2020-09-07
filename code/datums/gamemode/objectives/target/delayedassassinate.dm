@@ -39,7 +39,7 @@
 		if(!H.mind || H.gcDestroyed)
 			continue
 		var/datum/mind/possible_target = H.mind
-		if(possible_target != owner && (possible_target.current.z != map.zCentcomm) && (possible_target.current.stat != DEAD) && !(possible_target.assigned_role in bad_assassinate_targets))
+		if(possible_target != owner && (possible_target.current.z != map.zCentCom) && (possible_target.current.stat != DEAD) && !(possible_target.assigned_role in bad_assassinate_targets))
 			possible_targets += possible_target
 	return possible_targets
 

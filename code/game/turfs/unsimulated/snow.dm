@@ -300,7 +300,7 @@
 	icon_state = "asphalt"
 	real_snow_tile = FALSE
 	name = "asphalt"
-	desc = "Specially treated Centcomm asphalt, designed to disintegrate all snow that touches it."
+	desc = "Specially treated CentCom asphalt, designed to disintegrate all snow that touches it."
 	holomap_draw_override = HOLOMAP_DRAW_HALLWAY
 
 /turf/unsimulated/floor/snow/asphalt/mine

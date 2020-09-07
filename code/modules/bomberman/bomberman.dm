@@ -1437,8 +1437,8 @@ var/global/list/arena_spawnpoints = list()//used by /mob/dead/observer/Logout()
 	if(arena.counting)
 		var/first = round(currentcount/10)
 		var/second = currentcount%10
-		var/image/I1 = new('icons/obj/centcomm_stuff.dmi',src,"[first]",30)
-		var/image/I2 = new('icons/obj/centcomm_stuff.dmi',src,"[second]",30)
+		var/image/I1 = new('icons/obj/centcom_stuff.dmi',src,"[first]",30)
+		var/image/I2 = new('icons/obj/centcom_stuff.dmi',src,"[second]",30)
 		I1.pixel_x += 10 * PIXEL_MULTIPLIER
 		I2.pixel_x += 17 * PIXEL_MULTIPLIER
 		I1.pixel_y -= 11 * PIXEL_MULTIPLIER

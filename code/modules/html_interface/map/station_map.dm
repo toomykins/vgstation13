@@ -22,7 +22,7 @@
 		)
 
 	for (var/f in filters)
-		generateCentcommMinimap(f)
+		generateCentComMinimap(f)
 
 	for (var/z = 1 to world.maxz)
 		holoMiniMaps |= z
@@ -116,7 +116,7 @@
 	if(!map.disable_holominimap_generation)
 		if (zLevel > map.zDeepSpace)
 			return // No need to generate an holomap for something that didn't spawn.
-		if(zLevel != map.zCentcomm)
+		if(zLevel != map.zCentCom)
 			for(var/i = 1 to ((2 * world.view + 1)*WORLD_ICON_SIZE))
 				for(var/r = 1 to ((2 * world.view + 1)*WORLD_ICON_SIZE))
 					var/turf/tile = locate(i, r, zLevel)
@@ -161,7 +161,7 @@
 
 	holoMiniMaps[zLevel] = canvas
 
-/proc/generateCentcommMinimap(var/filter="all")
+/proc/generateCentComMinimap(var/filter="all")
 	var/icon/canvas = icon('icons/480x480.dmi', "blank")
 
 	var/list/allowed_areas = list()
@@ -200,20 +200,20 @@
 
 	for(var/i = 1 to ((2 * world.view + 1)*WORLD_ICON_SIZE))
 		for(var/r = 1 to ((2 * world.view + 1)*WORLD_ICON_SIZE))
-			var/turf/tile = locate(i, r, map.zCentcomm)
+			var/turf/tile = locate(i, r, map.zCentCom)
 			if(tile && (is_type_in_list(tile.loc, allowed_areas) && !is_type_in_list(tile.loc, restricted_areas)))
-				if((!istype(tile, get_base_turf(map.zCentcomm)) && istype(tile.loc, /area/mine/unexplored)) || istype(tile, /turf/simulated/wall) || istype(tile, /turf/unsimulated/mineral) || istype(tile, /turf/unsimulated/wall) || (locate(/obj/structure/grille) in tile) || (locate(/obj/structure/window/full) in tile) || istype(tile, /turf/simulated/shuttle/wall))
-					if(map.holomap_offset_x.len >= map.zCentcomm)
-						canvas.DrawBox(HOLOMAP_OBSTACLE, min(i+map.holomap_offset_x[map.zCentcomm],((2 * world.view + 1)*WORLD_ICON_SIZE)), min(r+map.holomap_offset_y[map.zCentcomm],((2 * world.view + 1)*WORLD_ICON_SIZE)))
+				if((!istype(tile, get_base_turf(map.zCentCom)) && istype(tile.loc, /area/mine/unexplored)) || istype(tile, /turf/simulated/wall) || istype(tile, /turf/unsimulated/mineral) || istype(tile, /turf/unsimulated/wall) || (locate(/obj/structure/grille) in tile) || (locate(/obj/structure/window/full) in tile) || istype(tile, /turf/simulated/shuttle/wall))
+					if(map.holomap_offset_x.len >= map.zCentCom)
+						canvas.DrawBox(HOLOMAP_OBSTACLE, min(i+map.holomap_offset_x[map.zCentCom],((2 * world.view + 1)*WORLD_ICON_SIZE)), min(r+map.holomap_offset_y[map.zCentCom],((2 * world.view + 1)*WORLD_ICON_SIZE)))
 					else
 						canvas.DrawBox(HOLOMAP_OBSTACLE, i, r)
 				else if (istype(tile, /turf/simulated/floor) || istype(tile, /turf/unsimulated/floor) || (locate(/obj/structure/catwalk) in tile) || istype(tile, /turf/simulated/shuttle/floor))
-					if(map.holomap_offset_x.len >= map.zCentcomm)
-						canvas.DrawBox(HOLOMAP_PATH, min(i+map.holomap_offset_x[map.zCentcomm],((2 * world.view + 1)*WORLD_ICON_SIZE)), min(r+map.holomap_offset_y[map.zCentcomm],((2 * world.view + 1)*WORLD_ICON_SIZE)))
+					if(map.holomap_offset_x.len >= map.zCentCom)
+						canvas.DrawBox(HOLOMAP_PATH, min(i+map.holomap_offset_x[map.zCentCom],((2 * world.view + 1)*WORLD_ICON_SIZE)), min(r+map.holomap_offset_y[map.zCentCom],((2 * world.view + 1)*WORLD_ICON_SIZE)))
 					else
 						canvas.DrawBox(HOLOMAP_PATH, i, r)
 
-	centcommMiniMaps["[filter]"] = canvas
+	centcomMiniMaps["[filter]"] = canvas
 
 /proc/generateStationMinimap(var/StationZLevel)
 	var/icon/canvas = icon('icons/480x480.dmi', "blank")

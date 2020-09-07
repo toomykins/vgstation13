@@ -371,7 +371,7 @@ Class Procs:
 
 /obj/machinery/proc/is_on_same_z(var/mob/user)
 	var/turf/T = get_turf(user)
-	if(!isAI(user) && T.z != z && user.z != map.zCentcomm)
+	if(!isAI(user) && T.z != z && user.z != map.zCentCom)
 		return FALSE
 	return TRUE
 

@@ -110,7 +110,7 @@
 	return attack_hand(user)
 
 /obj/machinery/computer/merch/proc/make_div(var/store_ID)
-	var/datum/storeitem/SI = centcomm_store.items["[store_ID]"]
+	var/datum/storeitem/SI = centcom_store.items["[store_ID]"]
 	if(SI.stock == 0)
 		return "<tr><td><i>[SI.name] (SOLD OUT)</i></td></tr>"
 	else
@@ -147,7 +147,7 @@
 	switch(href_list["choice"])
 		if ("buy")
 			var/itemID = href_list["chosen_item"]
-			if(!centcomm_store.PlaceOrder(usr,itemID,src))
+			if(!centcom_store.PlaceOrder(usr,itemID,src))
 				to_chat(usr, "[bicon(src)]<span class='warning'>Unable to charge your account.</span>")
 			else
 				to_chat(usr, "[bicon(src)]<span class='notice'>Transaction complete! Enjoy your product.</span>")

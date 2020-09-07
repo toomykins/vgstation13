@@ -44,8 +44,8 @@
 /obj/structure/closet/secure_closet/vault/vault
 	req_access = list(access_heads_vault)
 
-/obj/structure/closet/secure_closet/vault/centcomm
-	name = "\improper Centcomm vault locker"
+/obj/structure/closet/secure_closet/vault/centcom
+	name = "\improper CentCom vault locker"
 	req_access = list(access_cent_general)
 
 /obj/structure/closet/secure_closet/vault/syndicate

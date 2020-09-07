@@ -657,7 +657,7 @@
 	id_type = /obj/item/weapon/card/id/centcom
 
 /datum/outfit/iaa/post_equip(var/mob/living/carbon/human/H)
-	H.put_in_hands(new /obj/item/weapon/storage/briefcase/centcomm(H))
+	H.put_in_hands(new /obj/item/weapon/storage/briefcase/centcom(H))
 	if (!H.mind)
 		return
 	H.mind.store_memory("Frequencies list: <br/><b>Command:</b> [COMM_FREQ] <br/> <b>Security:</b> [SEC_FREQ] <br/>")

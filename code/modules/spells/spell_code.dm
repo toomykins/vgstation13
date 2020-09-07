@@ -37,7 +37,7 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 	//GHOSTCAST to make ghosts be able to cast this
 	//NEEDSCLOTHES to forbit guys without wizard garb from casting this
 	//NEEDSHUMAN to forbid non-humans to cast this
-	//Z2NOCAST to forbit casting this on z-level 2 (centcomm, and wizard spawn)
+	//Z2NOCAST to forbit casting this on z-level 2 (centcom, and wizard spawn)
 	//STATALLOWED to allow dead/unconscious guys (and ghosts) to cast this
 	//IGNOREPREV to make each new target not overlap with the previous one
 	//CONSTRUCT_CHECK used by construct spells - checks for nullrods
@@ -366,7 +366,7 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 	if(map.zLevels.len < ourz || !ourz)
 		WARNING("[user] is somehow on a zlevel [(ourz > map.zLevels.len) ? "higher" : "lower"] than our zlevels list! [map.zLevels.len] level\s, [map.nameLong] - [formatJumpTo(get_turf(user))]")
 		return 0
-	if(istype(map.zLevels[ourz], /datum/zLevel/centcomm) && spell_flags & Z2NOCAST) //Certain spells are not allowed on the centcomm zlevel
+	if(istype(map.zLevels[ourz], /datum/zLevel/centcom) && spell_flags & Z2NOCAST) //Certain spells are not allowed on the centcom zlevel
 		return 0
 
 	if(spell_flags & CONSTRUCT_CHECK)

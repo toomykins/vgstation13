@@ -446,7 +446,7 @@ This function restores all organs.
 	return damage
 
 //Adds cancer, including stage of cancer and limb
-//Right now cancer is adminbus only. You can inflict it via the full (old) Player Panel and all "prayer types" (includes Centcomm message)
+//Right now cancer is adminbus only. You can inflict it via the full (old) Player Panel and all "prayer types" (includes CentCom message)
 //Of course, should it ever come back for realsies, that's the right way to do it. But let's not be silly now
 //IMPORTANT NOTE: Currently only works on external organs, because the person who wrote organ code has brain cancer, hopefully I will sweep back to fix this in a later PR
 //Since I'd have to change hundreds of procs going through organs, that's not something I'll do now

@@ -1253,7 +1253,7 @@ var/global/floorIsLava = 0
 	set category = "Admin"
 	set name = "Unprison"
 
-	if (M.z == map.zCentcomm)
+	if (M.z == map.zCentCom)
 		if (config.allow_admin_jump)
 			M.forceMove(pick(latejoin))
 			message_admins("[key_name_admin(usr)] has unprisoned [key_name_admin(M)]", 1)

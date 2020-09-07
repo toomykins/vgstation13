@@ -99,7 +99,7 @@
 	if(panel_open)
 		overlays += "[initial(icon_state)]_panel"
 
-//Backup files to centcomm to help admins recover data after greifer attacks
+//Backup files to centcom to help admins recover data after greifer attacks
 /obj/machinery/r_n_d/server/proc/griefProtection()
 	for(var/obj/machinery/r_n_d/server/centcom/C in machines)
 		for(var/ID in files.known_tech)

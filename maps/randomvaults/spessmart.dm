@@ -36,7 +36,7 @@ var/list/shop_prices = list( //Cost in space credits
 
 /obj/item/weapon/storage/backpack/clown = 20,
 /obj/item/weapon/storage/backpack/captain = 40,
-/obj/item/weapon/storage/briefcase/centcomm = 80,
+/obj/item/weapon/storage/briefcase/centcom = 80,
 
 //Medicine and chemistry
 /obj/item/weapon/reagent_containers/pill/happy = 20,

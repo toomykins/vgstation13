@@ -173,7 +173,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 		linked_lathe.part_sets = part_sets
 	return
 
-//Have it automatically push research to the centcomm server so wild griffins can't fuck up R&D's work --NEO
+//Have it automatically push research to the centcom server so wild griffins can't fuck up R&D's work --NEO
 /obj/machinery/computer/rdconsole/proc/griefProtection()
 	for(var/obj/machinery/r_n_d/server/centcom/C in machines)
 		for(var/ID in files.known_tech)
@@ -308,7 +308,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 				if(linked_lathe)
 					linked_lathe.part_sets = part_sets
 			updateUsrDialog()
-			griefProtection() //Update centcomm too
+			griefProtection() //Update centcom too
 
 	else if(href_list["hax"]) // aww shit
 		if(!usr.client.holder)
@@ -320,7 +320,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 			Maximize()
 			screen = 1.0
 			updateUsrDialog()
-			griefProtection() //Update centcomm too
+			griefProtection() //Update centcom too
 
 	else if(href_list["clear_tech"]) //Erase data on the technology disk.
 		t_disk.stored = null
@@ -344,7 +344,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 			screen = 1.4
 			files.AddDesign2Known(d_disk.blueprint)
 			updateUsrDialog()
-			griefProtection() //Update centcomm too
+			griefProtection() //Update centcom too
 
 	else if(href_list["clear_design"]) //Erases data on the design disk.
 		d_disk.blueprint = null

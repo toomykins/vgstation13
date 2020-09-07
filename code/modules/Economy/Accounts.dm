@@ -7,7 +7,7 @@ var/global/num_merch_computers = 1
 var/global/datum/money_account/station_account
 var/global/list/datum/money_account/department_accounts = list()
 var/global/next_account_number = 0
-var/global/obj/machinery/account_database/centcomm_account_db
+var/global/obj/machinery/account_database/centcom_account_db
 var/global/datum/money_account/vendor_account
 var/global/list/all_money_accounts = list()
 var/global/datum/money_account/trader_account
@@ -195,12 +195,12 @@ var/global/allowable_payroll_amount = DEPARTMENT_START_WAGE*8 //Station, command
 /obj/machinery/account_database/initialize()
 	..()
 
-	if(z == CENTCOMM_Z && isnull(centcomm_account_db))
-		centcomm_account_db = src
+	if(z == CENTCOMM_Z && isnull(centcom_account_db))
+		centcom_account_db = src
 
 /obj/machinery/account_database/Destroy()
-	if(centcomm_account_db == src)
-		centcomm_account_db = null
+	if(centcom_account_db == src)
+		centcom_account_db = null
 
 	..()
 

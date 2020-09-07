@@ -650,7 +650,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!holder)
 		to_chat(src, "Only administrators may use this command.")
 		return
-	if(!map.linked_to_centcomm)
+	if(!map.linked_to_centcom)
 		var/confirmation = alert("The station is not linked to central command by a relay. Ruin immersion?",,"Yes","No")
 		if(confirmation == "No")
 			return

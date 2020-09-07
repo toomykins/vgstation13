@@ -505,7 +505,7 @@ The access requirements on the Asteroid Shuttles' consoles have now been revoked
 
 /datum/command_alert/eagles
 	name = "Airlock Access Removed"
-	message = "Centcomm airlock control override activated. Please take this time to get acquainted with your coworkers."
+	message = "CentCom airlock control override activated. Please take this time to get acquainted with your coworkers."
 
 /datum/command_alert/bluespace_artillery
 	name = "Bluespace Artillery Strike Detected"

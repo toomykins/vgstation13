@@ -5,7 +5,7 @@
 /datum/objective/silence/IsFulfilled()
 	if (..())
 		return TRUE
-	if(emergency_shuttle.location != map.zCentcomm)
+	if(emergency_shuttle.location != map.zCentCom)
 		return FALSE
 	for(var/mob/living/player in player_list)
 		if(player == owner.current)

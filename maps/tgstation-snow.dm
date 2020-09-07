@@ -16,7 +16,7 @@
 			name = "station"
 			movementChance = ZLEVEL_BASE_CHANCE * ZLEVEL_STATION_MODIFIER
 		},
-		/datum/zLevel/centcomm,
+		/datum/zLevel/centcom,
 		/datum/zLevel/snow{
 			name = "CrashedSat" ;
 			},

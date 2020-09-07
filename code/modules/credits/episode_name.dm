@@ -168,7 +168,7 @@
 
 	if(ticker && ticker.shuttledocked_time != -1 && emergency_shuttle.location == CENTCOMM_Z)
 		var/area/shuttle = locate(/area/shuttle/escape/centcom)
-		if(shuttle) //These names are only to be rolled if the round ended with the shuttle normally docking at centcomm.
+		if(shuttle) //These names are only to be rolled if the round ended with the shuttle normally docking at centcom.
 			var/list/shuttle_escapees = list() //We want to only count people that were on the shuttle. Pods don't even real
 			var/list/human_escapees = list()
 			for(var/mob/living/M in shuttle)

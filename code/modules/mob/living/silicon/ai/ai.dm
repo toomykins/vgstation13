@@ -361,7 +361,7 @@ var/list/ai_list = list()
 			return
 	switch(emergency_shuttle.direction)
 		if(EMERGENCY_SHUTTLE_RECALLED)
-			to_chat(usr, "<span class='warning'>Wait until the shuttle arrives at Centcomm and try again</span>")
+			to_chat(usr, "<span class='warning'>Wait until the shuttle arrives at CentCom and try again</span>")
 		if(EMERGENCY_SHUTTLE_STANDBY)
 			ai_call_shuttle()
 		if(EMERGENCY_SHUTTLE_GOING_TO_STATION)
