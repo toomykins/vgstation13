@@ -74,6 +74,8 @@
 
 #define isrobot(A) istype(A, /mob/living/silicon/robot)
 
+#define isshell(A) istype(A, /mob/living/silicon/robot/shell)
+
 #define isanimal(A) istype(A, /mob/living/simple_animal)
 
 #define iscorgi(A) istype(A, /mob/living/simple_animal/corgi)
@@ -304,7 +306,7 @@
 //Banning someone from the Syndicate role bans them from all antagonist roles
 #define isantagbanned(H) (jobban_isbanned(H, "Syndicate"))
 
-
+#define iscluwnebanned(H) (jobban_isbanned(H, "Cluwne"))
 
 //Macro for AREAS!
 
