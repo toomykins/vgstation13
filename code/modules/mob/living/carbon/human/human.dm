@@ -230,6 +230,12 @@
 
 	update_mutantrace()
 
+	lazy_register_event(/lazy_event/on_equipped, src, .proc/update_name)
+	lazy_register_event(/lazy_event/on_unequipped, src, .proc/update_name)
+
+/mob/living/carbon/human/proc/update_name()
+	name = get_visible_name()
+
 /mob/living/carbon/human/player_panel_controls()
 	var/html=""
 
@@ -385,7 +391,7 @@
 	if( head && head.is_hidden_identity())
 		return get_id_name("Unknown")	//Likewise for hats
 	var/datum/role/vampire/V = isvampire(src)
-	if(V && (VAMP_SHADOW in V.powers) && V.ismenacing)
+	if(V && (/datum/power/vampire/shadow in V.current_powers) && V.ismenacing)
 		return get_id_name("Unknown")
 	var/face_name = get_face_name()
 	var/id_name = get_id_name("")
@@ -652,10 +658,6 @@
 		. += E.eyeprot
 
 	return clamp(., -2, 2)
-
-
-/mob/living/carbon/human/IsAdvancedToolUser()
-	return 1//Humans can use guns and such
 
 /mob/living/carbon/human/isGoodPickpocket()
 	var/obj/item/clothing/gloves/G = gloves
@@ -1449,20 +1451,15 @@
 
 /mob/living/carbon/human/dexterity_check()
 	if (stat != CONSCIOUS)
-		return 0
-
-	if(reagents.has_reagent(METHYLIN))
-		return 1
-
-	if(getBrainLoss() >= 60)
-		return 0
-
+		return FALSE
 	if(gloves && istype(gloves, /obj/item/clothing/gloves))
 		var/obj/item/clothing/gloves/G = gloves
-
-		return G.dexterity_check()
-
-	return 1
+		if(!G.dexterity_check())//some gloves might make it harder to interact with complex technologies, or fit your index in a gun's trigger
+			return FALSE
+	if(getBrainLoss() >= 60)
+		if(!reagents.has_reagent(METHYLIN))//methylin supercedes brain damage, but not uncomfortable gloves
+			return FALSE
+	return TRUE//humans are dexterous enough by default
 
 /mob/living/carbon/human/spook(mob/dead/observer/ghost)
 	if(!..(ghost, TRUE) || !client)
@@ -1960,6 +1957,13 @@ mob/living/carbon/human/isincrit()
 		crawlcounter = 1
 	else
 		crawlcounter++
+	for(var/obj/effect/overlay/puddle/P in target)
+		if(P.wet == TURF_WET_WATER && prob(20))
+			to_chat(src, "<span class='warning'>Your hands slip and make no progress!</span>")
+			return FALSE
+		if(P.wet == TURF_WET_LUBE && prob(75))
+			to_chat(src, "<span class='warning'>You lose your grip on the extremely slippery floor and make no progress!</span>")
+			return FALSE
 	. = Move(target, get_dir(src, target), glide_size_override = crawldelay)
 	delayNextMove(crawldelay, additive = 1)
 
@@ -2025,3 +2029,7 @@ mob/living/carbon/human/isincrit()
 		return list(/datum/ambience/beach)
 	else
 		return ..()
+
+/mob/living/carbon/human/make_meat(location)
+	var/ourMeat = new meat_type(location, src)
+	return ourMeat	//Exists due to meat having a special New()

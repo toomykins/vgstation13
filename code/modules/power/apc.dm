@@ -81,7 +81,6 @@
 	var/malflocked = 0 //used for malfs locking down APCs
 //	luminosity = 1
 	var/has_electronics = 0 // 0 - none, 1 - plugged in, 2 - secured by screwdriver
-	var/overload = 1 //used for the Blackout malf module
 	var/beenhit = 0 // used for counting how many times it has been hit, used for Aliens at the moment
 	var/mob/living/silicon/ai/occupant = null
 	var/longtermpower = 10
@@ -946,12 +945,8 @@
 						src.malfai = usr:parent
 					else
 						src.malfai = usr
-            
-					var/mob/target_malf
-					target_malf = malfai.is_in_shell ? malfai.shell : malfai
-					to_chat(target_malf, "Hack complete. The APC is now under your exclusive control. [STATION_Z == z?"You now have [M.apcs] under your control.":"As this APC is not located on the station, it is not contributing to your control of it."]")
-					target_malf.handle_regular_hud_updates()
-
+					to_chat(malfai, "Hack complete. The APC is now under your exclusive control. [STATION_Z == z?"You now have [M.apcs] under your control.":"As this APC is not located on the station, it is not contributing to your control of it."]")
+					malfai.handle_regular_hud_updates()
 					update_icon()
 
 	else if (href_list["occupyapc"])
@@ -1047,6 +1042,8 @@
 			for(var/obj/item/weapon/pinpointer/point in pinpointer_list)
 				point.target = null //the pinpointer will go back to pointing at the nuke disc.
 
+/obj/machinery/power/apc/can_overload()
+	return 1
 
 /obj/machinery/power/apc/proc/ion_act()
 	//intended to be exactly the same as an AI malf attack

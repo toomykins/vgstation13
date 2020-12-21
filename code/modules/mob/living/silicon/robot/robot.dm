@@ -1,5 +1,3 @@
-var/list/cyborg_list = list()
-
 /mob/living/silicon/robot
 	name = "Cyborg"
 	real_name = "Cyborg"
@@ -71,8 +69,6 @@ var/list/cyborg_list = list()
 	var/datum/effect/effect/system/ion_trail_follow/ion_trail = null
 	var/jeton = FALSE
 
-	var/killswitch = FALSE
-	var/killswitch_time = 60
 	var/modulelock = FALSE
 	var/modulelock_time = 120
 	var/lawupdate = TRUE //Cyborgs will sync their laws with their AI by default
@@ -142,7 +138,10 @@ var/list/cyborg_list = list()
 
 	..()
 
-	if (mind && !stored_freqs)
+	if(cyborg_detonation_time < world.time)	//Reset the global cyborg killswitch if it was already triggered, so an activated killswitch + missing robot consoles doesnt prevent all new borgs from instantly exploding. This probably isn't the best place for it but it should work.
+		cyborg_detonation_time = 0
+		
+	if(mind && !stored_freqs)
 		spawn(1)
 			mind.store_memory("Frequencies list: <br/><b>Command:</b> [COMM_FREQ] <br/> <b>Security:</b> [SEC_FREQ] <br/> <b>Medical:</b> [MED_FREQ] <br/> <b>Science:</b> [SCI_FREQ] <br/> <b>Engineering:</b> [ENG_FREQ] <br/> <b>Service:</b> [SER_FREQ] <b>Cargo:</b> [SUP_FREQ]<br/> <b>AI private:</b> [AIPRIV_FREQ]<br/>")
 		stored_freqs = 1
@@ -557,13 +556,13 @@ var/list/cyborg_list = list()
 				to_chat(user, "The wires get in your way.")
 			else
 				if(prob(50))
-					to_chat(user, "You emag [src]'s interface")
-					message_admins("[key_name_admin(user)] emagged cyborg [key_name_admin(src)].")
 					sleep(6)
-					SetEmagged(TRUE)						
+					SetEmagged(TRUE)
 					SetLockdown(TRUE)
 					lawupdate = FALSE
 					disconnect_AI()
+					to_chat(user, "You emag [src]'s interface")
+					message_admins("[key_name_admin(user)] emagged cyborg [key_name_admin(src)]. Laws overidden.")
 					log_game("[key_name(user)] emagged cyborg [key_name(src)].  Laws overridden.")
 					clear_supplied_laws()
 					clear_inherent_laws()
@@ -1006,10 +1005,8 @@ var/list/cyborg_list = list()
 	overlays.Cut()
 	update_fire()
 	if(!stat && cell != null)
-		var/icon/eyesicon = icon(icon,"eyes-[icon_state]", overlay_layer)
-		eyes = image(eyesicon,"eyes-[icon_state]", overlay_layer)
+		eyes = image(icon,"eyes-[icon_state]", overlay_layer)
 		eyes.plane = overlay_plane
-
 		overlays += eyes
 
 	if(opened)
@@ -1177,9 +1174,10 @@ var/list/cyborg_list = list()
 
 /mob/living/silicon/robot/proc/self_destruct()
 	if(istraitor(src) && emagged)
-		to_chat(src, "<span class='danger'>Termination signal detected. Scrambling security and identification codes.</span>")
+		to_chat(src, "<span style=\"font-family:Courier\" class='danger'>Termination signal detected. Scrambling security and identification codes.</span>")
 		UnlinkSelf()
 		return FALSE
+	to_chat(src, "<span style=\"font-family:Courier\" class='danger'>Self-Destruct signal recieved.</span>")
 	gib()
 	return TRUE
 
@@ -1344,155 +1342,3 @@ var/list/cyborg_list = list()
 //Currently only used for borg movement, to avoid awkward situations where borgs with RTG or basic cells are always slowed down
 /mob/living/silicon/robot/proc/get_percentage_power_for_movement()
 	return clamp(round(cell.maxcharge/4), 0, SILI_LOW_TRIGGER)
-
-
-//AI Shell Control
-
-/mob/living/silicon/robot/shell
-	var/is_being_controlled = FALSE		//Is the shell being controlled right now
-	var/mob/living/silicon/ai/mainframe = null		//The AI the shell belongs to.
-	var/datum/action/undeployment/undeployment_action = new 
-	var/datum/action/detonate/destroy_action = new
-	var/last_swap = 0
-	braintype = "AI Shell"
-
-/mob/living/silicon/robot/shell/proc/set_mainframe(mob/living/silicon/ai/A)
-	connected_ai = A
-	real_name = "Shell of [A.name]"
-	name = real_name
-	mainframe = A
-	mainframe.connected_robots |= src
-	if(radio) //Recalculate the radio channel
-		radio.channels = mainframe.radio.channels
-		radio.keyslot = new /obj/item/device/encryptionkey/ai 
-		radio.recalculateChannels()
-		radio.subspace_transmission = TRUE
-
-/mob/living/silicon/robot/shell/proc/deploy()		//called right after the AI pops into the shell.
-	if(is_being_controlled || mainframe.is_in_shell)
-		message_admins("AI/SHELL Error: Deploy() called while is_being_controlled or is_in_shell was set to true")
-		return
-	if(last_swap + 10 > world.time)
-		to_chat(mainframe, "<span class='warning'>Processors rebooting, please wait before redeploying.</span>")
-		return
-	to_chat(mainframe, "Taking control of cyborg shell...")
-	mainframe.mind.transfer_to(src)
-	mainframe.is_in_shell = 1
-	is_being_controlled = 1
-	lawupdate = TRUE
-	lawsync()
-	undeployment_action.Grant(src)
-	destroy_action.Grant(src)
-	updateicon()
-	playsound_local(src, 'sound/machines/paistartup.ogg', 50)
-	last_swap = world.time
-
-/datum/action/undeployment
-	name = "Disconnect from shell"
-	desc = "Stop controlling your shell and resume normal core operations."
-	icon_icon = 'icons/mob/AI.dmi'
-	button_icon_state = "ai"
-
-/datum/action/undeployment/UpdateButtonIcon()
-	var/mob/living/silicon/robot/shell/R = owner
-	if(R.mainframe)
-		button_icon_state = "[R.mainframe.icon_state]"
-	else
-		button_icon_state = "ai"
-	..()
-
-/datum/action/undeployment/Trigger()
-	if(!..())
-		return FALSE
-	var/mob/living/silicon/robot/shell/R = owner
-
-	R.undeploy()
-	return TRUE
-
-/mob/living/silicon/robot/shell/proc/undeploy()
-	if(!is_being_controlled || !mind || !mainframe)
-		return
-	if(last_swap + 10 > world.time)
-		to_chat(src, "<span class='warning'>Processors rebooting, please wait before undeploying.</span>")
-		return
-	is_being_controlled = 0
-	mainframe.is_in_shell = 0
-	to_chat(src,"Releasing control of cyborg shell...")
-	mind.transfer_to(mainframe)
-	undeployment_action.Remove(src)
-	destroy_action.Remove(src)
-	if(mainframe.eyeobj)
-		mainframe.eyeobj.forceMove(loc)
-	updateicon()
-	last_swap = world.time
-	
-/mob/living/silicon/robot/shell/proc/close_connection()
-	undeploy()
-	if(mainframe)
-		mainframe.shell = null
-		mainframe = null
-
-/mob/living/silicon/robot/shell/connect_AI()
-	to_chat(mainframe, "<span class='notice' style=\"font-family:Courier\">Notice: Connection to cyborg shell re-established.</span>" )
-	SetLockdown(FALSE)
-
-/mob/living/silicon/robot/shell/disconnect_AI()
-	to_chat(src, "<span class='alert' style=\"font-family:Courier\">Notice: Connection to cyborg shell has been cut.</span>")
-	SetLockdown(TRUE)
-
-/mob/living/silicon/robot/shell/emag_act(mob/user as mob)
-	if(user != src)
-		spark(src, 5, FALSE)
-		if(!opened)
-			if(locked)
-				if(prob(90))
-					to_chat(user, "You emag the cover lock.")
-					locked = FALSE
-				else
-					to_chat(user, "You fail to emag the cover lock.")
-					if(prob(25))
-						to_chat(src, "<span class='danger'><span style=\"font-family:Courier\">Hack attempt detected.</span>")
-			else
-				to_chat(user, "The cover is already open.")
-		else
-			if(emagged)
-				return TRUE
-			if(wiresexposed)
-				to_chat(user, "The wires get in your way.")
-			else
-				if(prob(50))
-					to_chat(user, "You emag [src]'s interface")
-					message_admins("[key_name_admin(user)] emagged AI-Cyborg shell [key_name_admin(src)] and destroyed it.")
-					sleep(6)
-					gib()
-				else
-					to_chat(user, "You fail to unlock [src]'s interface.")
-					if(prob(25))
-						to_chat(src, "<span class='danger'><span style=\"font-family:Courier\">Hack attempt detected.</span>")
-	return TRUE
-
-/mob/living/silicon/robot/shell/updateicon(var/overlay_layer = ABOVE_LIGHTING_LAYER, var/overlay_plane = LIGHTING_PLANE)
-	..(overlay_layer, overlay_plane)
-	overlays.Cut()
-	if(!stat && cell != null && is_being_controlled)
-		var/icon/eyesicon = icon(icon,"eyes-[icon_state]", overlay_layer)	
-		eyesicon.Blend(rgb(255,255,255), ICON_ADD)
-		eyesicon.Blend(rgb(45,45,45), ICON_SUBTRACT)
-		eyes = image(eyesicon,"eyes-[icon_state]", overlay_layer)
-		eyes.plane = overlay_plane
-
-		overlays += eyes
-	
-/mob/living/silicon/robot/shell/updatename()
-	if(mainframe)
-		real_name = "Shell of [mainframe.name]"
-		name = real_name
-	else
-		real_name = "AI Shell"
-		name = real_name
-
-/mob/living/silicon/robot/shell/attack_ai(mob/user)
-	var/mob/living/silicon/ai/A = user
-	if(A == mainframe)
-		deploy()
-		

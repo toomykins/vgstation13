@@ -136,6 +136,9 @@ var/MAX_EXPLOSION_RANGE = 14
 #define ALIEN_SELECT_AFK_BUFFER 1 // How many minutes that a person can be AFK before not being allowed to be an alien.
 #define ROLE_SELECT_AFK_BUFFER  1 // Default value.
 
+#define DATAHUD_RANGE_OVERHEAD	7	//how many tiles away from the edge of the client's view do the HUD icons start appearing
+									//necessary due to them only being updated on Life()
+
 //WEIGHT CLASSES
 #define W_CLASS_TINY 1
 #define W_CLASS_SMALL 2
@@ -407,6 +410,7 @@ var/global/list/BODY_COVER_VALUE_LIST=list("[HEAD]" = COVER_PROTECTION_HEAD,"[EY
 #define DISABILITY_FLAG_VEGAN		64
 #define DISABILITY_FLAG_ASTHMA 128
 #define DISABILITY_FLAG_LACTOSE		256
+#define DISABILITY_FLAG_LISP		512
 
 ///////////////////////////////////////
 // MUTATIONS
@@ -419,10 +423,10 @@ var/global/list/BODY_COVER_VALUE_LIST=list("[HEAD]" = COVER_PROTECTION_HEAD,"[EY
 #define M_RESIST_COLD	2
 #define M_XRAY			3
 #define M_HULK			4
-#define M_CLUMSY			5
-#define M_FAT				6
+#define M_CLUMSY		5
+#define M_FAT			6
 #define M_HUSK			7
-#define M_NOCLONE			8
+#define M_NOCLONE		8
 
 // Extra powers:
 #define M_LASER			9 	// harm intent - click anywhere to shoot lasers from eyes
@@ -430,6 +434,7 @@ var/global/list/BODY_COVER_VALUE_LIST=list("[HEAD]" = COVER_PROTECTION_HEAD,"[EY
 #define M_BEAK			11	// Can buther animals without tools
 #define M_TALONS		12  // Bonus kick damage
 #define M_STONE_SKIN	13  // hard skin
+#define M_THERMALS		14	//see mobs through walls
 
 //#define HEAL			12 	// (Not implemented) healing people with hands
 //#define SHADOW		13 	// (Not implemented) shadow teleportation (create in/out portals anywhere) (25%)
@@ -905,6 +910,7 @@ SEE_PIXELS	256
 #define DIAG_HEALTH_HUD		"diag_health" // Diagnostic HUD - health bar
 #define DIAG_CELL_HUD		"diag_cell" // Diagnostic HUD - power cell status for cyborgs, mechs
 #define CONSTRUCT_HUD		"const_health" // Artificer HUD
+#define CONVERSION_HUD		"convertibility" // Convertibility HUD
 
 // Hypothermia - using the swiss staging system. - called by the proc undergoing_hypothermia() in handle_hypothermia.dm
 #define NO_HYPOTHERMIA			0	// >35C   - Fine
@@ -1041,25 +1047,7 @@ var/default_colour_matrix = list(1,0,0,0,\
 #define CAN_EQUIP 1
 #define CAN_EQUIP_BUT_SLOT_TAKEN 2
 
-// Vampire power defines
-#define VAMP_REJUV    1
-#define VAMP_GLARE    2
-#define VAMP_HYPNO    3
-#define VAMP_SHAPE    4
-#define VAMP_VISION   5
-#define VAMP_DISEASE  6
-#define VAMP_CLOAK    7
-#define VAMP_BATS     8
-#define VAMP_SCREAM   9
-#define VAMP_HEAL     10
-#define VAMP_JAUNT    11
-#define VAMP_SLAVE    12
-#define VAMP_BLINK    13
-#define VAMP_MATURE   14
-#define VAMP_SHADOW   15
-#define VAMP_CHARISMA 16
-#define VAMP_UNDYING  17
-#define VAMP_CAPE	  18
+
 #define STARTING_BLOOD 10
 
 #define VAMP_FAILURE -1
@@ -1375,6 +1363,7 @@ var/proccalls = 1
 //MALFUNCTION FLAGS
 #define COREFIRERESIST 1
 #define HIGHRESCAMS 2
+#define COREFORTIFY 4
 
 //Mob sizes
 #define SIZE_TINY	1 //Mice, lizards, borers, kittens - mostly things that can fit into a man's palm
@@ -1700,7 +1689,7 @@ var/proccalls = 1
 #define MAX_MESSAGE_LEN 1024
 #define MAX_PAPER_MESSAGE_LEN 3072
 #define MAX_BOOK_MESSAGE_LEN 9216
-#define MAX_NAME_LEN 26
+#define MAX_NAME_LEN 52
 #define MAX_BROADCAST_LEN		512
 
 #define shuttle_time_in_station 1800 // 3 minutes in the station
@@ -1773,3 +1762,5 @@ var/list/bank_security_text2num_associative = list(
 
 var/list/weekend_days = list("Friday", "Saturday", "Sunday")
 #define IS_WEEKEND (weekend_days.Find(time2text(world.timeofday, "Day")))
+
+#define RECOMMENDED_CLIENT_FPS 100

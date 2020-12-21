@@ -394,10 +394,19 @@ var/list/boss_mobs = list(
 	/mob/living/simple_animal/hostile/humanoid/surgeon/skeleton,	// Second stage of Doctor Placeholder
 	/mob/living/simple_animal/hostile/roboduck,						// The bringer of the end times
 	/mob/living/simple_animal/hostile/bear/spare,					// Captain bear
+	/mob/living/simple_animal/hostile/ginger/gingerbroodmother		// Gingerbominations...
 	)
 
 // Set by traitor item, affects cargo supplies
 var/station_does_not_tip = FALSE
+
+//Set by Malf AI Blackout
+var/malf_radio_blackout = FALSE
+var/malf_rcd_disable = FALSE
+
+//Cyborg killswitch time. If set at a time other than zero, cyborgs will self destruct at that time
+var/cyborg_detonation_time = 0
+
 
 //Radial menus currently existing in the world.
 var/global/list/radial_menus = list()

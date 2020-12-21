@@ -185,7 +185,6 @@
 	prefs.client = src
 	prefs.initialize_preferences(client_login = 1)
 
-
 	. = ..()	//calls mob.Login()
 	chatOutput.start()
 
@@ -218,7 +217,6 @@
 	if(!query.Execute())
 		message_admins("Error: [query.ErrorMsg()]")
 		log_sql("Error: [query.ErrorMsg()]")
-		qdel(query)
 	else
 		while(query.NextRow())
 			var/id = query.item[1]
@@ -252,7 +250,8 @@
 			if(!update_query.Execute())
 				message_admins("Error: [update_query.ErrorMsg()]")
 				log_sql("Error: [update_query.ErrorMsg()]")
-				qdel(update_query)
+			qdel(update_query)
+	qdel(query)
 
 	if (prefs && prefs.show_warning_next_time)
 		to_chat(src, "<span class='notice'><b>You, or another user of this ckey ([ckey]) were warned by [prefs.warning_admin].</b></span>")
@@ -284,6 +283,7 @@
 		verbs += /client/proc/readmin
 		deadmins += ckey
 		to_chat(src, "<span class='interface'>You are now de-admined.</span>")
+	fps = (prefs.fps < 0) ? RECOMMENDED_CLIENT_FPS : prefs.fps
 	//////////////
 	//DISCONNECT//
 	//////////////

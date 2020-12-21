@@ -65,8 +65,12 @@
 			return
 		buckle_mob(usr, usr)
 
-/obj/structure/bed/proc/manual_unbuckle(var/mob/user)
+/obj/structure/bed/proc/manual_unbuckle(var/mob/user, var/resisting = FALSE)
 	if(user.isStunned())
+		return FALSE
+
+	if (user.restrained() && !resisting)
+		to_chat(user, "<span class='warning'>Uncuff yourself first!</span>")
 		return FALSE
 
 	if(user.size <= SIZE_TINY)
@@ -165,7 +169,6 @@
 
 /obj/structure/bed/Destroy()
 	if(current_glue_state == GLUE_STATE_PERMA && is_locking(mob_lock_type))//Don't de-ass someone if it was temporary glue.
-		current_glue_state = GLUE_STATE_NONE
 		var/mob/living/carbon/human/locked = get_locked(mob_lock_type)[1]
 		if(istype(locked) && locked.remove_butt())
 			playsound(src, 'sound/items/poster_ripped.ogg', 100, TRUE)
@@ -173,6 +176,7 @@
 			locked.apply_damage(10, BRUTE, LIMB_GROIN)
 			locked.apply_damage(10, BURN, LIMB_GROIN)
 			locked.audible_scream()
+	current_glue_state = GLUE_STATE_NONE
 	..()
 
 /obj/structure/bed/attackby(obj/item/weapon/W, mob/user)

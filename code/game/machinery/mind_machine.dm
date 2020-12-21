@@ -65,13 +65,13 @@
 
 /obj/machinery/mind_machine/mind_machine_hub/New()
 	..()
-	illegalSwap = boss_mobs + blacklisted_mobs + list(/mob/living/silicon/ai, /mob/living/silicon/robot/shell) - list(/mob/living/simple_animal/hostile/mechahitler,
+	illegalSwap = boss_mobs + blacklisted_mobs - list(/mob/living/simple_animal/hostile/mechahitler,
 		/mob/living/simple_animal/hostile/alien/queen/large,
 		/mob/living/simple_animal/hostile/retaliate/cockatrice,
 		/mob/living/simple_animal/hostile/asteroid/goliath/david/dave,
 		/mob/living/simple_animal/hostile/bear/spare,
 		/mob/living/simple_animal/hostile/asteroid/rockernaut/boss,
-		/mob/living/simple_animal/hostile/mining_drone,
+		/mob/living/simple_animal/hostile/mining_drone
 		)
 	component_parts = newlist(
 		/obj/item/weapon/circuitboard/mind_machine_hub,
@@ -137,7 +137,7 @@
 			qdel(B)
 			nanomanager.update_uis(src)
 			return
-	if(istype(A, /obj/item/device/soulstone))
+	if(istype(A, /obj/item/soulstone))
 		if(soulShardSafety != FALSE)
 			to_chat(user, "<span class='notice'>That slot is already full!</span>")
 			return

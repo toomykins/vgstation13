@@ -74,8 +74,6 @@
 
 #define isrobot(A) istype(A, /mob/living/silicon/robot)
 
-#define isshell(A) istype(A, /mob/living/silicon/robot/shell)
-
 #define isanimal(A) istype(A, /mob/living/simple_animal)
 
 #define iscorgi(A) istype(A, /mob/living/simple_animal/corgi)
@@ -231,6 +229,8 @@
 #define isrig(O) (istype(O, /obj/item/clothing/suit/space/rig))
 
 #define isrighelmet(O) (istype(O, /obj/item/clothing/head/helmet/space/rig))
+
+#define isinvisible(A) (A.invisibility || A.alpha <= 1)
 
 #define format_examine(A,B) "<span class = 'info'><a HREF='?src=\ref[user];lookitem=\ref[A]'>[B].</a></span>"
 
