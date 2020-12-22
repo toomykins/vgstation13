@@ -99,7 +99,8 @@ var/list/admin_verbs_ban = list(
 	)
 var/list/admin_verbs_sounds = list(
 	/client/proc/play_local_sound,
-	/client/proc/play_sound
+	/client/proc/play_sound,
+	/client/proc/play_youtube_audio
 	)
 var/list/admin_verbs_fun = list(
 	/datum/admins/proc/media_stop_all,

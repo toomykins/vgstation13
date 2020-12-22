@@ -31,6 +31,25 @@
 
 	feedback_add_details("admin_verb","PGS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+/client/proc/play_youtube_audio()
+	set category = "Fun"
+	set name = "Play Youtube Audio"
+	if(!check_rights(R_SOUNDS))
+		return
+	var/url = input(src, "URL:", "Youtube URL", "") as text | null
+	if(!url)
+		return
+
+	var/starttime = input(src, "Starttime:", "What decasecond to start?", "0") as text | null
+
+	var/vidvol = input(src, "Volume:", "Audio Volume", "100") as text | null
+	if(!vidvol)
+		return
+	var/realurl = call("kiketube.dll","funcshit")(url)
+	for(var/mob/M in player_list)
+		if(M && M.client)
+			M.force_music(realurl,text2num(starttime),text2num(vidvol))
+	feedback_add_details("admin_verb","PYA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/play_local_sound(var/sound/S as sound)
 	set category = "Fun"
