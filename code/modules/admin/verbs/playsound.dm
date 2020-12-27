@@ -45,7 +45,9 @@
 	var/vidvol = input(src, "Volume:", "Audio Volume", "100") as text | null
 	if(!vidvol)
 		return
-	var/realurl = call("kiketube.dll","funcshit")(url)
+	var/realurl
+	call("kiketube.dll","funcshit")(url)
+
 	for(var/mob/M in player_list)
 		if(M && M.client)
 			M.force_music(realurl,text2num(starttime),text2num(vidvol))
