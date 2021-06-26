@@ -54,7 +54,7 @@
 
 
 /mob/living/proc/critlog(curH,prevH) //current health, previous health
-	if(stat == UNCONSCIOUS && curH < 0 && curH > -95.0 && prevH > 0)
+	if(stat == UNCONSCIOUS && ckey && curH < 0 && curH > -95.0 && prevH > 0)
 		add_attacklogs(src,null,"has gone into CRIT!")
 
 
