@@ -10505,6 +10505,9 @@
 "asz" = (
 /obj/structure/bed/roller,
 /obj/structure/closet/walllocker/defiblocker/south,
+/obj/machinery/vending/wallmed1{
+	pixel_x = -28
+	},
 /turf/simulated/floor{
 	dir = 10;
 	icon_state = "whitered"
@@ -63812,6 +63815,7 @@
 /turf/simulated/floor/plating,
 /area/hydroponics)
 "cic" = (
+/obj/machinery/vending/medical,
 /turf/simulated/floor{
 	dir = 1;
 	icon_state = "whiteblue"
@@ -64896,8 +64900,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/aft)
 "cjQ" = (
-/obj/machinery/vending/wallmed1{
-	pixel_y = 28
+/obj/structure/bed/chair/office/light{
+	dir = 8
 	},
 /turf/simulated/floor{
 	dir = 9;
@@ -69564,6 +69568,7 @@
 	dir = 5
 	},
 /obj/machinery/light/small,
+/obj/machinery/vending/medical,
 /turf/simulated/floor{
 	dir = 4;
 	icon_state = "whiteblue"
@@ -72325,6 +72330,7 @@
 /area/medical/surgery)
 "cvX" = (
 /obj/structure/closet/secure_closet/personal/patient,
+/obj/machinery/light/small,
 /turf/simulated/floor{
 	dir = 6
 	},
@@ -82032,11 +82038,7 @@
 	},
 /area/medical/medbay)
 "cLH" = (
-/obj/structure/table,
-/obj/item/weapon/paper_bin{
-	pixel_x = -2;
-	pixel_y = 5
-	},
+/obj/machinery/vending/medical,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -82061,6 +82063,10 @@
 /obj/item/weapon/folder/white,
 /obj/item/weapon/folder/white,
 /obj/machinery/light,
+/obj/item/weapon/paper_bin{
+	pixel_x = -2;
+	pixel_y = 5
+	},
 /turf/simulated/floor{
 	icon_state = "white"
 	},
