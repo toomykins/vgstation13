@@ -1076,26 +1076,6 @@ window "rpane"
 		saved-params = "splitter"
 		right = "outputwindow"
 		is-vert = false
-	elem "github"
-		type = BUTTON
-		pos = 468,0
-		size = 60x16
-		anchor1 = none
-		anchor2 = none
-		saved-params = "is-checked"
-		text = "BugReport"
-		command = "Github-Report"
-	elem "special_button"
-		type = BUTTON
-		pos = 531,0
-		size = 60x16
-		anchor1 = none
-		anchor2 = none
-		saved-params = "is-checked"
-		text = "Special"
-		command = ".winset \"rpanewindow.left=window1\""
-		group = "rpanemode"
-		button-type = pushbox
 	elem "mapb"
 		type = BUTTON
 		pos = 386,0
@@ -1141,15 +1121,15 @@ window "rpane"
 		text = "Changelog"
 		command = "Changelog"
 		group = "rpanemode"
-	elem "forumb"
+	elem "discordb"
 		type = BUTTON
 		pos = 190,0
 		size = 60x16
 		anchor1 = none
 		anchor2 = none
 		saved-params = "is-checked"
-		text = "Forum"
-		command = "forum"
+		text = "Discord"
+		command = "discord"
 		group = "rpanemode"
 	elem "wikib"
 		type = BUTTON

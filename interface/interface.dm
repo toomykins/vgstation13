@@ -16,13 +16,14 @@
 	set name = "wiki"
 	set desc = "Visit the wiki."
 	set hidden = 1
-	if( config.wikiurl )
-		if(alert("This will open the wiki in your browser. Are you sure?",,"Yes","No")=="No")
-			return
-		src << link(config.wikiurl)
-	else
-		to_chat(src, "<span class='danger'>The wiki URL is not set in the server configuration.</span>")
-	return
+	to_chat(src,"span class='danger'>The server doesn't have a wiki page as of yet.</span>")
+	//if( config.wikiurl )
+	//	if(alert("This will open the wiki in your browser. Are you sure?",,"Yes","No")=="No")
+	//		return
+	//	src << link(config.wikiurl)
+	//else
+	//	to_chat(src, "<span class='danger'>The wiki URL is not set in the server configuration.</span>")
+	//return
 
 /client/verb/forum()
 	set name = "forum"
@@ -34,6 +35,15 @@
 		src << link(config.forumurl)
 	else
 		to_chat(src, "<span class='danger'>The forum URL is not set in the server configuration.</span>")
+	return
+
+/client/verb/discord()
+	set name = "discord"
+	set desc = "Visit the discord."
+	set hidden = 1
+	if(alert("This will open the forum in your browser. Are you sure?",,"Yes","No")=="No")
+		return
+	src << link("https://discord.gg/gJJqWV5fBt")
 	return
 
 #define RULES_FILE "config/rules.html"
