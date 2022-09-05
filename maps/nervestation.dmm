@@ -50284,7 +50284,7 @@
 /area/hallway/primary/starboard)
 "ioe" = (
 /obj/machinery/light/small{
-	dir = 4;
+	dir = 4
 	},
 /turf/simulated/floor/vox{
 	icon_state = "asteroidplating"
@@ -52976,7 +52976,7 @@
 	dir = 4
 	},
 /obj/machinery/light/small{
-	dir = 4;
+	dir = 4
 	},
 /turf/simulated/floor/vox{
 	icon_state = "asteroidplating"
@@ -58513,7 +58513,6 @@
 	pixel_y = 4
 	},
 /obj/item/device/radio/intercom{
-	broadcasting = 1;
 	freerange = 1;
 	name = "Common Channel";
 	pixel_y = 25
@@ -77227,7 +77226,7 @@
 /area/engineering/engineering_auxiliary)
 "pPm" = (
 /obj/machinery/light/small{
-	dir = 4;
+	dir = 4
 	},
 /turf/unsimulated/mineral/random,
 /area/mine/unexplored)
@@ -79623,7 +79622,6 @@
 	name = "AI"
 	},
 /obj/item/device/radio/intercom{
-	broadcasting = 1;
 	freerange = 1;
 	name = "Common Channel";
 	pixel_y = 25
@@ -106855,7 +106853,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/machinery/light/small{
-	dir = 4;
+	dir = 4
 	},
 /turf/simulated/floor/vox{
 	icon_state = "asteroidplating"

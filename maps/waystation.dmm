@@ -1356,7 +1356,6 @@
 	name = "tripai"
 	},
 /obj/item/device/radio/intercom{
-	broadcasting = 1;
 	freerange = 1;
 	name = "Common Channel";
 	pixel_y = 20
@@ -10702,7 +10701,6 @@
 	pixel_y = 4
 	},
 /obj/item/device/radio/intercom{
-	broadcasting = 1;
 	freerange = 1;
 	name = "Common Channel";
 	pixel_y = -25
@@ -41722,7 +41720,6 @@
 	name = "AI"
 	},
 /obj/item/device/radio/intercom{
-	broadcasting = 1;
 	freerange = 1;
 	name = "Common Channel";
 	pixel_x = 28;

@@ -4171,7 +4171,6 @@
 	req_access_txt = "16"
 	},
 /obj/item/device/radio/intercom{
-	broadcasting = 1;
 	freerange = 1;
 	name = "Common Channel";
 	pixel_x = -12;
@@ -38141,7 +38140,6 @@
 	pixel_x = 27
 	},
 /obj/item/device/radio/intercom{
-	broadcasting = 1;
 	freerange = 1;
 	name = "Common Channel";
 	pixel_y = 27
@@ -95347,7 +95345,7 @@
 	pixel_y = 20
 	},
 /obj/machinery/light/small{
-	dir = 4;
+	dir = 4
 	},
 /obj/structure/curtain/open/shower,
 /turf/simulated/floor{
@@ -95379,7 +95377,7 @@
 	})
 "shu" = (
 /obj/machinery/light/small{
-	dir = 4;
+	dir = 4
 	},
 /obj/structure/toilet{
 	dir = 4
@@ -121633,7 +121631,6 @@
 	req_access_txt = "16"
 	},
 /obj/item/device/radio/intercom{
-	broadcasting = 1;
 	freerange = 1;
 	name = "Common Channel";
 	pixel_x = -8;

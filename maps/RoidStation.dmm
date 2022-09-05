@@ -47802,7 +47802,6 @@
 	pixel_y = -26
 	},
 /obj/item/device/radio/intercom{
-	broadcasting = 1;
 	freerange = 1;
 	name = "Common Channel";
 	pixel_x = -25;
@@ -47842,7 +47841,6 @@
 	pixel_x = 27
 	},
 /obj/item/device/radio/intercom{
-	broadcasting = 1;
 	freerange = 1;
 	name = "Common Channel";
 	pixel_y = 27
@@ -47876,7 +47874,6 @@
 	pixel_y = -26
 	},
 /obj/item/device/radio/intercom{
-	broadcasting = 1;
 	freerange = 1;
 	name = "Common Channel";
 	pixel_x = 27;
@@ -52065,7 +52062,7 @@
 /turf/simulated/floor/bluegrid{
 	icon_state = "bcircuitoff"
 	},
-/area/turret_protected/ai_upload)
+/area/turret_protected/ai)
 "bQg" = (
 /obj/structure/rack,
 /obj/item/clothing/suit/fire/firefighter,
@@ -69383,8 +69380,8 @@
 /obj/structure/rack,
 /obj/item/stack/rcd_ammo/ce,
 /obj/item/device/rcd/matter/engineering/pre_loaded/adv{
-	pixel_y = -4;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = -4
 	},
 /turf/simulated/floor{
 	icon_state = "dark"
@@ -110144,8 +110141,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/unary/vent_pump{
-	on = 1;
-	canSpawnMice = 0
+	canSpawnMice = 0;
+	on = 1
 	},
 /turf/simulated/floor{
 	icon_state = "dark"
@@ -110284,9 +110281,9 @@
 /area/prison/armory)
 "dQq" = (
 /obj/machinery/atmospherics/unary/vent_pump{
+	canSpawnMice = 0;
 	dir = 4;
-	on = 1;
-	canSpawnMice = 0
+	on = 1
 	},
 /turf/simulated/floor{
 	icon_state = "dark"
@@ -110733,8 +110730,8 @@
 /area/prison/hallway/fore)
 "dRl" = (
 /obj/machinery/atmospherics/unary/vent_pump{
-	on = 1;
-	canSpawnMice = 0
+	canSpawnMice = 0;
+	on = 1
 	},
 /turf/simulated/floor{
 	icon_state = "dark"
@@ -110854,8 +110851,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/unary/vent_pump{
-	on = 1;
-	canSpawnMice = 0
+	canSpawnMice = 0;
+	on = 1
 	},
 /turf/simulated/floor{
 	icon_state = "dark"
@@ -111465,16 +111462,6 @@
 	},
 /area/prison/hallway/central)
 "dSH" = (
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
-/area/prison/cell_block/A)
-"dSI" = (
-/obj/machinery/atmospherics/unary/vent_pump{
-	canSpawnMice = 0;
-	dir = 8;
-	on = 1
-	},
 /turf/simulated/floor{
 	icon_state = "dark"
 	},
@@ -113896,9 +113883,9 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/unary/vent_pump{
+	canSpawnMice = 0;
 	dir = 1;
-	on = 1;
-	canSpawnMice = 0
+	on = 1
 	},
 /turf/simulated/floor{
 	icon_state = "bar"
@@ -148306,9 +148293,9 @@
 /area/shuttle/escape_pod1)
 "ptc" = (
 /obj/machinery/atmospherics/unary/vent_pump{
+	canSpawnMice = 0;
 	dir = 8;
-	on = 1;
-	canSpawnMice = 0
+	on = 1
 	},
 /turf/simulated/floor{
 	icon_state = "dark"
@@ -343306,7 +343293,7 @@ dRe
 dRs
 dRN
 dSm
-dSI
+ptc
 dSH
 dTL
 dSm
@@ -343314,7 +343301,7 @@ dUJ
 dVc
 dTL
 dSm
-dSI
+ptc
 dVV
 dWf
 dSm

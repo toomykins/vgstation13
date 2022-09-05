@@ -11446,7 +11446,6 @@
 	},
 /obj/structure/cable,
 /obj/item/device/radio/intercom{
-	broadcasting = 1;
 	freerange = 1;
 	name = "Common Channel";
 	pixel_y = -26
@@ -36950,7 +36949,6 @@
 	pixel_x = 27
 	},
 /obj/item/device/radio/intercom{
-	broadcasting = 1;
 	freerange = 1;
 	name = "Common Channel";
 	pixel_y = 21
@@ -41958,7 +41956,6 @@
 	pixel_x = 26
 	},
 /obj/item/device/radio/intercom{
-	broadcasting = 1;
 	freerange = 1;
 	name = "Common Channel";
 	pixel_x = 7;

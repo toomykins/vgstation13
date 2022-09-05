@@ -35338,7 +35338,6 @@
 	icon_state = "1-2"
 	},
 /obj/item/device/radio/intercom{
-	broadcasting = 1;
 	freerange = 1;
 	name = "Common Channel";
 	pixel_y = 25
@@ -42878,7 +42877,6 @@
 	pixel_y = 20
 	},
 /obj/item/device/radio/intercom{
-	broadcasting = 1;
 	freerange = 1;
 	name = "Common Channel";
 	pixel_x = 26
@@ -44025,7 +44023,6 @@
 	name = "tripai"
 	},
 /obj/item/device/radio/intercom{
-	broadcasting = 1;
 	freerange = 1;
 	name = "Common Channel";
 	pixel_y = -25
@@ -53060,8 +53057,8 @@
 /obj/structure/rack,
 /obj/item/stack/rcd_ammo/ce,
 /obj/item/device/rcd/matter/engineering/pre_loaded/adv{
-	pixel_y = -4;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = -4
 	},
 /turf/simulated/floor/wood,
 /area/engineering/ce)
