@@ -8,7 +8,7 @@ var/global/datum/credits/end_credits = new
 	var/control = "mapwindow.credits" //if updating this, update in credits.html as well
 	var/file = 'code/modules/credits/credits.html'
 
-	var/director = "Pomf Chicken Productions"
+	var/director = "Cap\'m Gutter Productions"
 	var/list/producers = list()
 	var/star = ""
 	var/ss = ""
