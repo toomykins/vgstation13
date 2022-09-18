@@ -395,6 +395,7 @@ var/list/all_supply_groups = list("Supplies","Clothing","Security","Hospitality"
 	num_contained = 5
 	contains = list(/obj/item/seeds/bloodtomatoseed,
 					/obj/item/weapon/storage/pill_bottle/zoom,
+					/obj/item/weapon/storage/pill_bottle/skeet,
 					/obj/item/weapon/storage/pill_bottle/happy,
 					/obj/item/weapon/reagent_containers/glass/bottle/pcp,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/absinthe,
@@ -777,7 +778,7 @@ var/list/all_supply_groups = list("Supplies","Clothing","Security","Hospitality"
 	contraband = 1
 
 /datum/supply_packs/grey_uniform/New()
-	selection_from = list(laborer, scientist, explorer)
+	selection_from = list(laborer, scientist, explorer, soldier)
 
 /datum/supply_packs/neorussian
 	name = "Neo-Russian supplies"
