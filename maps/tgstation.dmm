@@ -65510,7 +65510,7 @@
 /area/engineering/atmos)
 "ctk" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/visible{
-	color = "#FFA800";
+	color = "#B77900";
 	dir = 8;
 	name = "Mix pipe"
 	},
