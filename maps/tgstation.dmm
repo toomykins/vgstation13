@@ -35595,6 +35595,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
+/obj/machinery/light,
 /turf/simulated/floor{
 	dir = 5;
 	icon_state = "cafeteria"
@@ -38904,10 +38905,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/obj/item/device/radio/intercom{
-	name = "Station Intercom (General)";
-	pixel_y = -29
-	},
+/obj/machinery/light,
 /turf/simulated/floor{
 	dir = 8;
 	icon_state = "whitecorner"
@@ -38929,6 +38927,10 @@
 "bwz" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
+	},
+/obj/item/device/radio/intercom{
+	name = "Station Intercom (General)";
+	pixel_y = -29
 	},
 /turf/simulated/floor{
 	icon_state = "whitecorner"
@@ -123207,6 +123209,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/research_outpost/hallway)
+"rFb" = (
+/obj/structure/flora/pottedplant/random,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor,
+/area/hallway/primary/starboard)
 "rIi" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -262224,7 +262233,7 @@ bmo
 bnN
 bpI
 bre
-bsN
+rFb
 bsK
 bpL
 bwG
