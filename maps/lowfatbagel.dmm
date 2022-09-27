@@ -61041,7 +61041,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
 	dir = 10
 	},
-/obj/machinery/atmospherics/unary/cold_sink/freezer,
+/obj/machinery/atmospherics/unary/cold_sink/freezer{
+	dir = 4
+	},
 /obj/machinery/alarm{
 	dir = 4;
 	pixel_x = -22
@@ -61745,6 +61747,16 @@
 	icon_state = "white"
 	},
 /area/science/storage)
+"jRb" = (
+/obj/machinery/atm{
+	pixel_y = 32
+	},
+/turf/simulated/floor{
+	dir = 1;
+	icon_state = "yellowsiding";
+	tag = "icon-yellowsiding"
+	},
+/area/hallway/secondary/entry)
 "jRm" = (
 /obj/machinery/computer/shuttle_control/research,
 /turf/simulated/floor/shuttle{
@@ -70707,12 +70719,12 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
-/obj/machinery/atmospherics/unary/portables_connector{
-	dir = 1
-	},
 /obj/machinery/firealarm{
 	dir = 8;
 	pixel_x = -26
+	},
+/obj/machinery/atmospherics/unary/heat_reservoir/heater{
+	dir = 4
 	},
 /turf/simulated/floor,
 /area/engineering/atmos)
@@ -86317,11 +86329,6 @@
 	icon_state = "toxlab";
 	name = "Toxins"
 	})
-"qpn" = (
-/obj/machinery/atmospherics/unary/heat_reservoir/heater,
-/obj/machinery/atmospherics/pipe/simple/filtering/visible,
-/turf/simulated/floor,
-/area/engineering/atmos)
 "qpo" = (
 /obj/machinery/door/airlock/glass,
 /obj/machinery/door/firedoor/border_only{
@@ -108442,10 +108449,10 @@
 	},
 /area/derelict/medical/chapel)
 "wpR" = (
-/obj/machinery/atmospherics/unary/portables_connector{
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/simple/filtering/visible,
+/obj/machinery/atmospherics/unary/portables_connector{
+	dir = 8
+	},
 /turf/simulated/floor,
 /area/engineering/atmos)
 "wpW" = (
@@ -114487,7 +114494,6 @@
 	dir = 4;
 	name = "Mix tank to Waste"
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
 /turf/simulated/floor,
 /area/engineering/atmos)
 "xSd" = (
@@ -230255,7 +230261,7 @@ iPM
 kER
 ngx
 ykp
-qpn
+wpR
 wpR
 bvN
 bvN
@@ -250279,7 +250285,7 @@ akh
 alT
 anr
 aiU
-byp
+jRb
 oeo
 eUH
 blf
@@ -254863,8 +254869,8 @@ bpG
 bpG
 sZf
 ykB
-sZf
-sZf
+bpG
+bpG
 bTn
 olr
 thJ
