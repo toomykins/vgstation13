@@ -144,7 +144,7 @@
 			var/variable = item.get_variable()
 			var/value = item.get_value()
 
-			var/datum/DBQuery/query = SSdbcore.NewQuery("INSERT INTO erro_feedback (`id`, `roundid`, `time`, `variable`, `value`) VALUES (:id, :newroundid, Now(), :variable, :value)",
+			var/datum/DBQuery/query = SSdbcore.NewQuery("INSERT INTO erro_feedback (id, roundid, time, variable, value) VALUES (:id, :newroundid, Now(), :variable, :value)",
 				list(
 					"id" = null,
 					"newroundid" = newroundid,
