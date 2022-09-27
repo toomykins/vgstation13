@@ -113889,16 +113889,15 @@
 	},
 /area/vox_trading_post/atmos)
 "eqn" = (
-/obj/machinery/power/battery/smes/infinite{
-	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit.";
-	name = "power storage unit"
-	},
 /obj/structure/cable/yellow{
 	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/alarm/vox{
 	pixel_y = 24
+	},
+/obj/machinery/power/battery/smes{
+	charge = 5e+006
 	},
 /turf/simulated/floor/vox{
 	icon_state = "asteroidplating"
@@ -114328,6 +114327,15 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
+/obj/item/fish_eggs/electric_eel,
+/obj/item/fish_eggs/catfish,
+/obj/item/weapon/fishtools/fish_egg_scoop,
+/obj/item/weapon/fishtools/fish_food,
+/obj/item/weapon/fishtools/fish_net,
+/obj/item/weapon/fishtools/fish_tank_brush,
+/obj/structure/closet/crate/engi,
+/obj/item/weapon/circuitboard/fishtank,
+/obj/machinery/power/conduction_plate,
 /turf/simulated/floor/vox{
 	icon_state = "asteroidplating"
 	},
