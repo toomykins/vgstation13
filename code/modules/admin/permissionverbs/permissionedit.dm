@@ -120,7 +120,7 @@
 		to_chat(usr, "<span class='notice'>New admin added.</span>")
 	else
 		if(!isnull(admin_id) && isnum(admin_id))
-			var/datum/DBQuery/insert_query = SSdbcore.NewQuery("UPDATE `erro_admin` SET rank = :new_rank WHERE id = :admin_id",
+			var/datum/DBQuery/insert_query = SSdbcore.NewQuery("UPDATE `erro_admin` SET `rank` = :new_rank WHERE `id` = :admin_id",
 				list(
 					"new_rank" = "[new_rank]",
 					"admin_id" = "[admin_id]",
