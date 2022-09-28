@@ -40,6 +40,8 @@ var/global/floorIsLava = 0
 	if (!istype(src,/datum/admins))
 		to_chat(usr, "Error: you are not an admin!")
 		return
+
+	checkSessionKey()
 	var/body = {"<html><head><title>Options for [M.key]</title></head>
 <body>Options panel for <b>[M]</b>"}
 	var/species_description
@@ -272,9 +274,11 @@ var/global/floorIsLava = 0
 	if (!istype(src,/datum/admins))
 		to_chat(usr, "Error: you are not an admin!")
 		return
+	checkSessionKey()
 	var/cid = input("Type computer ID", "CID", 0) as num | null
 	if(cid)
 		usr << link(getVGPanel("rapsheet", admin = 1, query = list("cid" = cid)))
+//	to_chat(usr, link("[config.vgws_base_url]/index.php/rapsheet/?s=[sessKey]&cid=[cid]"))
 	return
 
 /datum/admins/proc/checkCKEY()
@@ -288,8 +292,10 @@ var/global/floorIsLava = 0
 	if (!istype(src,/datum/admins))
 		to_chat(usr, "Error: you are not an admin!")
 		return
+	checkSessionKey()
 	var/ckey = lowertext(input("Type player ckey", "ckey", null) as text | null)
 	usr << link(getVGPanel("rapsheet", admin = 1, query = list("ckey" = ckey)))
+//	usr << link("[config.vgws_base_url]/index.php/rapsheet/?s=[sessKey]&ckey=[ckey]")
 	return
 
 /datum/admins/proc/PlayerNotesPage(page)
@@ -1662,7 +1668,7 @@ var/alien_ship_location = 1 // 0 = base , 1 = mine
 /datum/admins/proc/ViewAllRods()
 	if(!check_rights(0))
 		return
-
+	
 	var/dat = "<center><B>View all active rods</B></center><hr>"
 
 	for (var/obj/item/projectile/immovablerod/rod in all_rods)
