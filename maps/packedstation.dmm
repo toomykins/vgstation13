@@ -7603,7 +7603,6 @@
 /obj/item/weapon/gun/energy/ionrifle,
 /obj/item/clothing/suit/armor/laserproof,
 /obj/item/weapon/gun/energy/ionrifle/ioncarbine/ionpistol,
-/obj/item/clothing/suit/armor/laserproof,
 /turf/simulated/floor/engine,
 /area/security/armory)
 "ank" = (
