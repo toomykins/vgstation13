@@ -128,7 +128,6 @@ you will have to do something like if(client.rights & R_ADMIN) yourself.
 	return 1
 
 /datum/admins/proc/checkSessionKey(var/recurse=0)
-	sessKey=0
 	if(recurse==5)
 		return "\[BROKEN\]";
 	recurse++
@@ -144,11 +143,11 @@ you will have to do something like if(client.rights & R_ADMIN) yourself.
 		log_sql("Error: [sel_query.ErrorMsg()]")
 		qdel(sel_query)
 		return
-	sessKey = sel_query.item[1]
-	
-	
-	
-	while(sel_query.NextRow())
+	qdel(sel_query)
+
+	sessKey=0
+	while(query.NextRow())
+		sessKey = query.item[1]
 		var/datum/DBQuery/up_query=SSdbcore.NewQuery("UPDATE admin_sessions SET expires=DATE_ADD(NOW(), INTERVAL 24 HOUR), IP='[owner.address]' WHERE ckey = '[owner.ckey]")
 		if(!up_query.Execute())
 			message_admins("Error: [up_query.ErrorMsg()]")
@@ -156,10 +155,9 @@ you will have to do something like if(client.rights & R_ADMIN) yourself.
 			qdel(up_query)
 			return
 		qdel(up_query)
-		sessKey = sel_query.item[1]
 		return sessKey
 	qdel(query)
-	qdel(sel_query)
+
 	var/datum/DBQuery/insert_query=SSdbcore.NewQuery("INSERT INTO admin_sessions (sessID,ckey,expires, IP) VALUES (UUID(), '[owner.ckey]', DATE_ADD(NOW(), INTERVAL 24 HOUR), '[owner.address]')")
 	if(!insert_query.Execute())
 		message_admins("Error: [insert_query.ErrorMsg()]")
