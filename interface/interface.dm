@@ -16,7 +16,7 @@
 	set name = "wiki"
 	set desc = "Visit the wiki."
 	set hidden = 1
-	to_chat(src,"span class='danger'>The server doesn't have a wiki page as of yet.</span>")
+	to_chat(src,"<span class='danger'>The server does not have a wiki page.</span>")
 	//if( config.wikiurl )
 	//	if(alert("This will open the wiki in your browser. Are you sure?",,"Yes","No")=="No")
 	//		return
