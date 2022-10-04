@@ -25,6 +25,16 @@
 	//	to_chat(src, "<span class='danger'>The wiki URL is not set in the server configuration.</span>")
 	//return
 
+/client/verb/goToThread()
+	set name = "thread"
+	set desc = "Visit the thread."
+	set hidden = 1
+	if(alert("This will open the thread in your browser. Are you sure?",,"Yes","No")=="No")
+		return
+	src << link("https://boards.4chan.org/vg/ss13")
+	return
+
+
 /client/verb/forum()
 	set name = "forum"
 	set desc = "Visit the forum."
@@ -35,15 +45,6 @@
 		src << link(config.forumurl)
 	else
 		to_chat(src, "<span class='danger'>The forum URL is not set in the server configuration.</span>")
-	return
-
-/client/verb/discord()
-	set name = "discord"
-	set desc = "Visit the discord."
-	set hidden = 1
-	if(alert("This will open the forum in your browser. Are you sure?",,"Yes","No")=="No")
-		return
-	src << link("https://discord.gg/gJJqWV5fBt")
 	return
 
 #define RULES_FILE "config/rules.html"
