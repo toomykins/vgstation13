@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `erro_player` (
   `firstseen` datetime NOT NULL,
   `lastseen` datetime NOT NULL,
   `ip` varchar(18) NOT NULL,
-  `computerid` varchar(32) DEFAULT NULL,
+  `computerid` varchar(32) NOT NULL,
   `lastadminrank` varchar(32) NOT NULL DEFAULT 'Player',
   PRIMARY KEY (`id`),
   UNIQUE KEY `ckey` (`ckey`)
