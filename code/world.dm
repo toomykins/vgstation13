@@ -109,7 +109,8 @@ var/auxtools_path
 	return ..()
 
 /world/Topic(T, addr, master, key)
-	diary << "TOPIC: \"[T]\", from:[addr], master:[master], key:[key]"
+	if(T != "status")
+		diary << "TOPIC: \"[T]\", from:[addr], master:[master], key:[key]"
 
 	if (T == "ping")
 		var/x = 1
