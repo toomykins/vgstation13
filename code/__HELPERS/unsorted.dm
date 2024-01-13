@@ -292,7 +292,7 @@
 		if(M.client)
 			continue
 		sorted_output.Add(M)
-		
+
 	return sorted_output
 
 // Finds ALL mobs on turfs in line of sight. Similar to "in dview", but catches mobs that are not on a turf (e.g. inside a locker or such).
@@ -1652,7 +1652,7 @@ Game Mode config tags:
 				if(draw_red)
 					T.color = "red"
 					sleep(5)
-		
+
 		y = epicenter.y + c_dist - 1
 		x = epicenter.x + c_dist
 		for(y in y to epicenter.y-c_dist step -1)
@@ -1688,3 +1688,88 @@ Game Mode config tags:
 		sleep(30)
 		for(var/turf/Q in .)
 			Q.color = null
+
+/proc/RemoveFromDB(var/tablename,var/list/parameter)
+	if(!tablename)
+		return FALSE
+	var/sqllist = list()
+	var/sqltext = "REMOVE "
+	sqltext += " FROM [tablename] "
+	if(!(isemptylist(parameter)))
+		sqltext += " WHERE "
+		var/paramcounter = 0
+		for(var/param in parameter)
+			paramcounter += 1
+			if(isnull(parameter[param]))
+				sqltext+= " isnull([param]) "
+				continue
+			sqltext += " [param] "
+			sqltext += " = "
+			sqltext += " :[param] "
+			sqllist["[param]"] = "[parameter[param]]"
+			if(paramcounter < parameter.len)
+				sqltext += " AND "
+	sqltext += ";"
+	var/datum/DBQuery/query = SSdbcore.NewQuery(sqltext,sqllist)
+	if(!query.Execute())
+		message_admins("Error: [query.ErrorMsg()]")
+		log_sql("Error: [query.ErrorMsg()]")
+		qdel(query)
+		return FALSE
+	qdel(query)
+	return TRUE
+
+
+
+/proc/SelectFromDB(var/list/selection,var/tablename,var/list/parameter)
+	if(!tablename)
+		return FALSE
+	var/sqllist = list()
+	var/sqltext = "SELECT "
+	if(isemptylist(selection))
+		sqltext+= " * "
+	for(var/sel in selection)
+		sqltext += " [sel] "
+		if(!(selection[selection.len] == sel))
+			sqltext += " , "
+	sqltext += " FROM [tablename] "
+	if(!(isemptylist(parameter)))
+		sqltext += " WHERE "
+		var/paramcounter = 0
+		for(var/param in parameter)
+			paramcounter += 1
+			if(isnull(parameter[param]))
+				sqltext+= " isnull([param]) "
+				continue
+			sqltext += " [param] "
+			sqltext += " = "
+			sqltext += " :[param] "
+			sqllist["[param]"] = "[parameter[param]]"
+			if(paramcounter < parameter.len)
+				sqltext += " AND "
+	sqltext += ";"
+	var/datum/DBQuery/query = SSdbcore.NewQuery(sqltext,sqllist)
+	if(!query.Execute())
+		message_admins("Error: [query.ErrorMsg()]")
+		log_sql("Error: [query.ErrorMsg()]")
+		qdel(query)
+		return
+	var/numresults = 1
+	var/numnumresults = 1
+	var/qresults = list()
+	while(query.NextRow())
+		numnumresults = 1
+		qresults += (numresults)
+		qresults[numresults] = list()
+		for(var/sel in selection)
+			var/list/shittoputin = list()
+			shittoputin += "[sel]"
+			var/qitem = query.item[numnumresults]
+			shittoputin["[sel]"] = qitem
+			qresults[numresults] = shittoputin
+			numnumresults += 1
+		numresults += 1
+	qdel(query)
+	if(numresults)
+		return qresults
+	return FALSE

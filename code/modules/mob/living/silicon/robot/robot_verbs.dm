@@ -2,8 +2,7 @@
 	set category = "Robot Commands"
 
 	if(appearance_isbanned(src))
-		var/banreason = appearance_isbanned(src)
-		to_chat(src, "<span class='warning'>You have been appearance banned for the reason: [banreason]. You cannot change your name.</span>")
+		to_chat(src, "<span class='warning'>You are appearance-banned. You cannot change your name.</span>")
 		return
 
 	if(incapacitated())

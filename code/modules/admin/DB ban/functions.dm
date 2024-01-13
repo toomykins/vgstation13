@@ -43,6 +43,21 @@
 		if(BANTYPE_PAX_TEMP)
 			bantype_str = "PAX_TEMPBAN"
 			bantype_pass = 1
+		if(BANTYPE_MUTE_PERMA)
+			bantype_str = "MUTE_PERMABAN"
+			bantype_pass = 1
+			duration = -1
+		if(BANTYPE_MUTE_TEMP)
+			bantype_str = "MUTE_TEMPBAN"
+			bantype_pass = 1
+		if(BANTYPE_RETARD_PERMA)
+			bantype_str = "RETARD_PERMABAN"
+			bantype_pass = 1
+			duration = -1
+		if(BANTYPE_RETARD_TEMP)
+			bantype_str = "RETARD_TEMPBAN"
+			bantype_pass = 1
+
 	if( !bantype_pass )
 		return
 	if( !istext(reason) )
@@ -66,7 +81,19 @@
 			ip = banned_mob.lastKnownIP
 	else if(banckey)
 		ckey = ckey(banckey)
+		////
+		var/datum/DBQuery/query = SSdbcore.NewQuery("SELECT computerid FROM erro_player WHERE ckey = :ckey", list("ckey" = ckey))
+		if(!query.Execute())
+			message_admins("Error: [query.ErrorMsg()]")
+			log_sql("Error: [query.ErrorMsg()]")
+			qdel(query)
+			return
 
+		if(query.NextRow())
+			computerid = query.item[1]
+		else
+			to_chat(usr, "could not fetch player's computerid from database.")
+		qdel(query)
 	var/datum/DBQuery/query = SSdbcore.NewQuery("SELECT id FROM erro_player WHERE ckey = :ckey", list("ckey" = "[ckey]"))
 	if(!query.Execute())
 		message_admins("Error: [query.ErrorMsg()]")
@@ -105,10 +132,10 @@
 		else
 			adminwho += ", [C]"
 
-	var/sql = "INSERT INTO erro_ban (`id`,`bantime`,`serverip`,`bantype`,`reason`,`job`,`duration`,`rounds`,`expiration_time`,`ckey`,`computerid`,`ip`,`a_ckey`,`a_computerid`,`a_ip`,`who`,`adminwho`,`edits`,`unbanned`,`unbanned_datetime`,`unbanned_ckey`,`unbanned_computerid`,`unbanned_ip`, `unbanned_notification`) VALUES (null, Now(), '[serverip]', '[bantype_str]', :reason, :job, [(duration)?"[duration]":"0"], [(rounds)?"[rounds]":"0"], Now() + INTERVAL [(duration>0) ? duration : 0] MINUTE, :ckey, :computer_id, :ip, :a_ckey, :a_computerid, :a_ip, :who, :admin_who, '', null, null, null, null, null, 0)"
+	var/sql = "INSERT INTO erro_ban (`id`,`bantime`,`serverip`,`bantype`,`reason`,`param`,`duration`,`rounds`,`expiration_time`,`ckey`,`computerid`,`ip`,`a_ckey`,`a_computerid`,`a_ip`,`who`,`adminwho`,`edits`,`unbanned`,`unbanned_datetime`,`unbanned_ckey`,`unbanned_computerid`,`unbanned_ip`, `unbanned_notification`) VALUES (null, Now(), '[serverip]', '[bantype_str]', :reason, :param, [(duration)?"[duration]":"0"], [(rounds)?"[rounds]":"0"], Now() + INTERVAL [(duration>0) ? duration : 0] MINUTE, :ckey, :computer_id, :ip, :a_ckey, :a_computerid, :a_ip, :who, :admin_who, '', null, null, null, null, null, 0)"
 	var/datum/DBQuery/query_insert = SSdbcore.NewQuery(sql, list(
 		"reason" = reason,
-		"job" = job,
+		"param" = job,
 		"ckey" = ckey,
 		"computer_id" = computerid,
 		"ip" = ip,
@@ -174,7 +201,7 @@
 
 	var/sql = "SELECT id FROM erro_ban WHERE ckey = '[ckey]' AND [bantype_sql] AND (unbanned is null OR unbanned = false)"
 	if(job)
-		sql += " AND job = '[job]'"
+		sql += " AND param = '[job]'"
 
 	if(!SSdbcore.Connect())
 		return
@@ -438,7 +465,7 @@
 		if(playerckey)
 			playersearch = "AND ckey = :playerckey "
 
-		var/datum/DBQuery/select_query = SSdbcore.NewQuery("SELECT id, bantime, bantype, reason, job, duration, expiration_time, ckey, a_ckey, unbanned, unbanned_ckey, unbanned_datetime, edits FROM erro_ban WHERE 1 [playersearch] [adminsearch] ORDER BY bantime DESC",
+		var/datum/DBQuery/select_query = SSdbcore.NewQuery("SELECT id, bantime, bantype, reason, param, duration, expiration_time, ckey, a_ckey, unbanned, unbanned_ckey, unbanned_datetime, edits FROM erro_ban WHERE 1 [playersearch] [adminsearch] ORDER BY bantime DESC",
 			list(
 				"adminckey" = adminckey,
 				"playerckey" = playerckey,

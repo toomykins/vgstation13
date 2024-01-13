@@ -4,7 +4,7 @@
 		to_chat(src, "<div class=\"motd\">[join_motd]</div>")
 
 	client.reset_screen()
-	
+
 	if(!mind)
 		mind = new /datum/mind(key)
 		mind.active = 1
@@ -14,7 +14,7 @@
 		loc = pick(newplayer_start)
 	else
 		loc = locate(1,1,1)
-	
+
 	change_sight(adding = SEE_TURFS)
 	player_list |= src
 
@@ -33,6 +33,7 @@
 #if SHOW_CHANGELOG_ON_NEW_PLAYER_LOGIN
 	spawn(0)
 		if(client)
+
 			//If the changelog has changed, show it to them
 			if(client.prefs.lastchangelog != changelog_hash)
 				// Need to send them the CSS and images :V

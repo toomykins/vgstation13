@@ -1,16 +1,19 @@
+
 /obj/item/weapon/banhammer
 	desc = "A banhammer."
 	name = "banhammer"
 	icon = 'icons/obj/items.dmi'
 	icon_state = "toyhammer"
-	flags = FPRINT
-	slot_flags = SLOT_BELT
-	throwforce = 0
-	w_class = W_CLASS_TINY
-	throw_speed = 7
-	throw_range = 15
-	attack_verb = list("bans")
+//	flags = FPRINT
+//	slot_flags = SLOT_BELT
+//	throwforce = 0
+//	w_class = W_CLASS_TINY
+//	throw_speed = 7
+//	throw_range = 15
+//	attack_verb = list("bans")
 
+/obj/item/weapon/banhammer/admin
+/*
 /obj/item/weapon/banhammer/attack_self(var/mob/user)
 	if(user.check_rights(R_BAN))
 		qdel(src)
@@ -21,7 +24,7 @@
 /obj/item/weapon/banhammer/suicide_act(var/mob/living/user)
 	to_chat(viewers(user), "<span class='danger'>[user] is hitting \himself with the [src.name]! It looks like \he's trying to ban \himself from life.</span>")
 	return (SUICIDE_ACT_BRUTELOSS|SUICIDE_ACT_FIRELOSS|SUICIDE_ACT_TOXLOSS|SUICIDE_ACT_OXYLOSS)
-
+*/
 /obj/item/weapon/sord
 	name = "\improper SORD"
 	desc = "This thing is so unspeakably shitty you're having a hard time even holding it."
@@ -232,7 +235,7 @@
 	icon_state = "skinningknife"
 	item_state = "skinningknife"
 	force = 10
-
+/*
 /obj/item/weapon/banhammer/admin
 	desc = "A banhammer specifically reserved for admins. Legends tell of a weapon that destroys the target to the utmost capacity."
 	throwforce = 999
@@ -265,16 +268,16 @@
 
 /obj/item/weapon/banhammer/admin/attack(mob/living/M as mob, mob/living/user as mob)
 	. = ..() // Show stuff happen before banning itself.
-	if(user.check_rights(R_BAN))
-		M.GetBanned(reason, bannedby, istemp, mins, ipban, sticky)
+	if(user.check_rights(R_BAN) && usr.client.holder)
+		usr.client.holder.DB_ban_record(/datum/ban/ban, M, istemp ? mins : -1, reason)
 	return .
 
 /obj/item/weapon/banhammer/admin/suicide_act(var/mob/living/user)
 	. = ..()
-	if(user.check_rights(R_BAN))
-		user.GetBanned(reason, bannedby, istemp, mins, ipban, sticky)
+	if(user.check_rights(R_BAN) && usr.client.holder)
+		usr.client.holder.DB_ban_record(/datum/ban/ban, user, istemp ? mins : -1, reason)
 	return .
-
+*/
 /obj/item/weapon/melee/bone_hammer
 	name = "bone hammer"
 	desc = "A large growth that appears to be made of solid bone. It looks heavy."

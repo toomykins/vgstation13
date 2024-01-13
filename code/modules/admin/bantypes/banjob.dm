@@ -70,7 +70,7 @@ DEBUG
 			return
 
 		//Job permabans
-		var/datum/DBQuery/query = SSdbcore.NewQuery("SELECT ckey, job FROM erro_ban WHERE bantype = :bantype AND isnull(unbanned)",
+		var/datum/DBQuery/query = SSdbcore.NewQuery("SELECT ckey, param FROM erro_ban WHERE bantype = :bantype AND isnull(unbanned)",
 			list(
 				"bantype" = "JOB_PERMABAN"
 			))
@@ -87,7 +87,7 @@ DEBUG
 			jobban_keylist.Add("[ckey] - [job]")
 		qdel(query)
 		//Job tempbans
-		var/datum/DBQuery/query1 = SSdbcore.NewQuery("SELECT ckey, job FROM erro_ban WHERE bantype = :bantype AND isnull(unbanned) AND expiration_time > Now()",
+		var/datum/DBQuery/query1 = SSdbcore.NewQuery("SELECT ckey, param FROM erro_ban WHERE bantype = :bantype AND isnull(unbanned) AND expiration_time > Now()",
 			list(
 				"bantype" = "JOB_TEMPBAN",
 			))

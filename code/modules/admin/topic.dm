@@ -140,65 +140,65 @@
 		message_admins("[usr.key] has purged [key_name(S)]")
 		lawchanges.Add("[key_name(usr)] has purged [key_name(S)]")
 
-	else if(href_list["dbsearchckey"] || href_list["dbsearchadmin"])
-		var/adminckey = href_list["dbsearchadmin"]
-		var/playerckey = href_list["dbsearchckey"]
-
-		DB_ban_panel(playerckey, adminckey)
-		return
-
-	else if(href_list["dbbanedit"])
-		var/banedit = href_list["dbbanedit"]
-		var/banid = text2num(href_list["dbbanid"])
-		if(!banedit || !banid)
-			return
-
-		DB_ban_edit(banid, banedit)
-		return
-
-	else if(href_list["dbbanaddtype"])
-
-		var/bantype = text2num(href_list["dbbanaddtype"])
-		var/banckey = href_list["dbbanaddckey"]
-		var/banduration = text2num(href_list["dbbaddduration"])
-		var/banjob = href_list["dbbanaddjob"]
-		var/banreason = href_list["dbbanreason"]
-
-		banckey = ckey(banckey)
-
-		switch(bantype)
-			if(BANTYPE_PERMA)
-				if(!banckey || !banreason)
-					to_chat(usr, "Not enough parameters (Requires ckey and reason)")
-					return
-				banduration = null
-				banjob = null
-			if(BANTYPE_TEMP)
-				if(!banckey || !banreason || !banduration)
-					to_chat(usr, "Not enough parameters (Requires ckey, reason and duration)")
-					return
-				banjob = null
-			if(BANTYPE_JOB_PERMA)
-				if(!banckey || !banreason || !banjob)
-					to_chat(usr, "Not enough parameters (Requires ckey, reason and job)")
-					return
-				banduration = null
-			if(BANTYPE_JOB_TEMP)
-				if(!banckey || !banreason || !banjob || !banduration)
-					to_chat(usr, "Not enough parameters (Requires ckey, reason and job)")
-					return
-			if(BANTYPE_APPEARANCE)
-				if(!banckey || !banreason)
-					to_chat(usr, "Not enough parameters (Requires ckey and reason)")
-					return
-				banduration = null
-				banjob = null
-			if(BANTYPE_OOC_PERMA,  BANTYPE_PAX_PERMA)
-				if(!banckey || !banreason)
-					to_chat(usr, "Not enough parameters (Requires ckey and reason)")
-					return
-				banduration = null
-			if(BANTYPE_OOC_TEMP, BANTYPE_PAX_TEMP)
+//	else if(href_list["dbsearchckey"] || href_list["dbsearchadmin"])
+//		var/adminckey = href_list["dbsearchadmin"]
+//		var/playerckey = href_list["dbsearchckey"]
+//
+//		DB_ban_panel(playerckey, adminckey)
+//		return
+//
+//	else if(href_list["dbbanedit"])
+//		var/banedit = href_list["dbbanedit"]
+//		var/banid = text2num(href_list["dbbanid"])
+//		if(!banedit || !banid)
+//			return
+//
+//		DB_ban_edit(banid, banedit)
+//		return
+//
+//	else if(href_list["dbbanaddtype"])
+//
+//		var/bantype = text2num(href_list["dbbanaddtype"])
+//		var/banckey = href_list["dbbanaddckey"]
+//		var/banduration = text2num(href_list["dbbaddduration"])
+//		var/banjob = href_list["dbbanaddjob"]
+//		var/banreason = href_list["dbbanreason"]
+//
+//		banckey = ckey(banckey)
+//
+//		switch(bantype)
+//			if(BANTYPE_PERMA)
+//				if(!banckey || !banreason)
+//					to_chat(usr, "Not enough parameters (Requires ckey and reason)")
+//					return
+//				banduration = null
+//				banjob = null
+//			if(BANTYPE_TEMP)
+//				if(!banckey || !banreason || !banduration)
+//					to_chat(usr, "Not enough parameters (Requires ckey, reason and duration)")
+//					return
+//				banjob = null
+//			if(BANTYPE_JOB_PERMA)
+//				if(!banckey || !banreason || !banjob)
+//					to_chat(usr, "Not enough parameters (Requires ckey, reason and job)")
+//					return
+//				banduration = null
+//			if(BANTYPE_JOB_TEMP)
+//				if(!banckey || !banreason || !banjob || !banduration)
+//					to_chat(usr, "Not enough parameters (Requires ckey, reason and job)")
+//					return
+//			if(BANTYPE_APPEARANCE)
+//				if(!banckey || !banreason)
+//					to_chat(usr, "Not enough parameters (Requires ckey and reason)")
+//					return
+//				banduration = null
+//				banjob = null
+//			if(BANTYPE_OOC_PERMA,  BANTYPE_PAX_PERMA)
+//				if(!banckey || !banreason)
+//					to_chat(usr, "Not enough parameters (Requires ckey and reason)")
+//					return
+//				banduration = null
+/*			if(BANTYPE_OOC_TEMP, BANTYPE_PAX_TEMP)
 				if(!banckey || !banreason || !banduration)
 					to_chat(usr, "Not enough parameters (Requires ckey, reason, and duration)")
 					return
@@ -213,7 +213,7 @@
 		banreason = "(MANUAL BAN) "+banreason
 
 		DB_ban_record(bantype, playermob, banduration, banreason, banjob, null, banckey)
-
+*/
 	else if(href_list["editrights"])
 		if(!check_rights(R_PERMISSIONS))
 			message_admins("[key_name_admin(usr)] attempted to edit the admin permissions without sufficient rights.")
@@ -781,7 +781,7 @@
 			show_player_panel(new_mob)
 
 
-	/////////////////////////////////////new ban stuff
+/*	/////////////////////////////////////new ban stuff
 	else if(href_list["unbanf"])
 		if(!check_rights(R_BAN))
 			return
@@ -844,7 +844,6 @@
 					return
 
 		log_admin("[key_name(usr)] edited [banned_key]'s ban. Reason: [reason] Duration: [duration]")
-		ban_unban_log_save("[key_name(usr)] edited [banned_key]'s ban. Reason: [reason] Duration: [duration]")
 		message_admins("<span class='notice'>[key_name_admin(usr)] edited [banned_key]'s ban. Reason: [reason] Duration: [duration]</span>", 1)
 		Banlist.cd = "/base/[banfolder]"
 		to_chat(Banlist["reason"], reason)
@@ -870,7 +869,6 @@
 		if(oocbanned)
 			switch(alert("Reason: Remove OOC ban?","Please Confirm","Yes","No"))
 				if("Yes")
-					ban_unban_log_save("[key_name(usr)] removed [key_name(M)]'s OOC ban")
 					log_admin("[key_name(usr)] removed [key_name(M)]'s OOC ban")
 					feedback_inc("ban_ooc_unban", 1)
 					DB_ban_unban(M.ckey, BANTYPE_OOC_PERMA)
@@ -890,7 +888,6 @@
 							var/reason = input(usr,"Reason?","reason","Shinposting") as text|null
 							if(!reason)
 								return
-							ban_unban_log_save("[usr.client.ckey] has banned [M.ckey]. - Reason: [reason] - This will be removed in [mins] minutes.")
 							to_chat(M, "<span class='warning'><BIG><B>You have been OOC banned by [usr.client.ckey].\nReason: [reason].</B></BIG></span>")
 							to_chat(M, "<span class='warning'>This is a temporary ooc ban, it will be removed in [mins] minutes.</span>")
 							feedback_inc("ban_ooc_tmp",1)
@@ -913,7 +910,6 @@
 								to_chat(M, "<span class='warning'>To try to resolve this matter head to [config.banappeals] or consider not being a shithead in OOC</span>")
 							else
 								to_chat(M, "<span class='warning'>No ban appeals URL has been set.</span>")
-							ban_unban_log_save("[usr.client.ckey] has perma-ooc-banned [M.ckey]. - Reason: [reason] - This is a permanent ooc ban.")
 							log_admin("[usr.client.ckey] has ooc banned [M.ckey].\nReason: [reason]\nThis is a permanent ooc ban.")
 							message_admins("<span class='warning'>[usr.client.ckey] has ooc banned [M.ckey].\nReason: [reason]\nThis is a permanent ooc ban.</span>")
 							feedback_inc("ban_ooc_perma",1)
@@ -939,7 +935,6 @@
 			return
 		var/paxbanned = paxban_isbanned("[M.ckey]")
 		if(paxbanned && alert("Remove pax ban?","Please Confirm","Yes","No") == "Yes")
-			ban_unban_log_save("[key_name(usr)] removed [key_name(M)]'s pax ban")
 			log_admin("[key_name(usr)] removed [key_name(M)]'s pax ban")
 			feedback_inc("ban_pax_unban", 1)
 			DB_ban_unban(M.ckey, BANTYPE_PAX_PERMA)
@@ -969,7 +964,6 @@
 			else
 				to_chat(M, "<span class='warning'>No ban appeals URL has been set.</span>")
 			var/resolvetext = istemp ? "This will be removed in [mins] minutes." : "This is a permanent pax ban."
-			ban_unban_log_save("[usr.client.ckey] has [istemp ? "temp-" : "perma-"]pax banned [M.ckey]. - Reason: [reason] - [resolvetext]")
 			feedback_inc(istemp ? "ban_pax_tmp" : "ban_pax_perma",1)
 			DB_ban_record(istemp ? BANTYPE_PAX_TEMP : BANTYPE_PAX_PERMA, M, istemp ? mins : -1, reason)
 			if(istemp)
@@ -999,7 +993,6 @@
 				return	*/
 			switch(alert("Reason: '[banreason]' Remove appearance ban?","Please Confirm","Yes","No"))
 				if("Yes")
-					ban_unban_log_save("[key_name(usr)] removed [key_name(M)]'s appearance ban")
 					log_admin("[key_name(usr)] removed [key_name(M)]'s appearance ban")
 					feedback_inc("ban_appearance_unban", 1)
 					DB_ban_unban(M.ckey, BANTYPE_APPEARANCE)
@@ -1013,7 +1006,6 @@
 					var/reason = input(usr,"Reason?","reason","Metafriender") as text|null
 					if(!reason)
 						return
-					ban_unban_log_save("[key_name(usr)] appearance banned [key_name(M)]. reason: [reason]")
 					log_admin("[key_name(usr)] appearance banned [key_name(M)]. \nReason: [reason]")
 					feedback_inc("ban_appearance",1)
 					DB_ban_record(BANTYPE_APPEARANCE, M, -1, reason)
@@ -1473,7 +1465,6 @@
 
 					var/msg
 					for(var/job in notbannedlist)
-						ban_unban_log_save("[key_name(usr)] temp-jobbanned [key_name(M)] from [job] for [mins] minutes. reason: [reason]")
 						log_admin("[key_name(usr)] temp-jobbanned [key_name(M)] from [job] for [mins] minutes")
 						feedback_inc("ban_job_tmp",1)
 						DB_ban_record(BANTYPE_JOB_TEMP, M, mins, reason, job)
@@ -1495,7 +1486,6 @@
 					if(reason)
 						var/msg
 						for(var/job in notbannedlist)
-							ban_unban_log_save("[key_name(usr)] perma-jobbanned [key_name(M)] from [job]. reason: [reason]")
 							log_admin("[key_name(usr)] perma-banned [key_name(M)] from [job]")
 							feedback_inc("ban_job",1)
 							DB_ban_record(BANTYPE_JOB_PERMA, M, -1, reason, job)
@@ -1529,7 +1519,6 @@
 					continue //skip if it isn't jobbanned anyway
 				switch(alert("Job: '[job]' Reason: '[reason]' Un-jobban?","Please Confirm","Yes","No"))
 					if("Yes")
-						ban_unban_log_save("[key_name(usr)] unjobbanned [key_name(M)] from [job]")
 						log_admin("[key_name(usr)] unbanned [key_name(M)] from [job]")
 						DB_ban_unban(M.ckey, BANTYPE_JOB_PERMA, job)
 						feedback_inc("ban_job_unban",1)
@@ -1630,6 +1619,7 @@
 			else
 				alert(usr,"This ban has already been lifted / does not exist.","Error","Ok")
 				unjobbanpanel()
+*/
 
 	else if(href_list["mute"])
 		if(!check_rights(R_ADMIN))
@@ -3097,11 +3087,11 @@
 		usr.client.cmd_admin_subtle_message(M)
 
 	else if(href_list["rapsheet"])
-		usr << link(getVGPanel("rapsheet", admin = 1, query = list("ckey" = href_list["rsckey"])))
+		//nothing yet
 		return
 
 	else if(href_list["bansheet"])
-		usr << link(getVGPanel("rapsheet", admin = 1))
+		//nothing yet
 		return
 
 	else if(href_list["traitor"])
@@ -3175,6 +3165,7 @@
 		return create_mob(usr)
 
 	else if(href_list["object_list"])			//this is the laggiest thing ever
+		world.log << json_encode(href_list["object_list"])
 		if(!check_rights(R_SPAWN))
 			return
 
@@ -3185,11 +3176,12 @@
 		var/atom/loc = usr.loc
 
 		var/dirty_paths
+
 		if (istext(href_list["object_list"]))
 			dirty_paths = list(href_list["object_list"])
 		else if (istype(href_list["object_list"], /list))
 			dirty_paths = href_list["object_list"]
-
+		world.log << json_encode(dirty_paths)
 		var/paths = list()
 		var/removed_paths = list()
 

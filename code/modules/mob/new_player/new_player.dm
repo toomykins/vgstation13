@@ -95,7 +95,7 @@
 					stat("[player.key]", (player.ready)?("(Playing)"):(null))
 					totalPlayers++
 					if(player.ready)
-						totalPlayersReady++	
+						totalPlayersReady++
 		else
 			stat("Time To Start:", "LOADING...")
 
@@ -121,6 +121,9 @@
 	if(href_list["ready"])
 		if(!client.prefs.saveloaded)
 			to_chat(usr, "<span class='warning'>Your character preferences have not yet loaded.</span>")
+			return
+		if(iscluwnebanned(src))
+			new_player_panel_proc()
 			return
 		switch(text2num(href_list["ready"]))
 			if(1)
@@ -152,7 +155,9 @@
 		if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
 			to_chat(usr, "<span class='warning'>The round is either not ready, or has already finished...</span>")
 			return
-
+		if(iscluwnebanned(src))
+			new_player_panel_proc()
+			return
 		if(client.prefs.species != "Human")
 
 			if(!is_alien_whitelisted(src, client.prefs.species) && config.usealienwhitelist)
@@ -684,7 +689,6 @@
 
 	src << sound(null, repeat = 0, wait = 0, volume = 85, channel = CHANNEL_LOBBY)// MAD JAMS cant last forever yo
 
-
 	if (mind)
 		mind.active = 0 // we wish to transfer the key manually
 		mind.transfer_to(new_character) // won't transfer key since the mind is not active
@@ -694,6 +698,21 @@
 
 	if(new_character.mind)
 		new_character.mind.store_memory("<b>Your blood type is:</b> [new_character.dna.b_type]<br>")
+
+	if(retardban_isbanned(src,RETARDTYPE_FAT)):
+		client.prefs.disabilities |= DISABILITY_FLAG_FAT
+	if(retardban_isbanned(src,RETARDTYPE_SEIZURES)):
+		client.prefs.disabilities |= DISABILITY_FLAG_EPILEPTIC
+	if(retardban_isbanned(src,RETARDTYPE_LISP)):
+		client.prefs.disabilities |= DISABILITY_FLAG_LISP
+
+
+
+	if(retardban_isbanned(src,RETARDTYPE_RETARDED))
+	//	client.prefs.disabilities |= DISABILITY_FLAG_
+		new_character.dna.SetSEState(CLUMSYBLOCK,1,1)
+		new_character.disabilities |= M_CLUMSY
+		new_character.adjustBrainLoss(200)
 
 	if(client.prefs.disabilities & DISABILITY_FLAG_NEARSIGHTED)
 		new_character.dna.SetSEState(GLASSESBLOCK,1,1)

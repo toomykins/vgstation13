@@ -143,6 +143,7 @@ var/datum/controller/gameticker/ticker
 			if(M.can_start())
 				mode = config.pick_mode(secret_force_mode)
 		job_master.ResetOccupations()
+		ban_master.init()
 		if(!mode)
 			mode = pickweight(runnable_modes)
 		if(mode)
@@ -173,7 +174,7 @@ var/datum/controller/gameticker/ticker
 		var/mob/living/L = player
 		if(istype(L))
 			ticker.minds += L.mind
-		
+
 		switch(player.mind.assigned_role)
 			if("Mobile MMI", "Cyborg", "AI")
 				player.create_roundstart_silicon(player.mind.assigned_role)
@@ -209,7 +210,7 @@ var/datum/controller/gameticker/ticker
 			to_chat(world, "<B>Possibilities:</B> [english_list(modes)]")
 
 	var/captain = FALSE
-	for(var/mob/living/carbon/human/player in player_list)	
+	for(var/mob/living/carbon/human/player in player_list)
 		//Used to display a message the captainship message
 		if(player.mind)
 			if(player.mind.assigned_role == "MODE")
@@ -616,7 +617,7 @@ var/datum/controller/gameticker/ticker
 		to_chat(world, "<span class='notice'><B>Enjoy the game!</B></span>")
 		//Holiday Round-start stuff	~Carn
 		Holiday_Game_Start()
-		
+
 		if(0 == admins.len)
 			send2adminirc("Round has started with no admins online.")
 			send2admindiscord("**Round has started with no admins online.**", TRUE)
@@ -644,7 +645,7 @@ var/datum/controller/gameticker/ticker
 			'sound/AI/vox_reminder15.ogg')
 		for(var/sound in welcome_sentence)
 			play_vox_sound(sound,map.zMainStation,null)
-	
+
 	create_random_orders(3) //Populate the order system so cargo has something to do
 
 // -- Tag mode!

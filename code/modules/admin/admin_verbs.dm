@@ -91,10 +91,11 @@ var/list/admin_verbs_admin = list(
 	/datum/admins/proc/ashInvokedEmotions	/*Ashes all paper from the invoke emotion spell. An emergency purge.*/
 )
 var/list/admin_verbs_ban = list(
-	/client/proc/unban_panel,
-	/client/proc/jobbans,
-	/client/proc/unjobban_panel
+//	/client/proc/unban_panel,
+//	/client/proc/jobbans,
+//	/client/proc/unjobban_panel
 	// /client/proc/DB_ban_panel
+	/client/proc/ban_inputbox
 	)
 var/list/admin_verbs_sounds = list(
 	/client/proc/play_local_sound,
@@ -475,7 +476,7 @@ var/list/admin_verbs_mod = list(
 		log_admin("[key_name(usr)] checked antagonists.")	//for tsar~
 	feedback_add_details("admin_verb","CHA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
-
+/*
 /client/proc/jobbans()
 	set name = "Display Job bans"
 	set category = "Admin"
@@ -497,6 +498,14 @@ var/list/admin_verbs_mod = list(
 			holder.DB_ban_panel()
 	feedback_add_details("admin_verb","UBP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
+*/
+
+/client/proc/ban_inputbox()
+	set name = "Ban player"
+	set category = "Admin"
+	if(!check_rights(R_BAN))
+		return
+	PrepareBan()
 
 /client/proc/game_panel()
 	set name = "Game Panel"
@@ -543,11 +552,8 @@ var/list/admin_verbs_mod = list(
 		message_admins("[key_name_admin(usr)] has turned stealth mode [holder.fakekey ? "ON" : "OFF"]", 1)
 	feedback_add_details("admin_verb","SM") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-#define MAX_WARNS 3
-#define AUTOBANTIME 90
 
 /client/proc/warn(warned_ckey)
-	var/reason = "Autobanning due to too many formal warnings"
 	if(!check_rights(R_ADMIN))
 		return
 
@@ -570,32 +576,15 @@ var/list/admin_verbs_mod = list(
 	if(!warn_reason)
 		return
 	holder.notes_add(warned_ckey, warn_reason)
-	if(++D.warns >= MAX_WARNS)					//uh ohhhh...you'reee iiiiin trouuuubble O:)
-		var/bantime = AUTOBANTIME//= (++D.warnbans * AUTOBANTIME)
-		D.warns = 0
-		++D.warnbans
-		for(var/i = 1; i < D.warnbans; i++)
-			bantime *= 2
-		ban_unban_log_save("[ckey] warned [warned_ckey] - [warn_reason], resulting in a [bantime] minute autoban.")
-		if(C)
-			message_admins("[key_name_admin(src)] has warned [key_name_admin(C)] - [warn_reason], resulting in a [bantime] minute ban.")
-			to_chat(C, "<span class='danger'><BIG>You have been autobanned due to a warning by [ckey] - Reason: [warn_reason].</BIG></span><br>This is a temporary ban, it will be removed in [bantime] minutes.")
-		else
-			message_admins("[key_name_admin(src)] has warned [warned_ckey] - [warn_reason], resulting in a [bantime] minute ban.")
-		AddBan(warned_ckey, D.last_id, "Autobanning due to too many formal warnings - [warn_reason]", ckey, 1, bantime)
-		holder.DB_ban_record(BANTYPE_TEMP, null, bantime, "[reason] - [warn_reason]", , ,warned_ckey)
-		feedback_inc("ban_warn",1)
-		D.save_preferences_sqlite(C, C.ckey)
-		del(C)
+	++D.warns
+	if(C)
+		to_chat(C, "<span class='danger'><BIG>You have been formally warned by an administrator - Reason: [warn_reason].</span></BIG></font>")
+		message_admins("[key_name_admin(src)] has warned [key_name_admin(C)] - [warn_reason]. They have [D.warns] strikes.")
 	else
-		if(C)
-			to_chat(C, "<span class='danger'><BIG>You have been formally warned by an administrator - Reason: [warn_reason].</span></BIG><br>Further warnings will result in an autoban.</font>")
-			message_admins("[key_name_admin(src)] has warned [key_name_admin(C)] - [warn_reason]. They have [MAX_WARNS-D.warns] strikes remaining. And have been warn banned [D.warnbans] [D.warnbans == 1 ? "time" : "times"]")
-		else
-			message_admins("[key_name_admin(src)] has warned [warned_ckey] (DC) - [warn_reason]. They have [MAX_WARNS-D.warns] strikes remaining. And have been warn banned [D.warnbans] [D.warnbans == 1 ? "time" : "times"]")
-			D.show_warning_next_time = 1
-			D.last_warned_message = warn_reason
-			D.warning_admin = ckey
+		message_admins("[key_name_admin(src)] has warned [warned_ckey] (DC) - [warn_reason]. They have [D.warns] strikes.")
+		D.show_warning_next_time = 1
+		D.last_warned_message = warn_reason
+		D.warning_admin = ckey
 		D.save_preferences_sqlite(C, warned_ckey)
 	feedback_add_details("admin_verb","WARN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -625,17 +614,14 @@ var/list/admin_verbs_mod = list(
 		return
 
 	D.warns-=1
-	var/strikesleft = MAX_WARNS-D.warns
 	if(C)
-		to_chat(C, "<span class='red'><BIG><B>One of your warnings has been removed.</B></BIG><br>You currently have [strikesleft] strike\s left</span>")
-		message_admins("[key_name_admin(src)] has unwarned [key_name_admin(C)]. They have [strikesleft] strike(s) remaining, and have been warn banned [D.warnbans] [D.warnbans == 1 ? "time" : "times"]")
+		to_chat(C, "<span class='red'><BIG><B>One of your warnings has been removed.</B></BIG><br>You currently have [D.warns] strikes.</span>")
+		message_admins("[key_name_admin(src)] has unwarned [key_name_admin(C)]. They have [D.warns] strikes now.")
 	else
-		message_admins("[key_name_admin(src)] has unwarned [warned_ckey] (DC). They have [strikesleft] strike(s) remaining, and have been warn banned [D.warnbans] [D.warnbans == 1 ? "time" : "times"]")
+		message_admins("[key_name_admin(src)] has unwarned [warned_ckey] (DC). They have [D.warns] strikes now.")
 	D.save_preferences_sqlite(C, C.ckey)
 	feedback_add_details("admin_verb","UNWARN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-#undef MAX_WARNS
-#undef AUTOBANTIME
 
 /client/proc/drop_bomb() // Some admin dickery that can probably be done better -- TLE
 	set category = "Special Verbs"

@@ -9,6 +9,7 @@ REG_IP4=re.compile(r'\d+\.\d+\.\d+\.\d+') # Matches IPv4 addresses.
 
 # [04:07:35]ACCESS: Login: N3X15/(N3X15) from 127.0.0.1-1234567890 || BYOND v499
 REG_CONNECT=re.compile(r'from [^\|]+\|\| BYOND v([0-9]+)$') # Matches IPv4 addresses.
+REG_CID = re.compile(r'CID\d{10}')
 
 def fix(in_file, out_file):
 	if not os.path.isfile(out_file) or os.stat(in_file).st_mtime - os.stat(out_file).st_mtime > 1:
@@ -21,8 +22,9 @@ def fix(in_file, out_file):
 			with open(in_file,'r') as r:
 				for line in r:
 					line=line.strip('\r\n')
-					line=REG_CONNECT.sub('from [NOPE] || BYOND v\g<1>', line)
+					line=REG_CONNECT.sub('from [IP CENSORED] || BYOND v\g<1>', line)
 					line=REG_IP4.sub('[IP CENSORED]', line)
+					line=REG_CID.sub('[CID CENSORED]',line)
 					w.write('{0}\n'.format(line))
 def replace_walk(in_dir,out_dir):
 	print(' {0} -> {1}'.format(in_dir,out_dir))

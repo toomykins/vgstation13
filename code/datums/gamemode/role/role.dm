@@ -698,3 +698,10 @@
 	for (var/ckey in former_minions)
 		dat += "<img src='data:image/png;base64,[icon2base64(logo_slave)]' style='position: relative; top: 10;'/> <b>[ckey]</b> as <b>[former_minions[ckey]]</b><br/>"
 	return jointext(dat, "")
+
+/proc/GetRoleFromID(var/justid)
+	if(istype(justid,/datum/role))
+		return justid
+	for(var/datum/role/rolething in subtypesof(/datum/role))
+		if(rolething.id == justid)
+			return rolething

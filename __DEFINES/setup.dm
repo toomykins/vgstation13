@@ -683,6 +683,15 @@ var/list/liftable_structures = list(\
 #define BANTYPE_OOC_TEMP	8
 #define BANTYPE_PAX_PERMA	9
 #define BANTYPE_PAX_TEMP	10
+#define BANTYPE_MUTE_PERMA 11
+#define BANTYPE_MUTE_TEMP 12
+#define BANTYPE_RETARD_PERMA 13
+#define BANTYPE_RETARD_TEMP 14
+
+#define RETARDTYPE_RETARDED 1
+#define RETARDTYPE_FAT 2
+#define RETARDTYPE_SEIZURES 4
+#define RETARDTYPE_LISP 8
 
 #define SEE_INVISIBLE_MINIMUM 5
 
@@ -1453,9 +1462,9 @@ var/proccalls = 1
 #define log_blobtelepathy(text) diary << html_decode("\[[time_stamp()]]BLOBTELE: [text]")
 
 //OOC isbanned
-#define oocban_isbanned(key) oocban_keylist.Find("[ckey(key)]")
+//#define oocban_isbanned(key) oocban_keylist.Find("[ckey(key)]")
 
-#define paxban_isbanned(key) paxban_keylist.Find("[ckey(key)]")
+//#define paxban_isbanned(key) paxban_keylist.Find("[ckey(key)]")
 
 //message modes. you're not supposed to mess with these.
 #define MODE_HEADSET "headset"

@@ -86,8 +86,9 @@
 	set category = "Debug"
 
 	to_chat(usr, "<b>Jobbans active in this round.</b>")
-	for(var/t in jobban_keylist)
-		to_chat(usr, "[t]")
+	//for(var/t in jobban_keylist)
+	//	to_chat(usr, "[t]")
+	to_chat(usr, "this feature is deprecated. tell someone to fix this.")
 
 /client/proc/print_jobban_old_filter()
 	set name = "Search Jobban Log"
@@ -99,9 +100,10 @@
 		return
 
 	to_chat(usr, "<b>Jobbans active in this round.</b>")
-	for(var/t in jobban_keylist)
-		if(findtext(t, filter))
-			to_chat(usr, "[t]")
+	//for(var/t in jobban_keylist)
+	//	if(findtext(t, filter))
+	//		to_chat(usr, "[t]")
+	to_chat(usr, "this feature is deprecated. tell someone to fix this.")
 
 // For /vg/ Wiki docs
 /client/proc/dump_chemreactions()

@@ -182,22 +182,13 @@ For the main html chat area
 				var/list/row = src.connectionHistory[i]
 				if (!row || row.len < 3 || (!row["ckey"] && !row["compid"] && !row["ip"])) //Passed malformed history object
 					return
-				if (world.IsBanned(row["ckey"], row["ip"], row["compid"], "goonchat"))
+				if (world.IsBanned(row["ckey"], row["ip"], row["compid"], TRUE))
 					found = row
 					break
 
 			//Uh oh this fucker has a history of playing on a banned account!!
 			if (found.len > 0)
-				//TODO: add a new evasion ban for the CURRENT client details, using the matched row details
-				message_admins("<span class='danger big'>[key_name(src.owner)] has a cookie from a banned account! (Matched: [found["ckey"]], [found["ip"]], [found["compid"]])</span>")
-				log_admin("[key_name(src.owner)] has a cookie from a banned account! (Matched: [found["ckey"]], [found["ip"]], [found["compid"]])")
-				var/admins_number = admins.len
-				var/admin_number_afk = get_afk_admins()
-				var/available_admins = admins_number - admin_number_afk
-				//Probably not a good idea to print IP and CID in these channels
-				send2adminirc("[key_name(src.owner)] has a cookie from a banned account! (Matched: [found["ckey"]]) [available_admins ? "" : "No non-AFK admins online"]")
-				send2admindiscord("**[key_name(src.owner)] has a cookie from a banned account! (Matched: [found["ckey"]]) [available_admins ? "" : "No non-AFK admins online"]**", !available_admins)
-
+				BanvaderAlert(key_name(src.owner),found)
 	cookieSent = 1
 
 //Called by js client every 60 seconds

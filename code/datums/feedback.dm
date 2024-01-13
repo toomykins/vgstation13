@@ -75,7 +75,7 @@ var/datum/blackbox/blackbox = new
 	round_end_data_gathering() //round_end time logging and some other data processing
 	if(!SSdbcore.Connect())
 		return
-	var/round_id
+	var/round_id = 0
 
 	var/nqueries = 0
 
