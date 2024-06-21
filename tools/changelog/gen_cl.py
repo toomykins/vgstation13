@@ -67,9 +67,10 @@ def parse_body_changelog(body):
     matches = ENTRY_RE.findall(content)
     entries = []
     for match in matches:
-        description = match[1].strip()
-        entries.append(description)
+        entry_type, description = match
+        entries.append({entry_type: description.strip()})
     return entries
+
 # Parse the PR body to get the changelog entries
 changes = parse_body_changelog(pr_body)
 
