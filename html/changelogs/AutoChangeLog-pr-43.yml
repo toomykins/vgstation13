@@ -1,0 +1,7 @@
+author: toomykins
+delete-after: true
+changes:
+- rscadd: Added new thing.
+- rscdel: Removed old thing.
+- bugfix: Fixed a bug that caused something bad to happen.
+- tweak: Changed a 5 to a 6.afaga
