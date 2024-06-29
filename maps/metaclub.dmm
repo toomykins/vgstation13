@@ -8076,7 +8076,7 @@
 	})
 "asu" = (
 /obj/machinery/light_construct/small,
-/obj/item/weapon/toolbox_tiles_sensor,
+/obj/item/weapon/toolbox_tiles/sensor,
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2{
 	name = "Port Maintenance"

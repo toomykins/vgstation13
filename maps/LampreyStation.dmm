@@ -67909,7 +67909,7 @@
 	},
 /area/lamprey/warzonemaintenanceblob)
 "cVI" = (
-/obj/item/weapon/toolbox_tiles_sensor,
+/obj/item/weapon/toolbox_tiles/sensor,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /turf/simulated/floor/plating{
