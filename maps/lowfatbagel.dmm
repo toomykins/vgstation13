@@ -51804,7 +51804,7 @@
 /turf/simulated/floor,
 /area/research_outpost/iso1)
 "hkc" = (
-/obj/machinery/atmospherics/unary/tank/nitrogen{
+/obj/machinery/atmospherics/unary/tank/nitrogen/coldroom{
 	dir = 1;
 	initialize_directions = 1
 	},

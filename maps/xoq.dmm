@@ -52276,7 +52276,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/tank/nitrogen{
+/obj/machinery/atmospherics/unary/tank/nitrogen/coldroom{
 	dir = 4;
 	initialize_directions = 4
 	},
@@ -64061,7 +64061,7 @@
 /turf/simulated/floor,
 /area/hallway/primary/aft)
 "crl" = (
-/obj/machinery/atmospherics/unary/tank/nitrogen{
+/obj/machinery/atmospherics/unary/tank/nitrogen/coldroom{
 	dir = 8;
 	initialize_directions = 4
 	},

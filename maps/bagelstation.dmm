@@ -37217,7 +37217,7 @@
 /turf/simulated/floor/plating,
 /area/storage/emergency2)
 "bvR" = (
-/obj/machinery/atmospherics/unary/tank/nitrogen{
+/obj/machinery/atmospherics/unary/tank/nitrogen/coldroom{
 	dir = 4;
 	initialize_directions = 4
 	},
@@ -38426,7 +38426,7 @@
 	dir = 8;
 	name = "Telecomms Backroom"
 	},
-/obj/machinery/atmospherics/unary/tank/carbon_dioxide{
+/obj/machinery/atmospherics/unary/tank/carbon_dioxide/coldroom{
 	dir = 8
 	},
 /obj/effect/decal/warning_stripes{

@@ -6403,7 +6403,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "anl" = (
-/obj/machinery/atmospherics/unary/tank/carbon_dioxide{
+/obj/machinery/atmospherics/unary/tank/carbon_dioxide/coldroom{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -9096,7 +9096,7 @@
 /turf/simulated/floor,
 /area/engineering/atmos)
 "asu" = (
-/obj/machinery/atmospherics/unary/tank/nitrogen{
+/obj/machinery/atmospherics/unary/tank/nitrogen/coldroom{
 	dir = 4
 	},
 /turf/simulated/floor/plating,

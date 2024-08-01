@@ -32386,7 +32386,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/tank/nitrogen{
+/obj/machinery/atmospherics/unary/tank/nitrogen/coldroom{
 	dir = 8;
 	initialize_directions = 4
 	},
@@ -53085,7 +53085,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/aft)
 "caR" = (
-/obj/machinery/atmospherics/unary/tank/nitrogen{
+/obj/machinery/atmospherics/unary/tank/nitrogen/coldroom{
 	dir = 4;
 	initialize_directions = 4
 	},

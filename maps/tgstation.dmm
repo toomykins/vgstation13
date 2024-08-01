@@ -53271,12 +53271,6 @@
 	},
 /turf/simulated/floor/server/bluegrid,
 /area/science/server)
-"bWB" = (
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
-	dir = 4
-	},
-/turf/simulated/floor/server,
-/area/science/server)
 "bWC" = (
 /obj/structure/bed/chair/comfy/beige,
 /obj/item/device/radio/intercom{
@@ -53313,7 +53307,7 @@
 /area/science/server)
 "bWE" = (
 /obj/machinery/atmospherics/unary/cold_sink/freezer{
-	current_temperature = 80;
+	current_temperature = 60;
 	dir = 8;
 	on = 1
 	},
@@ -54150,9 +54144,8 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/tank/nitrogen{
-	dir = 8;
-	initialize_directions = 4
+/obj/machinery/atmospherics/unary/tank/nitrogen/coldroom{
+	dir = 8
 	},
 /turf/simulated/floor{
 	icon_state = "dark"
@@ -64787,7 +64780,7 @@
 	},
 /area/tcomms/storage)
 "crL" = (
-/obj/machinery/atmospherics/unary/tank/toxins{
+/obj/machinery/atmospherics/unary/tank/toxins/coldroom{
 	dir = 4
 	},
 /turf/simulated/floor{
@@ -65748,10 +65741,10 @@
 	},
 /area/tcomms/storage)
 "ctD" = (
-/obj/structure/table,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
+/obj/structure/table,
 /obj/abstract/map/spawner/pick_spawner/yellowgloves/tcomms_storage,
 /turf/simulated/floor{
 	icon_state = "dark"
@@ -66322,7 +66315,7 @@
 	},
 /area/tcomms/storage)
 "cuH" = (
-/obj/machinery/atmospherics/unary/tank/nitrogen{
+/obj/machinery/atmospherics/unary/tank/nitrogen/coldroom{
 	dir = 4;
 	initialize_directions = 4
 	},
@@ -66331,11 +66324,11 @@
 	},
 /area/tcomms/storage)
 "cuI" = (
-/obj/machinery/atmospherics/pipe/simple/yellow/visible{
-	dir = 4
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "nitrogen"
+	},
+/obj/machinery/atmospherics/pipe/simple/yellow/visible{
+	dir = 4
 	},
 /turf/simulated/floor{
 	icon_state = "dark"
@@ -122448,6 +122441,12 @@
 	icon_state = "white"
 	},
 /area/medical/virology)
+"kDm" = (
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
+	dir = 4
+	},
+/turf/simulated/floor/server,
+/area/science/server)
 "kFI" = (
 /obj/effect/landmark{
 	name = "blobstart"
@@ -266797,9 +266796,9 @@ byb
 bRQ
 cqA
 bVh
-bWB
+kDm
 bYc
-bWB
+kDm
 caN
 ccu
 cdG

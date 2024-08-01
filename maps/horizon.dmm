@@ -26838,7 +26838,7 @@
 /area/science/server)
 "beA" = (
 /obj/item/toy/gasha/mime,
-/obj/machinery/atmospherics/unary/tank/nitrogen{
+/obj/machinery/atmospherics/unary/tank/nitrogen/coldroom{
 	dir = 1;
 	initialize_directions = 4
 	},

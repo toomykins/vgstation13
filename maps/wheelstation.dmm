@@ -10448,7 +10448,7 @@
 	dir = 4;
 	pixel_x = -22
 	},
-/obj/machinery/atmospherics/unary/tank/nitrogen{
+/obj/machinery/atmospherics/unary/tank/nitrogen/coldroom{
 	dir = 4
 	},
 /turf/simulated/floor{
@@ -27332,6 +27332,7 @@
 	dir = 1;
 	name = "Head of Personnel's Office"
 	},
+/mob/living/simple_animal/corgi/Ian,
 /turf/simulated/floor,
 /area/crew_quarters/hop)
 "aXC" = (
@@ -61792,7 +61793,7 @@
 	},
 /area/tcomms/storage)
 "cic" = (
-/obj/machinery/atmospherics/unary/tank/nitrogen{
+/obj/machinery/atmospherics/unary/tank/nitrogen/coldroom{
 	dir = 8
 	},
 /turf/simulated/floor{

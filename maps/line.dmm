@@ -66891,7 +66891,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/tank/nitrogen{
+/obj/machinery/atmospherics/unary/tank/nitrogen/coldroom{
 	dir = 8;
 	initialize_directions = 4
 	},
@@ -88680,7 +88680,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/tank/carbon_dioxide{
+/obj/machinery/atmospherics/unary/tank/carbon_dioxide/coldroom{
 	dir = 4
 	},
 /obj/machinery/requests_console{

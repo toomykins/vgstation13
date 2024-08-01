@@ -54,7 +54,7 @@
 		if(M)
 			admin_text += " in \a [A] (<A HREF='?_src_=vars;Vars=\ref[A]'>VV</A>), carried by [M.real_name] ([M.key]) (<A HREF='?_src_=holder;adminplayeropts=\ref[M]'>PP</A>) (<A HREF='?_src_=holder;adminmoreinfo=\ref[M]'>?</A>)"
 		else
-			admin_text += " in \a [A] (<A HREF='?_src_=vars;Vars=\ref[A]'>VV</A>), last touched by [(A.fingerprintslast ? A.fingerprintslast : "N/A (Last user processed: [usr.ckey])")]"
+			admin_text += " in \a [A] (<A HREF='?_src_=vars;Vars=\ref[A]'>VV</A>), last touched by [(A.fingerprintslast ? A.fingerprintslast : "N/A (Last user processed: [usr ? usr.ckey : "N/A"])")]"
 		message_admins(admin_text, 0, 1)
 	return investigate_text
 
@@ -116,7 +116,7 @@
 	name = "Creatine"
 	id = CREATINE
 	result = CREATINE
-	required_reagents = list(NUTRIMENT = 1, BICARIDINES = 1, HYPERZINES = 1, MUTAGENS = 1)
+	required_reagents = list(NUTRIMENT = 1, BICARIDINES = 1, SAFEHYPERZINES = 1, MUTAGENS = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/discount
@@ -463,7 +463,7 @@
 	name = "Liquid PCP"
 	id = LIQUIDPCP
 	result = LIQUIDPCP
-	required_reagents = list(HYPERZINES = 5, MINDBREAKER = 5)
+	required_reagents = list(SAFEHYPERZINES = 5, MINDBREAKER = 5)
 	required_temp = T0C + 200
 	result_amount = 5
 
@@ -3911,7 +3911,7 @@
 	name = "Ironrot"
 	id = IRONROT
 	result = IRONROT
-	required_reagents = list(AMANATIN = 1, RADIUM = 1, IRON = 1)
+	required_reagents = list(AMANITIN = 1, RADIUM = 1, IRON = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/aminomicin
@@ -4102,11 +4102,11 @@
 			if(isskellington(H) || isskelevox(H) || islich(H))
 				bigBoned(H, created_volume)
 			if(isvox(H))						//Copy paste of the melt power, ack ack
-				H.set_species("Skeletal Vox")
+				H.set_species("Skeletal Vox", transfer_damage = TRUE)
 				H.regenerate_icons()
 				H.visible_message("<span class='danger'>[H.name]'s skeleton jumps right out of their skin, forcefully!</span>")
 				H.drop_all()
-			else if(H.set_species("Skellington"))
+			else if(H.set_species("Skellington", transfer_damage = TRUE))
 				H.regenerate_icons()
 				H.visible_message("<span class='danger'>[H.name]'s skeleton jumps right out of their skin, forcefully!</span>")
 				H.drop_all()

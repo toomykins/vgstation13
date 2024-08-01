@@ -16632,7 +16632,7 @@
 	holomap_draw_override = 1
 	})
 "jek" = (
-/obj/machinery/atmospherics/unary/tank/carbon_dioxide{
+/obj/machinery/atmospherics/unary/tank/carbon_dioxide/coldroom{
 	dir = 4
 	},
 /turf/simulated/floor{

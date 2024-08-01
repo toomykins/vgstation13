@@ -35726,7 +35726,7 @@
 	},
 /area/turret_protected/tcomms_control_room)
 "bio" = (
-/obj/machinery/atmospherics/unary/tank/carbon_dioxide{
+/obj/machinery/atmospherics/unary/tank/carbon_dioxide/coldroom{
 	dir = 1
 	},
 /obj/structure/window/reinforced{

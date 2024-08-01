@@ -24341,7 +24341,7 @@
 	},
 /area/supply/storage)
 "bec" = (
-/obj/machinery/atmospherics/unary/tank/carbon_dioxide{
+/obj/machinery/atmospherics/unary/tank/carbon_dioxide/coldroom{
 	dir = 4
 	},
 /obj/machinery/camera{
@@ -24643,7 +24643,7 @@
 	},
 /area/medical/morgue)
 "beQ" = (
-/obj/machinery/atmospherics/unary/tank/carbon_dioxide{
+/obj/machinery/atmospherics/unary/tank/carbon_dioxide/coldroom{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -25341,7 +25341,7 @@
 /turf/simulated/wall/r_wall,
 /area/turret_protected/ai)
 "bgz" = (
-/obj/machinery/atmospherics/unary/tank/nitrogen{
+/obj/machinery/atmospherics/unary/tank/nitrogen/coldroom{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -103232,7 +103232,7 @@
 	},
 /area/security/perma)
 "wxC" = (
-/obj/machinery/atmospherics/unary/tank/nitrogen{
+/obj/machinery/atmospherics/unary/tank/nitrogen/coldroom{
 	dir = 1
 	},
 /turf/simulated/floor/server,

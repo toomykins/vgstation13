@@ -34909,7 +34909,7 @@
 /turf/space,
 /area)
 "bnz" = (
-/obj/machinery/atmospherics/unary/tank/carbon_dioxide{
+/obj/machinery/atmospherics/unary/tank/carbon_dioxide/coldroom{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -42552,7 +42552,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/supermatter_room)
 "bBy" = (
-/obj/machinery/atmospherics/unary/tank/nitrogen{
+/obj/machinery/atmospherics/unary/tank/nitrogen/coldroom{
 	dir = 4
 	},
 /turf/simulated/floor/plating,

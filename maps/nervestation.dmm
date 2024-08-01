@@ -27889,7 +27889,7 @@
 	},
 /area/science/lab)
 "dGK" = (
-/obj/machinery/atmospherics/unary/tank/nitrogen,
+/obj/machinery/atmospherics/unary/tank/nitrogen/coldroom,
 /obj/machinery/light{
 	dir = 1
 	},

@@ -26792,7 +26792,9 @@
 /turf/simulated/floor,
 /area/science/chargebay)
 "fTx" = (
-/obj/structure/reagent_dispensers/water_cooler,
+/obj/structure/reagent_dispensers/water_cooler{
+	anchored = 1
+	},
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -27614,7 +27616,9 @@
 /turf/space/transit/east,
 /area)
 "gcS" = (
-/obj/structure/reagent_dispensers/water_cooler,
+/obj/structure/reagent_dispensers/water_cooler{
+	anchored = 1
+	},
 /obj/machinery/camera/autoname{
 	dir = 4
 	},
@@ -43026,7 +43030,9 @@
 	},
 /area/derelict/medical)
 "jKm" = (
-/obj/structure/reagent_dispensers/water_cooler,
+/obj/structure/reagent_dispensers/water_cooler{
+	anchored = 1
+	},
 /turf/simulated/floor{
 	dir = 8;
 	icon_state = "neutralcorner"
@@ -83535,7 +83541,9 @@
 	dir = 1;
 	name = "Firelock North"
 	},
-/obj/structure/reagent_dispensers/water_cooler,
+/obj/structure/reagent_dispensers/water_cooler{
+	anchored = 1
+	},
 /turf/simulated/floor{
 	dir = 8;
 	icon_state = "whitegreen"
@@ -84762,7 +84770,9 @@
 	name = "Thermoelectric Engine"
 	})
 "vND" = (
-/obj/structure/reagent_dispensers/water_cooler,
+/obj/structure/reagent_dispensers/water_cooler{
+	anchored = 1
+	},
 /obj/machinery/alarm{
 	pixel_y = 23
 	},
