@@ -69586,7 +69586,8 @@
 "cxe" = (
 /obj/machinery/door/airlock/medical{
 	name = "Patient Room A";
-	req_access_txt = "5"
+	req_access_txt = "5";
+	req_access_dir = 4
 	},
 /obj/structure/cable/yellow{
 	d1 = 4;
@@ -72051,7 +72052,8 @@
 "cBg" = (
 /obj/machinery/door/airlock/medical{
 	name = "Patient Room B";
-	req_access_txt = "5"
+	req_access_txt = "5";
+	req_access_dir = 4
 	},
 /obj/structure/cable/yellow{
 	d1 = 4;
@@ -125445,9 +125447,7 @@
 /area/security/armory)
 "fXl" = (
 /obj/structure/shuttle/engine/propulsion/left,
-/obj/structure/shuttle/diag_wall/smooth{
-	dir = 1
-	},
+/obj/structure/shuttle/diag_wall/smooth,
 /turf/simulated/floor/plating,
 /area/shuttle/escape_pod3)
 "gcL" = (

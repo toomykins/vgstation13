@@ -3031,7 +3031,7 @@
 "agG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door_control{
-	desc = "A remote control-switch..";
+	desc = "A remote control-switch.";
 	id_tag = "tradefloorstation";
 	name = "Trade Shutters";
 	pixel_x = 24;
@@ -43897,8 +43897,8 @@
 "fhr" = (
 /obj/structure/table/glass,
 /obj/item/weapon/reagent_containers/spray/plantbgone,
-/obj/item/seeds/weeds,
-/obj/item/seeds/weeds,
+/obj/item/seeds/dandelionseed,
+/obj/item/seeds/dandelionseed,
 /obj/item/seeds/wheatseed,
 /obj/item/device/radio/intercom{
 	dir = 1;
@@ -58168,7 +58168,8 @@
 "iXp" = (
 /obj/machinery/door/airlock/medical{
 	name = "Patient Room 1";
-	req_access_txt = "5"
+	req_access_txt = "5";
+	req_access_dir = 4
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -60828,7 +60829,8 @@
 "jFY" = (
 /obj/machinery/door/airlock/medical{
 	name = "Patient Room 2";
-	req_access_txt = "5"
+	req_access_txt = "5";
+	req_access_dir = 4
 	},
 /obj/structure/cable{
 	d1 = 4;

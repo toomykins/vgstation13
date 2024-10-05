@@ -142,7 +142,9 @@
 /obj/structure/shuttle/engine/propulsion/left{
 	dir = 8
 	},
-/obj/structure/shuttle/diag_wall/smooth,
+/obj/structure/shuttle/diag_wall/smooth{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/shuttle/escape_pod3)
 "aaz" = (
@@ -1070,9 +1072,6 @@
 	opacity = 0
 	},
 /obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
 /obj/structure/window/reinforced,
 /obj/structure/cable/yellow{
 	d2 = 8;
@@ -1333,9 +1332,6 @@
 	opacity = 0
 	},
 /obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
 /obj/structure/window/reinforced,
 /obj/structure/window/full/reinforced,
 /obj/machinery/door/firedoor/border_only{
@@ -8699,6 +8695,9 @@
 /area/security/hos)
 "aoT" = (
 /obj/machinery/computer/security,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor{
 	icon_state = "dark"
 	},
@@ -10840,6 +10839,9 @@
 /obj/machinery/alarm{
 	dir = 8;
 	pixel_x = 24
+	},
+/obj/machinery/light{
+	dir = 4
 	},
 /turf/simulated/floor/carpet,
 /area/security/hos)
@@ -30323,7 +30325,6 @@
 	},
 /area/engineering/mechanics)
 "aZA" = (
-/obj/structure/closet/toolcloset,
 /obj/machinery/power/apc{
 	dir = 1;
 	pixel_y = 24
@@ -30332,6 +30333,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
+/obj/structure/closet/secure_closet/engineering_mechanic,
 /turf/simulated/floor{
 	dir = 1;
 	icon_state = "dark vault stripe"
@@ -31660,7 +31662,8 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 4
+	dir = 4;
+	icon_state = "pipe-c"
 	},
 /turf/simulated/floor{
 	dir = 6;
@@ -32193,7 +32196,10 @@
 	},
 /area/engineering/mechanics)
 "bcF" = (
-/obj/structure/closet/secure_closet/engineering_mechanic,
+/obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
 /turf/simulated/floor{
 	icon_state = "dark vault stripe"
 	},
@@ -36129,10 +36135,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/port)
 "bjb" = (
-/obj/structure/disposalpipe/trunk{
-	dir = 1
-	},
-/obj/machinery/disposal,
+/obj/structure/closet/toolcloset,
 /turf/simulated/floor{
 	icon_state = "dark vault stripe"
 	},
@@ -67432,7 +67435,7 @@
 "cBU" = (
 /obj/structure/closet,
 /obj/machinery/door_control{
-	desc = "A remote control-switch..";
+	desc = "A remote control-switch.";
 	id_tag = "tradefloor";
 	name = "Trade Shutters";
 	pixel_x = 22;
@@ -76951,16 +76954,6 @@
 /obj/structure/shuttle/diag_wall/smooth,
 /turf/space,
 /area/shuttle/research/station)
-"cVO" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/turf/simulated/floor{
-	dir = 6;
-	icon_state = "dark"
-	},
-/area/engineering/mechanics)
 "dbI" = (
 /obj/structure/cable/green{
 	icon_state = "1-6"
@@ -77673,15 +77666,6 @@
 	icon_state = "cautioncorner"
 	},
 /area/hallway/primary/aft)
-"hOK" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor{
-	dir = 6;
-	icon_state = "dark"
-	},
-/area/engineering/mechanics)
 "hWg" = (
 /obj/structure/cable/green{
 	icon_state = "4-9"
@@ -78164,6 +78148,35 @@
 /obj/effect/glowshroom/single,
 /turf/simulated/floor/plating/vox,
 /area/vox_trading_post/trading_floor)
+"kOk" = (
+/obj/machinery/door/poddoor{
+	density = 0;
+	icon_state = "pdoor0";
+	id_tag = "bridge blast";
+	name = "Bridge Blast Doors";
+	opacity = 0
+	},
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/cable/yellow{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/structure/window/full/reinforced,
+/obj/machinery/door/firedoor/border_only{
+	dir = 4;
+	name = "Firelock East"
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/bridge)
 "kWe" = (
 /turf/simulated/floor{
 	icon_state = "cult";
@@ -79164,6 +79177,11 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 1
 	},
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor{
 	icon_state = "dark vault full"
 	},
@@ -79605,6 +79623,35 @@
 	icon_state = "white"
 	},
 /area/turret_protected/tcomms_control_room)
+"wFB" = (
+/obj/machinery/door/poddoor{
+	density = 0;
+	icon_state = "pdoor0";
+	id_tag = "bridge blast";
+	name = "Bridge Blast Doors";
+	opacity = 0
+	},
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/full/reinforced,
+/obj/machinery/door/firedoor/border_only{
+	dir = 4;
+	name = "Firelock East"
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/plating,
+/area/bridge)
 "wGn" = (
 /obj/machinery/media/receiver/boombox/wallmount/muzak{
 	pixel_y = 24
@@ -186430,7 +186477,7 @@ aaa
 aaa
 aaD
 aaD
-acz
+wFB
 acz
 adH
 aee
@@ -186487,7 +186534,7 @@ myy
 aYx
 bbR
 baD
-cVO
+baD
 bjb
 bdC
 bem
@@ -186989,7 +187036,7 @@ myy
 aYx
 aZv
 baD
-hOK
+baD
 bcE
 bdC
 bek
@@ -195465,7 +195512,7 @@ aaa
 aai
 aaa
 aaD
-aca
+kOk
 aca
 adu
 adT

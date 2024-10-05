@@ -6804,7 +6804,6 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/structure/window/reinforced,
 /obj/machinery/door/poddoor{
 	density = 0;
 	icon_state = "pdoor0";
@@ -6820,9 +6819,6 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
 	dir = 8
 	},
 /obj/structure/window/full/reinforced,
@@ -6830,7 +6826,6 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/structure/window/reinforced,
 /obj/machinery/door/poddoor{
 	density = 0;
 	icon_state = "pdoor0";
@@ -7788,10 +7783,6 @@
 	dir = 8
 	},
 /obj/structure/window/full/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 1
-	},
 /obj/structure/cable{
 	d2 = 8;
 	icon_state = "0-8"
@@ -7818,10 +7809,6 @@
 /obj/structure/cable{
 	d2 = 4;
 	icon_state = "0-4"
-	},
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 1
 	},
 /obj/machinery/door/poddoor{
 	density = 0;
@@ -9742,10 +9729,6 @@
 	},
 /area/security/armory)
 "arw" = (
-/obj/machinery/alarm{
-	name = "Air Alarm (2)";
-	pixel_y = 24
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
@@ -15088,11 +15071,6 @@
 	},
 /area/security/hos)
 "aAR" = (
-/obj/machinery/alarm{
-	dir = 4;
-	name = "Air Alarm (4)";
-	pixel_x = -22
-	},
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
 /obj/machinery/light{
@@ -60734,13 +60712,18 @@
 /area/maintenance/disposal)
 "cfy" = (
 /obj/structure/closet/emcloset/vox,
-/turf/simulated/floor,
-/area/maintenance/disposal)
-"cfz" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor,
+/area/maintenance/disposal)
+"cfz" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced,
+/turf/simulated/floor/plating,
 /area/maintenance/disposal)
 "cfA" = (
 /obj/structure/disposaloutlet,
@@ -62058,18 +62041,27 @@
 /turf/simulated/floor,
 /area/maintenance/disposal)
 "chJ" = (
-/obj/machinery/conveyor{
-	dir = 1;
-	id_tag = "garbage"
-	},
+/obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 1
+	dir = 4
 	},
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj/structure/window/full/reinforced,
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/door/poddoor{
+	density = 0;
+	icon_state = "pdoor0";
+	id_tag = "Secure Gate";
+	name = "Security Blast Door";
+	opacity = 0
+	},
 /turf/simulated/floor/plating,
-/area/maintenance/disposal)
+/area/security/brig)
 "chK" = (
 /obj/machinery/conveyor{
 	dir = 1;
@@ -63230,11 +63222,11 @@
 /turf/simulated/floor,
 /area/maintenance/disposal)
 "cjX" = (
-/obj/machinery/mineral/processing_unit/recycle{
-	id_tag = "recycling_smelter"
-	},
 /obj/structure/window/reinforced{
 	dir = 8
+	},
+/obj/machinery/mineral/processing_unit/recycle{
+	id_tag = "recycling_smelter"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/disposal)
@@ -64041,11 +64033,12 @@
 /turf/simulated/floor,
 /area/maintenance/disposal)
 "clE" = (
-/obj/machinery/mineral/stacking_machine{
-	id_tag = "recycling_stacker"
-	},
 /obj/structure/window/reinforced{
 	dir = 8
+	},
+/obj/machinery/conveyor{
+	dir = 1;
+	id_tag = "garbage"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/disposal)
@@ -89998,7 +89991,7 @@
 /obj/item/weapon/pen,
 /obj/item/weapon/reagent_containers/glass/bottle/mutagen,
 /obj/item/device/analyzer/plant_analyzer,
-/obj/item/weapon/gun/energy/floragun,
+/obj/item/floral_somatoray,
 /turf/simulated/floor/vox{
 	dir = 6;
 	icon_state = "greenbluefull";
@@ -103009,6 +103002,31 @@
 /obj/structure/window/full/reinforced/plasma,
 /turf/simulated/floor/shuttle/plating,
 /area/shuttle/trade/start)
+"gka" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/full/reinforced,
+/obj/structure/cable{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/obj/machinery/door/poddoor{
+	density = 0;
+	icon_state = "pdoor0";
+	id_tag = "Prison Gate";
+	name = "Prison Blast Door";
+	opacity = 0
+	},
+/turf/simulated/floor/plating,
+/area/security/perma)
 "gCK" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/plating,
@@ -103157,6 +103175,15 @@
 	icon_state = "white"
 	},
 /area/medical/medbay)
+"iWQ" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/mineral/stacking_machine{
+	id_tag = "recycling_stacker"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/disposal)
 "jwK" = (
 /obj/structure/bookcase/manuals/xenoarchaeology,
 /turf/simulated/floor/carpet,
@@ -245557,7 +245584,7 @@ ajk
 akp
 adJ
 amF
-amF
+chJ
 aol
 apg
 aqk
@@ -246560,7 +246587,7 @@ ain
 ajm
 akp
 adJ
-amG
+gka
 amG
 aom
 adJ
@@ -253664,12 +253691,12 @@ cbX
 ccR
 cez
 cfz
-cgz
-chJ
+cgA
 cgA
 cgA
 cjX
-cgA
+clE
+iWQ
 clE
 cmD
 cnu
@@ -254166,9 +254193,9 @@ cbX
 cde
 ceA
 cfA
-cgA
 chK
 ciw
+chK
 cjo
 chK
 chK

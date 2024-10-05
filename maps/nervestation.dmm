@@ -6797,7 +6797,7 @@
 "bqw" = (
 /obj/machinery/portable_atmospherics/canister/nitrogen,
 /obj/machinery/door_control{
-	desc = "A remote control-switch..";
+	desc = "A remote control-switch.";
 	id_tag = "tradefloor";
 	name = "Trade Shutters";
 	pixel_y = -22;
@@ -60248,8 +60248,8 @@
 "lsb" = (
 /obj/structure/table/glass,
 /obj/item/weapon/reagent_containers/spray/plantbgone,
-/obj/item/seeds/weeds,
-/obj/item/seeds/weeds,
+/obj/item/seeds/dandelionseed,
+/obj/item/seeds/dandelionseed,
 /obj/item/seeds/wheatseed,
 /obj/item/seeds/wheatseed,
 /turf/simulated/floor/grass,

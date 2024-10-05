@@ -74256,9 +74256,9 @@
 "cLJ" = (
 /obj/structure/table/glass,
 /obj/structure/window/reinforced,
-/obj/item/seeds/weeds,
-/obj/item/seeds/weeds,
-/obj/item/seeds/weeds,
+/obj/item/seeds/dandelionseed,
+/obj/item/seeds/dandelionseed,
+/obj/item/seeds/dandelionseed,
 /obj/item/weapon/reagent_containers/spray/plantbgone,
 /obj/machinery/door/firedoor/border_only{
 	dir = 1;

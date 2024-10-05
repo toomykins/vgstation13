@@ -29708,7 +29708,8 @@
 "bea" = (
 /obj/machinery/door/airlock/medical{
 	name = "Patient Room 1";
-	req_access_txt = "5"
+	req_access_txt = "5";
+	req_access_dir = 2
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/door/firedoor/border_only{
@@ -29753,7 +29754,8 @@
 "bec" = (
 /obj/machinery/door/airlock/medical{
 	name = "Patient Room 2";
-	req_access_txt = "5"
+	req_access_txt = "5";
+	req_access_dir = 2
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/door/firedoor/border_only{
@@ -29807,7 +29809,8 @@
 "bef" = (
 /obj/machinery/door/airlock/medical{
 	name = "Patient Room 3";
-	req_access_txt = "5"
+	req_access_txt = "5";
+	req_access_dir = 2
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/door/firedoor/border_only{
@@ -89114,8 +89117,8 @@
 "djn" = (
 /obj/structure/table/glass,
 /obj/item/weapon/reagent_containers/spray/plantbgone,
-/obj/item/seeds/weeds,
-/obj/item/seeds/weeds,
+/obj/item/seeds/dandelionseed,
+/obj/item/seeds/dandelionseed,
 /obj/item/seeds/wheatseed,
 /obj/item/seeds/wheatseed,
 /turf/simulated/floor/grass,

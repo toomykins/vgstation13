@@ -60639,7 +60639,8 @@
 "cjC" = (
 /obj/machinery/door/airlock/medical{
 	name = "Patient Room 1";
-	req_access_txt = "5"
+	req_access_txt = "5";
+	req_access_dir = 4
 	},
 /obj/structure/cable/yellow{
 	d1 = 4;
@@ -61958,7 +61959,8 @@
 "cme" = (
 /obj/machinery/door/airlock/medical{
 	name = "Patient Room 2";
-	req_access_txt = "5"
+	req_access_txt = "5";
+	req_access_dir = 4
 	},
 /obj/structure/cable/yellow{
 	d1 = 4;
@@ -113988,7 +113990,7 @@
 "erx" = (
 /obj/structure/closet,
 /obj/machinery/door_control{
-	desc = "A remote control-switch..";
+	desc = "A remote control-switch.";
 	id_tag = "tradefloor";
 	name = "Trade Shutters";
 	pixel_x = 22;
@@ -116290,7 +116292,7 @@
 /obj/item/weapon/pen,
 /obj/item/weapon/reagent_containers/glass/bottle/mutagen,
 /obj/item/device/analyzer/plant_analyzer,
-/obj/item/weapon/gun/energy/floragun,
+/obj/item/floral_somatoray,
 /turf/simulated/floor/vox{
 	icon_state = "dark"
 	},
