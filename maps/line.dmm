@@ -11399,7 +11399,7 @@
 	},
 /area/shuttle/nuclearops)
 "cXq" = (
-/obj/machinery/computer/security,
+/obj/machinery/computer/security/nukies,
 /turf/unsimulated/floor{
 	icon_state = "floor4"
 	},
@@ -127682,7 +127682,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "xHS" = (
-/obj/window_grille_spawner/reinforced,
+/obj/structure/grille/window_spawner/reinforced,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "xHU" = (

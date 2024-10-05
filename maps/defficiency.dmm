@@ -83407,7 +83407,7 @@
 	},
 /area/shuttle/nuclearops)
 "daT" = (
-/obj/machinery/computer/security,
+/obj/machinery/computer/security/nukies,
 /turf/unsimulated/floor{
 	icon_state = "floor4"
 	},

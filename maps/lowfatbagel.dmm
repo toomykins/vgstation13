@@ -4220,10 +4220,7 @@
 /turf/simulated/floor,
 /area/maintenance/disposal)
 "aiE" = (
-/obj/machinery/computer/smelting{
-	name = "recycling furnace console";
-	smelter_tag = "recycling_smelter"
-	},
+/obj/machinery/computer/smelting/recycling,
 /turf/simulated/floor,
 /area/maintenance/disposal)
 "aiF" = (
@@ -43503,7 +43500,7 @@
 	},
 /area/centcom/ert)
 "fbn" = (
-/obj/machinery/computer/security,
+/obj/machinery/computer/security/nukies,
 /turf/unsimulated/floor{
 	icon_state = "floor4"
 	},
@@ -80054,7 +80051,7 @@
 /turf/simulated/floor/plating,
 /area)
 "oDr" = (
-/obj/window_grille_spawner/reinforced_plasma/full,
+/obj/structure/grille/window_spawner/reinforced_plasma/full,
 /turf/simulated/floor/plating/airless,
 /area)
 "oDC" = (
@@ -80724,7 +80721,7 @@
 /turf/simulated/floor/asteroid/air,
 /area/security/perma)
 "oLO" = (
-/obj/window_grille_spawner/reinforced_plasma/full,
+/obj/structure/grille/window_spawner/reinforced_plasma/full,
 /turf/simulated/floor/plating/airless{
 	broken = 1;
 	icon_state = "platingdmg1"

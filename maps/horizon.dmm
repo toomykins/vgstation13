@@ -5122,10 +5122,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/disposal)
 "ajI" = (
-/obj/machinery/computer/smelting{
-	name = "Recycling Furnace Console";
-	smelter_tag = "recycling_smelter"
-	},
+/obj/machinery/computer/smelting/recycling,
 /obj/effect/decal/warning_stripes{
 	dir = 4;
 	icon_state = "warning";
@@ -42706,7 +42703,7 @@
 	},
 /area/shuttle/nuclearops)
 "bEq" = (
-/obj/machinery/computer/security,
+/obj/machinery/computer/security/nukies,
 /turf/unsimulated/floor{
 	icon_state = "floor4"
 	},

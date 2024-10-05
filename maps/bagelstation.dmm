@@ -3502,10 +3502,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/machinery/computer/smelting{
-	name = "recycling furnace console";
-	smelter_tag = "recycling_smelter"
-	},
+/obj/machinery/computer/smelting/recycling,
 /turf/simulated/floor,
 /area/maintenance/disposal)
 "ahS" = (
@@ -6321,7 +6318,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint)
 "anp" = (
-/obj/window_grille_spawner/reinforced,
+/obj/structure/grille/window_spawner/reinforced,
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint)
 "anq" = (
@@ -7670,7 +7667,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep)
 "apZ" = (
-/obj/window_grille_spawner/reinforced,
+/obj/structure/grille/window_spawner/reinforced,
 /turf/simulated/floor/plating,
 /area/hallway/primary/starboard)
 "aqa" = (
@@ -24206,7 +24203,7 @@
 /turf/simulated/floor/plating,
 /area/science/rd)
 "aXE" = (
-/obj/window_grille_spawner/reinforced_plasma/full,
+/obj/structure/grille/window_spawner/reinforced_plasma/full,
 /turf/simulated/floor/plating/airless,
 /area/engineering/engine)
 "aXF" = (
@@ -86143,7 +86140,7 @@
 	},
 /area/shuttle/nuclearops)
 "dpc" = (
-/obj/machinery/computer/security,
+/obj/machinery/computer/security/nukies,
 /turf/unsimulated/floor{
 	icon_state = "floor4"
 	},

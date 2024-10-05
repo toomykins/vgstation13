@@ -86585,7 +86585,7 @@
 	},
 /area/shuttle/nuclearops)
 "daP" = (
-/obj/machinery/computer/security,
+/obj/machinery/computer/security/nukies,
 /turf/unsimulated/floor{
 	icon_state = "floor4"
 	},

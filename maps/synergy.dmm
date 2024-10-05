@@ -63215,10 +63215,7 @@
 /turf/simulated/floor,
 /area/maintenance/disposal)
 "cjW" = (
-/obj/machinery/computer/smelting{
-	name = "recycling furnace console";
-	smelter_tag = "recycling_smelter"
-	},
+/obj/machinery/computer/smelting/recycling,
 /turf/simulated/floor,
 /area/maintenance/disposal)
 "cjX" = (
@@ -72055,7 +72052,7 @@
 	},
 /area/shuttle/nuclearops)
 "czM" = (
-/obj/machinery/computer/security,
+/obj/machinery/computer/security/nukies,
 /turf/unsimulated/floor{
 	icon_state = "floor4"
 	},
