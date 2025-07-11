@@ -70,6 +70,9 @@ By design, d1 is the smallest direction and d2 is the highest
 /obj/structure/cable/white
 	color = "#D0D0D0"
 
+/obj/structure/cable/black
+	color = "#222222"
+
 // the power cable object
 /obj/structure/cable/New(loc)
 	..(loc)

@@ -137,6 +137,9 @@
 /obj/item/weapon/handcuffs/cable/white
 	color = "#D0D0D0"
 
+/obj/item/weapon/handcuffs/cable/black
+	color = "#222222"
+
 /obj/item/weapon/handcuffs/cable/attackby(var/obj/item/I, mob/user as mob)
 	..()
 	if(istype(I, /obj/item/stack/rods))
