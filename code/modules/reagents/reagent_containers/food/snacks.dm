@@ -58,13 +58,13 @@
 	var/image/extra_food_overlay
 
 /obj/item/weapon/reagent_containers/food/snacks/Destroy()
-	QDEL_NULL(dip)
 	var/turf/T = get_turf(src)
 	if(contents.len)
 		for(var/atom/movable/A in src)
 			A.forceMove(T)
 		visible_message("<span class='warning'>The items sloppily placed within fall out of \the [src]!</span>")
 	..()
+	QDEL_NULL(dip)
 
 //Proc for effects that trigger on eating that aren't directly tied to the reagents.
 /obj/item/weapon/reagent_containers/food/snacks/proc/after_consume(var/mob/user, var/datum/reagents/reagentreference)
@@ -597,7 +597,7 @@
 			return 1
 		if(slice_act(user,W))
 			return 1
-		
+
 	if (istype(W, /obj/item/candle)) //candles added on afterattack
 		return 0
 
@@ -1337,6 +1337,7 @@
 /obj/item/weapon/reagent_containers/food/snacks/meat/tomatomeat/New()
 	..()
 	reagents.add_reagent(NUTRIMENT, 3)
+	reagents.add_reagent(KILLERPHEROMONES, 3)
 	src.bitesize = 6
 
 /obj/item/weapon/reagent_containers/food/snacks/meat/spiderleg
@@ -1662,6 +1663,18 @@
 	reagents.add_reagent(SILENCER, 6)
 	bitesize = 2
 
+/obj/item/weapon/reagent_containers/food/snacks/nothingburger/New()
+	..()
+	reagents.add_reagent(NUTRIMENT, 6)
+	reagents.add_reagent(NOTHING, 6)
+	bitesize = 2
+
+/obj/item/weapon/reagent_containers/food/snacks/nothingburger
+	name = "nothingburger"
+	desc = "The chef really oversold these."
+	icon_state = "nothingburger"
+	base_crumb_chance = 20
+
 /obj/item/weapon/reagent_containers/food/snacks/donutburger
 	name = "donut burger"
 	desc = "Illegal to have out on code green."
@@ -1704,7 +1717,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/bearburger
 	name = "bear burger"
-	desc = "Fits perfectly in any pic-a-nic basket. Oh bothering to grizzle into this won't be a boo-boo. Honey, it would be beary foolish to hibernate on such a unbearably, ursa majorly good treat!"
+	desc = "Fits perfectly in any pic-a-nic basket. Oh bothering to grizzle into this won't be a boo-boo. Honey, it would be beary foolish to hibernate on such an unbearably, ursa majorly good treat!"
 	icon_state = "bearburger"
 	food_flags = FOOD_MEAT
 	base_crumb_chance = 20
@@ -2603,9 +2616,9 @@
 	if(istype(O, /obj/item/weapon/reagent_containers/food/snacks/pancake))
 		var/obj/item/weapon/reagent_containers/food/snacks/pancake/I = O
 		if (pancakes + I.pancakes > max_pancakes)
-			to_chat(user, "<span class='warning'>sorry, can't go any higher!</span>")
+			to_chat(user, "<span class='warning'>It can't go any higher!</span>")
 			return
-		to_chat(user, "<span class='notice'>...and another one!</span>")
+		to_chat(user, "<span class='notice'>...And another one!</span>")
 		var/amount = I.reagents.total_volume
 		I.reagents.trans_to(src, amount)
 		var/image/img = image(I.icon, src, I.icon_state)
@@ -2620,6 +2633,18 @@
 		qdel(I)
 	else
 		..()
+
+/obj/item/weapon/reagent_containers/food/snacks/pancake/pain
+	name = "paincake"
+	desc = "How tough am I? I ate a bowl of nails for breakfast! Without any milk..."
+	icon_state = "paincake"
+	food_flags = FOOD_ANIMAL
+
+/obj/item/weapon/reagent_containers/food/snacks/pancake/pain/New()
+	..()
+	reagents.add_reagent(NUTRIMENT, 5)
+	reagents.add_reagent(PAINCAKE, 5)
+	bitesize = 2
 
 /obj/item/weapon/reagent_containers/food/snacks/spaghetti
 	name = "Spaghetti"
@@ -4346,7 +4371,7 @@
 	base_crumb_chance = 20
 
 /obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/on_vending_machine_spawn()
-	reagents.chem_temp = FRIDGETEMP_FREEZER
+	reagents.chem_temp = COOKTEMP_READY
 
 /obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/margherita
 	name = "Margherita"
@@ -5741,6 +5766,20 @@
 	name = "quiet slider"
 	desc = "..."
 	icon_state = "slider_mime"
+
+/obj/item/weapon/reagent_containers/food/snacks/slider/nothing
+	name = "nothingslider"
+	desc = "It's less than nothing!"
+	icon_state = "slider_nothing"
+
+/obj/item/weapon/reagent_containers/food/snacks/multispawner/slider/nothing
+	name = "nothingsliders"
+	child_type = /obj/item/weapon/reagent_containers/food/snacks/slider/nothing
+	child_volume = 5
+
+/obj/item/weapon/reagent_containers/food/snacks/multispawner/slider/nothing/New()
+	..()
+	reagents.add_reagent(NOTHING, 10)
 
 /obj/item/weapon/reagent_containers/food/snacks/multispawner/slider/slippery
 	name = "slippery sliders"
