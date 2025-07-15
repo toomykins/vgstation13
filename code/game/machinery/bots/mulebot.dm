@@ -740,7 +740,7 @@ var/global/mulebot_count = 0
 			new_order.returning = auto_return
 		queue_destination(new_order)
 		new_destination = ""
-		awaiting_beacon = 0
+		awaiting_beacon_response = 0
 		src.visible_message("[src] makes a chiming sound!", "You hear a chime.")
 		return 1
 	// -- Command signals --
