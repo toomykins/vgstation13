@@ -1,5 +1,0 @@
-author: SECBATON-GRIFFON
-delete-after: true
-changes:
-- rscadd: P-ray scanners now show the contents of a crate or locker at half alpha
-    when active and one tile nearby.

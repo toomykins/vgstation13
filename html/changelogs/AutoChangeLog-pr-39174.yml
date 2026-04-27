@@ -1,4 +1,0 @@
-author: CrazyAmphibian
-delete-after: true
-changes:
-- bugfix: Jungle animals should overpopulate less and not break the server.

@@ -1,7 +1,0 @@
-author: SECBATON-GRIFFON
-delete-after: true
-changes:
-- bugfix: Station heatmaps now properly crop more accurate minimum and maximum bounds.
-- tweak: Station heatmaps now properly account for shuttles, virtual z levels, and
-    the actual main station z level now.
-- rscadd: Admins now have a verb to view all station z-level heatmaps for themselves.
