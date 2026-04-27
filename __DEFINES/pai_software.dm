@@ -4,6 +4,7 @@
 #define SOFT_RT "redundant threading"
 #define SOFT_VE "volume enhancer"
 #define SOFT_RS "remote signaller"
+#define SOFT_NW "newscaster"
 #define SOFT_WJ "wirejack"
 #define SOFT_CS "chem synth"
 #define SOFT_FS "food synth"
