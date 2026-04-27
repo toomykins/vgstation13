@@ -1,0 +1,5 @@
+author: Eneocho
+delete-after: true
+changes:
+- rscadd: pAIs now have access to a native newscaster module, letting them engage
+    with the news. They cannot post images, since they don't have cameras.
