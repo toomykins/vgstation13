@@ -1,0 +1,6 @@
+author: SECBATON-GRIFFON
+delete-after: true
+changes:
+- spellcheck: Many items no longer have an erroneous "the" after the word "your" in
+    output messages relating to them.
+- bugfix: Disposing chemicals from microwaves now properly puts them in held beakers.
