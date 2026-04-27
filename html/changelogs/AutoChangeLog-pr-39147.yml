@@ -1,0 +1,8 @@
+author: SECBATON-GRIFFON
+delete-after: true
+changes:
+- tweak: Bumping into the diagonal end of a diagonal shuttle wall now moves you "along"
+    the wall cardinally, if the other side facing that end has free space to move
+    into opposite of it or yourself in that direction. If another diagonal wall is
+    on the tile facing the other way, you move directly into the tile beside the first
+    wall.
