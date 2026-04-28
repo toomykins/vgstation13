@@ -1,0 +1,5 @@
+author: Eneocho
+delete-after: true
+changes:
+- bugfix: pAIs should now have proper access to their volume enhancer and newscaster
+    modules.
