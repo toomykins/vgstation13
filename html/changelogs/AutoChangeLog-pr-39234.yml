@@ -1,0 +1,4 @@
+author: CrazyAmphibian
+delete-after: true
+changes:
+- spellcheck: Fixed shield capacitors using watts as a unit of energy
