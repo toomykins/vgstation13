@@ -1,0 +1,6 @@
+author: SECBATON-GRIFFON
+delete-after: true
+changes:
+- rscadd: Cloning consoles can now detect and use multiple scanners and clonepods
+    at once.
+- rscadd: Cloning pods are now available on test_tiny for quick admin testing.
