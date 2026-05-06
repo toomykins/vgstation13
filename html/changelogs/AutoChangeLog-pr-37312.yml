@@ -1,0 +1,7 @@
+author: SECBATON-GRIFFON
+delete-after: true
+changes:
+- rscadd: Surgeons can now use their scalpel to damage specific parts of patients
+    brains to affect performance in them. This includes areas that affect limb usage,
+    headbutting airlocks, speaking gibberish, and being able to use machinery. All
+    other forms of things that caused brain damage still affect all four as normal.
