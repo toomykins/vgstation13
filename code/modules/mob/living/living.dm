@@ -336,7 +336,7 @@
 		return 0	//godmode
 	cloneloss = amount
 
-/mob/living/proc/getBrainLoss()
+/mob/living/proc/getBrainLoss(var/type)
 	return brainloss
 
 /mob/living/proc/adjustBrainLoss(var/amount)
@@ -347,6 +347,7 @@
 		return 0
 
 	brainloss = min(max(brainloss + (amount * brain_damage_modifier), 0),(maxHealth*2))
+	return 1
 
 /mob/living/proc/setBrainLoss(var/amount)
 	if(status_flags & GODMODE)
