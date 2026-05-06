@@ -496,7 +496,36 @@
 		glass_icon_state = "scientists_serendipity"
 		glass_name = "\improper Scientist's Sapience"
 		glass_desc = "Why research what has already been catalogued?"
-		D.origin_tech = "materials=10;engineering=6;plasmatech=5;powerstorage=10;bluespace=10;biotech=7;combat=7;magnets=7;programming=6;syndicate=2" //Maxes everything but Illegal and Anomaly
+		D.origin_tech = "materials=10;engineering=6;plasmatech=5;powerstorage=10;bluespace=10;biotech=7;combat=7;magnets=7;programming=6;syndicate=2" //Maxes everything but Illegal, Alien, NT and Anomaly
+
+/datum/reagent/ethanol/scientists_serendipity/secret
+	name = "Scientist's Secret"
+	id = SCIENTISTS_SECRET
+	description = "Not saying it was aliens, but..."
+	flags = CHEMFLAG_OBSCURING
+
+/datum/reagent/ethanol/scientists_serendipity/secret/when_drinkingglass_master_reagent(var/obj/item/weapon/reagent_containers/food/drinks/drinkingglass/D)
+	. = ..()
+	if(volume < 10)
+		glass_icon_state = "scientists_surprise"
+		glass_name = "\improper Scientist's Surprise"
+		glass_desc = "There is as yet insufficient data for a meaningful answer."
+		D.origin_tech = ""
+		D.set_light(0,0)
+
+	else if(volume < 50)
+		glass_icon_state = "scientists_secret"
+		glass_name = "\improper Scientist's Secret"
+		glass_desc = "You are not cleared to know the contents of this glass."
+		D.origin_tech = "materials=7;engineering=3;plasmatech=2;powerstorage=4;bluespace=6;combat=3;magnets=6;programming=3;xenotech=6"
+		D.set_light(0,0)
+
+	else
+		glass_icon_state = "scientists_supremesecret"
+		glass_name = "\improper Scientist's Supreme Secret"
+		glass_desc = "You will NOT investigate the contents of this glass."
+		D.set_light(1, 4, "#006400") //Dark green, RGB(0,100,0)
+		D.origin_tech = "materials=10;engineering=5;plasmatech=4;powerstorage=5;bluespace=10;biotech=5;combat=6;magnets=6;programming=5;syndicate=2;xenotech=6" //Maxes everything but Illegal, NT and Anomaly
 
 /datum/reagent/ethanol/beepskyclassic
 	name = "Beepsky Classic"
