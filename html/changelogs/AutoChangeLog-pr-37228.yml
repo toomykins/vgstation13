@@ -1,0 +1,12 @@
+author: SECBATON-GRIFFON
+delete-after: true
+changes:
+- rscadd: Cult runes, staffs of change/polymorph/necromancer, chameleon projectors,
+    explosive implants, vocal implants, wheelchairs, syndie toolboxes, living long
+    balloons, taperolls and various reagents can now be arcane tampered.
+- tweak: Arcane tampered drinking glasses now refill over time with the player's blood,
+    have a 75% teleport to a random nearby table on their mob's death redisguising
+    as another kind of drink. They also no longer affect mobs instantly, instead taking
+    2-5 seconds.
+- bugfix: Arcane tampered drinking glasses can no longer bottleflip or be used to
+    glass people with
