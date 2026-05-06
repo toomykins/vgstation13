@@ -1,8 +1,0 @@
-author: SECBATON-GRIFFON
-delete-after: true
-changes:
-- rscadd: Contraband hacked ammolathes now stock FaNshot shells, a type of shotgun
-    shell known for their knockback force in exchange for being as damaging as a beanbag
-    shell. Syndicate members can purchase a beanbag-disguised high force varieties
-    of these for 12TC (8TC warden and HoS discount) that do 30 damage and double the
-    knockback power.
