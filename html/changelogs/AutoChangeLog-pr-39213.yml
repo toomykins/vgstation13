@@ -1,0 +1,4 @@
+author: west3436
+delete-after: true
+changes:
+- bugfix: Fixed blueprints failing to expand shuttles.
