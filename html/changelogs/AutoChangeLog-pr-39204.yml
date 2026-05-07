@@ -1,0 +1,6 @@
+author: Eneocho
+delete-after: true
+changes:
+- rscadd: pAIs can buy the pAI expedition tracker module for 10 RAM. If both the XPS
+    and GPS are installed and used, 10 RAM is refunded since they share dependencies.
+    Uninstalling both will put you back at 100 RAM like normal.
