@@ -1,9 +1,0 @@
-author: west3436
-delete-after: true
-changes:
-- bugfix: Fixed all unattached vents or scrubbers on the NTEV Odyssey.
-- bugfix: Fixed latejoin traders being thrown into space.
-- bugfix: Fixed cases where players would appear to be sent to nullspace when transiting
-    vLevels.
-- bugfix: Fixed the shuttle liftoff sound not properly aligning with the knockdown
-    effect on NTEV Odyssey.
