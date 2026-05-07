@@ -15,6 +15,7 @@
 															SOFT_SS = 30, //records + HUD
 															SOFT_AS = 5,
 															SOFT_PS = 10,
+															SOFT_XS = 10,
 															SOFT_HM = 25
 
 															)
@@ -288,6 +289,18 @@
 			if(!pps_device)
 				pps_device = new(src)
 			pps_device.attack_self(src)
+			if(!sharedfirmware && xps_device)
+				sharedfirmware = TRUE
+				ram += 10
+				to_chat(src, "Shared software dependencies with the expedition tracker, RAM cost refunded.")
+		if(SOFT_XS)
+			if(!xps_device)
+				xps_device = new(src)
+			xps_device.attack_self(src)
+			if(!sharedfirmware && pps_device)
+				sharedfirmware = TRUE
+				ram += 10
+				to_chat(src, "Shared software dependencies with the pAI position tracker, RAM cost refunded.")
 		if(SOFT_HM)
 			if(href_list["switch_target"])
 				if(holo_target == initial(holo_target))
@@ -321,6 +334,15 @@
 						if(target==SOFT_PS)
 							qdel(pps_device)
 							pps_device = null
+							if(sharedfirmware)
+								ram -= cost
+							sharedfirmware = FALSE
+						if(target==SOFT_XS)
+							qdel(xps_device)
+							xps_device = null
+							if(sharedfirmware)
+								ram -= cost
+							sharedfirmware = FALSE
 						if(target==SOFT_HM)
 							qdel(holomap_device)
 							holomap_device = null
@@ -398,6 +420,8 @@
 	for(var/s in software)
 		if(s == SOFT_PS)
 			dat += "<a href='byond://?src=\ref[src];software=[SOFT_PS];sub=0'>pAI Positioning System</a> <br>"
+		if(s == SOFT_XS)
+			dat += "<a href='byond://?src=\ref[src];software=[SOFT_XS];sub=0'>pAI Expedition Tracker</a> <br>"
 		if(s == SOFT_HM)
 			dat += "<a href='byond://?src=\ref[src];software=[SOFT_HM];sub=0'>Holomap Viewer</a> <br>"
 	dat += {"<br>
