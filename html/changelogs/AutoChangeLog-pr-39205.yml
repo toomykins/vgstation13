@@ -1,0 +1,5 @@
+author: Eneocho
+delete-after: true
+changes:
+- rscadd: pAIs can now buy a mesons module for 10 RAM. This module does NOT extend
+    to your user, only giving you the bare basic meson vision.
