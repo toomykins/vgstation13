@@ -1,0 +1,5 @@
+author: west3436
+delete-after: true
+changes:
+- bugfix: Fixed the sun tracking subsystem not working on virtual zlevels, resulting
+    in solar panels failing to produce power in Odyssey.
