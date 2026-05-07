@@ -1,0 +1,4 @@
+author: Copilot
+delete-after: true
+changes:
+- tweak: Empty syringes will now carry disease unless cleaned.
