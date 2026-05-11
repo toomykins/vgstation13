@@ -1,4 +1,0 @@
-author: CrazyAmphibian
-delete-after: true
-changes:
-- tweak: fixes jungle mobs doing a lot of hard deletes, for better performance.
