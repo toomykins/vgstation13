@@ -1,0 +1,4 @@
+author: jwhitak
+delete-after: true
+changes:
+- bugfix: Stun Batons are no longer invisible.
