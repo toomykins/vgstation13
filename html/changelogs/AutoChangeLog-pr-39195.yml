@@ -1,7 +1,0 @@
-author: SECBATON-GRIFFON
-delete-after: true
-changes:
-- rscadd: Phazon can now be placed on girders and uncovered reinforced walls to make
-    phazon walls of each type. When interacted with or hit, the relevant object will
-    be teleported to a free empty space beside any other phazon wall or tile. Phazon
-    tiles can now teleport people beside these walls too.
