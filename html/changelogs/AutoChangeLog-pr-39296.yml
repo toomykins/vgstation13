@@ -1,4 +1,0 @@
-author: Inorien
-delete-after: true
-changes:
-- bugfix: Fixed a large number of hard dels impacting mobs without client
