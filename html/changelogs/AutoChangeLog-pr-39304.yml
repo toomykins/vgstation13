@@ -1,6 +1,0 @@
-author: Inorien
-delete-after: true
-changes:
-- bugfix: Engineering RCD should fail properly now when it does
-- bugfix: Fixed lighting breaking in rare circumstances
-- bugfix: Arcane tampered pocket mirror shouldn't misbehave as much

@@ -1,4 +1,0 @@
-author: CrazyAmphibian
-delete-after: true
-changes:
-- bugfix: Reactors should now properly handle being moved by shuttles

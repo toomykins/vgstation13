@@ -1,4 +1,0 @@
-author: west3436
-delete-after: true
-changes:
-- bugfix: Shuttles will no longer leave ghost lights behind when departing at night.
