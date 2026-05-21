@@ -1,5 +1,0 @@
-author: west3436
-delete-after: true
-changes:
-- bugfix: The Surface Gas Extractor supply pack now includes the correct type of gas
-    miner to pair with the extractor.
