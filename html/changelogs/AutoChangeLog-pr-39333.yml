@@ -1,4 +1,0 @@
-author: CrazyAmphibian
-delete-after: true
-changes:
-- bugfix: Fixed reactor controllers not being created from flatpacks
