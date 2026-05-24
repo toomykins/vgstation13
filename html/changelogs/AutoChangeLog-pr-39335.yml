@@ -1,4 +1,0 @@
-author: SECBATON-GRIFFON
-delete-after: true
-changes:
-- bugfix: Bunsen burners no longer turn invisible when toggling fuelports.
