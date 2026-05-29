@@ -1,0 +1,4 @@
+author: Eneocho
+delete-after: true
+changes:
+- bugfix: Mouse-piloted Spiderbots can now ventcrawl.
