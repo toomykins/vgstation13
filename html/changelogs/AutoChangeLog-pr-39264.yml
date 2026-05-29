@@ -1,0 +1,5 @@
+author: SECBATON-GRIFFON
+delete-after: true
+changes:
+- rscadd: Crew can now be infected with Walker syndrome, a virus symptom causing them
+    to (roundhouse) kick everything in sight.
