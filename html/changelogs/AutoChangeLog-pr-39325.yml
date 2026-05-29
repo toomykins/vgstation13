@@ -1,7 +1,0 @@
-author: CrazyAmphibian
-delete-after: true
-changes:
-- rscadd: Added some missing equipment junglestation's toxins lab
-- tweak: reduced the number of mob spawns on junglestation
-- bugfix: fixed procgen content potentially teleporting the player onto the surface
-    when in space.
