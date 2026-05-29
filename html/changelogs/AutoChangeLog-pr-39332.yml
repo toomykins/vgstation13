@@ -1,0 +1,4 @@
+author: CrazyAmphibian
+delete-after: true
+changes:
+- bugfix: The shard should no longer be able to have negative energy
