@@ -1,0 +1,5 @@
+author: mentgah
+delete-after: true
+changes:
+- rscadd: Added a new option for admins to modify the arcane tamper activation chance
+    on doors.
