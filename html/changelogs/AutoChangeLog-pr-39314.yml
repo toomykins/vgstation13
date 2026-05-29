@@ -1,0 +1,5 @@
+author: SECBATON-GRIFFON
+delete-after: true
+changes:
+- tweak: Plastic flaps now let dead mobs of any kind pass.
+- bugfix: Delivery chutes now let tiny mobs inside.
