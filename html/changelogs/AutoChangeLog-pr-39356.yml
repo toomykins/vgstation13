@@ -1,0 +1,5 @@
+author: MadmanMartian
+delete-after: true
+changes:
+- tweak: Changes the description on the crate weigher to better inform new technicians
+    how it works.
