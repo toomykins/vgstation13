@@ -1,6 +1,0 @@
-author: jwhitak
-delete-after: true
-changes:
-- rscadd: MIDROUNDS now demand that you PREPARE TO FIGHT.
-- bugfix: AFK players will now actually receive MIDROUNDS polling requests.
-- spellcheck: Updated MIDROUNDS polling grammar and slightly increased font size.
