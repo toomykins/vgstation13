@@ -1,4 +1,0 @@
-author: jwhitak
-delete-after: true
-changes:
-- tweak: Syringes deflected by armor now break instead of delete themselves.
