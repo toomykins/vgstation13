@@ -1,0 +1,6 @@
+author: CrazyAmphibian
+delete-after: true
+changes:
+- tweak: reduced the count of jungle mobs
+- bugfix: jungle mobs have been heavily optimized and should result in junglestation
+    running much better, especially as a round goes on
