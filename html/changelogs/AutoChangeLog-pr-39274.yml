@@ -1,0 +1,5 @@
+author: SECBATON-GRIFFON
+delete-after: true
+changes:
+- bugfix: Pulse demon yellowed light spells now have an actual upgrade cost of 10,000
+    watts.
