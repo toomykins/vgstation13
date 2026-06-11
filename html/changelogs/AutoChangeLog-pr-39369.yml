@@ -1,0 +1,13 @@
+author: 13monkeks
+delete-after: true
+changes:
+- tweak: 'Jungle: entire command was scrapped and built from scratch'
+- tweak: 'Jungle: library was was moved to make room for the new command'
+- tweak: 'Jungle: brand new library below science, chapel was redesigned'
+- tweak: 'Jungle: changes made to roads'
+- bugfix: 'Jungle: several errors in brig were fixed'
+- rscadd: 'Jungle: now has a hallway that cuts through command and leads straight
+    to cargo'
+- rscadd: 'Jungle: now has a public garden with dirt mounds that botanists can use
+    to share their plants'
+- rscadd: 'Jungle: lots of new content and small details'
