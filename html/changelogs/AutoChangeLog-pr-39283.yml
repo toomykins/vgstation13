@@ -1,0 +1,5 @@
+author: SECBATON-GRIFFON
+delete-after: true
+changes:
+- tweak: Midround rulesets will now automatically reroll if they are ghost polled
+    and receive no applicants.
