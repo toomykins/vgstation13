@@ -1,0 +1,4 @@
+author: hacker-on-steroids
+delete-after: true
+changes:
+- bugfix: hopefully fixes mech sprites no longer updating as construction progressed
