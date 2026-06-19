@@ -1,5 +1,0 @@
-author: SECBATON-GRIFFON
-delete-after: true
-changes:
-- tweak: Landline phones will now try to drop out of the users hand if getting out
-    of range if on help intent, otherwise old snapping behavior is kept.
