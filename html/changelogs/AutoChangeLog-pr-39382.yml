@@ -1,0 +1,5 @@
+author: SECBATON-GRIFFON
+delete-after: true
+changes:
+- rscadd: Newscasters now support BB-code like formatting, as paper does, in headlines
+    and articles.
