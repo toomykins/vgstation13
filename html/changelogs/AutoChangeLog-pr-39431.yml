@@ -1,5 +1,0 @@
-author: SECBATON-GRIFFON
-delete-after: true
-changes:
-- tweak: Emags can now disable locks on fences.
-- tweak: Fences now properly smooth with full tile doors.
