@@ -1,4 +1,0 @@
-author: hacker-on-steroids
-delete-after: true
-changes:
-- bugfix: Telecomms traceroute should no longer break if an invalid route was requested
