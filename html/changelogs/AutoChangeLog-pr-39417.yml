@@ -1,0 +1,5 @@
+author: Eneocho
+delete-after: true
+changes:
+- rscadd: ID flashing delay can now be modified by admins by looking for the "flash_post_delay"
+    variable.
