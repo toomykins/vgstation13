@@ -1,0 +1,7 @@
+author: CrazyAmphibian
+delete-after: true
+changes:
+- rscadd: increased the size of jungle atmospherics
+- rscadd: added more cameras on jungle
+- tweak: moved some cameras around on jungle
+- tweak: changed some jungle atmos frequencies
