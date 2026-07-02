@@ -1,0 +1,6 @@
+author: 13monkeks
+delete-after: true
+changes:
+- bugfix: 'Deff: removed some weird windows that were causing issues (didnt touch
+    the tinted windows)'
+- bugfix: 'Deff: slightly moved a light fixture in genetics to provide better lighting'
