@@ -1,0 +1,5 @@
+author: jwhitak
+delete-after: true
+changes:
+- bugfix: Recycling machines no longer open locked crates.
+- bugfix: Cargo carts no longer randomly open large locked crates.
