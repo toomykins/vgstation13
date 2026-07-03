@@ -1,0 +1,5 @@
+author: mentgah
+delete-after: true
+changes:
+- rscadd: Tray code was refactored, allowing for items to be picked up from trays
+    individually.
