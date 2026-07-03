@@ -1,0 +1,10 @@
+author: Eneocho
+delete-after: true
+changes:
+- rscadd: Overdosing on Honk Serum will now also permanently give the clumsy mutation,
+    allowing cloned clowns to recover their lost clumsiness, and evildoers to purposefully
+    clumsify individuals, should they acquire enough serum.
+- tweak: Honk Serum overdose amount raised from 30u to 50u.
+- rscadd: Overdosing on 'Nothing' will now permanently remove the clumsy mutation,
+    letting forced clownification victims to regain their dexterity, and evil mimes
+    to prank/punish their clownish counterpart.
