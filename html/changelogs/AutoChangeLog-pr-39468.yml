@@ -1,0 +1,5 @@
+author: mentgah
+delete-after: true
+changes:
+- bugfix: AI radio and station bounced radios should work again (Telecomms relays
+    were added to deff, roid, packed, way and meta)
