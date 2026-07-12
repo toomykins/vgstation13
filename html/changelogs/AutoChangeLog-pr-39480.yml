@@ -1,0 +1,5 @@
+author: mentgah
+delete-after: true
+changes:
+- rscadd: Added a non infinite rice variant of the sushi mat, available in the dinner
+    vend. It can be refilled by using boiled rice on it.
