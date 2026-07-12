@@ -1,0 +1,8 @@
+author: SECBATON-GRIFFON
+delete-after: true
+changes:
+- bugfix: Roswell mech probers now only accept one item at a time.
+- bugfix: Roswell mech probers now properly delete if not inside a chassis.
+- tweak: Roswell mech probers now give message feedback when loaded with an item.
+- tweak: Roswell mechs no longer need prober or abductor stock parts, as their modules
+    are redundant to them.
