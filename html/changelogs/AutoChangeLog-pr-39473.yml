@@ -1,0 +1,5 @@
+author: gallywix4
+delete-after: true
+changes:
+- rscadd: You can now bless a tile without making it slippery.
+- tweak: You need to spill more then 10 units of holy water to make the floor slippery.
