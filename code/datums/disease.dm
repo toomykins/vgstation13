@@ -112,6 +112,31 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 			return 1
 	return 0
 
+// Shortest air-distance in cardinal steps from `from` to `dest` (1 = adjacent), or 0 if the air
+// doesn't connect within max_range. Blocked by walls, closed doors and glass.
+/proc/air_distance(turf/from, turf/dest, max_range = 1)
+	if(!from || !dest || from == dest)
+		return 0
+	var/list/open = list(from)
+	var/list/seen = list(from)
+	for(var/step_i = 1 to max_range)
+		var/list/next = list()
+		for(var/turf/T in open)
+			for(var/direction in cardinal)
+				var/turf/N = get_step(T, direction)
+				if(!N || (N in seen))
+					continue
+				if(SSair.air_blocked(T, N) & AIR_BLOCKED)
+					continue
+				if(N == dest)
+					return step_i
+				seen += N
+				next += N
+		if(!next.len)
+			break
+		open = next
+	return 0
+
 /datum/disease/proc/spread(var/atom/source=null, var/airborne_range = 2,  var/force_spread)
 //	to_chat(world, "Disease [src] proc spread was called from holder [source]")
 
@@ -144,8 +169,17 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 		check_range = 1 // everything else, like infect-on-contact things, only infect things on top of it
 
 	if(isturf(source.loc))
-		for(var/mob/living/carbon/M in oview(check_range, source))
-			if(isturf(M.loc) && quick_AStar(source.loc, M, /turf/proc/AdjacentTurfs, /turf/proc/Distance, check_range, reference="\ref[src]"))
+		var/turf/source_turf = source.loc
+		if(how_spread == AIRBORNE)
+			var/datum/gas_mixture/src_air = source_turf.return_air()
+			if(!src_air || src_air.total_moles() < 1) // vacuum has nothing to carry it
+				return
+		// orange() not oview(): air_distance() is the barrier check, and contagion doesn't need a sightline.
+		for(var/mob/living/carbon/M in orange(check_range, source))
+			if(!isturf(M.loc))
+				continue
+			var/dist = air_distance(source_turf, M.loc, check_range)
+			if(dist && prob(100 / dist)) // adjacent = certain, halved per extra step of air distance
 				M.contract_disease(src, 0, 1, force_spread)
 
 /datum/disease/proc/process()
