@@ -369,15 +369,12 @@
 
 	..()
 
-	var/inflamed = 0
-	for(var/datum/disease/appendicitis/appendicitis in target.viruses)
-		inflamed = 1
-		appendicitis.cure()
-		target.resistances += appendicitis
-
-	if(inflamed)
-		icon_state = "appendixinflamed"
-		name = "inflamed appendix"
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
+		if(H.appendicitis_stage > 0)
+			H.cure_appendicitis()
+			icon_state = "appendixinflamed"
+			name = "inflamed appendix"
 
 /obj/item/organ/internal/eyes/removed(var/mob/living/target,var/mob/living/user)
 

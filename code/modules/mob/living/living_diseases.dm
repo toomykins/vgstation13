@@ -240,3 +240,65 @@
 			if(D.effects.len)
 				for(var/datum/disease2/effect/E in D.effects)
 					E.on_death(src)
+
+
+// ============================================================================
+// Appendicitis - reworked from /datum/disease/appendicitis into a standalone
+// organ condition (it was never a pathogen: non-contagious, surgery-cured).
+// Processed from human Life() via handle_appendicitis(). Behaviour matches the
+// old stage_act() verbatim.
+// ============================================================================
+/mob/living/carbon/human/var/appendicitis_stage = 0
+/mob/living/carbon/human/var/appendicitis_age = 0
+
+/mob/living/carbon/human/proc/give_appendicitis()
+	if(appendicitis_stage <= 0 && internal_organs_by_name["appendix"] && op_stage.appendix != 2.0)
+		appendicitis_stage = 1
+		appendicitis_age = 0
+
+/mob/living/carbon/human/proc/cure_appendicitis()
+	appendicitis_stage = 0
+	appendicitis_age = 0
+
+/mob/living/carbon/human/proc/handle_appendicitis()
+	if(appendicitis_stage <= 0)
+		return
+	// No appendix (removed) means it can't stay inflamed.
+	if(!internal_organs_by_name["appendix"] || op_stage.appendix == 2.0)
+		cure_appendicitis()
+		return
+
+	// Stage progression: old disease used stage_minimum_age 160 + stage_prob 4%.
+	appendicitis_age++
+	if(appendicitis_age > 160 && prob(4) && appendicitis_stage < 4)
+		appendicitis_stage++
+		appendicitis_age = 0
+
+	if(appendicitis_stage == 1)
+		if(prob(5))
+			to_chat(src, "<span class='warning'>You feel a stinging pain in your abdomen!</span>")
+			emote("me", 1, "winces slightly.")
+	if(appendicitis_stage > 1)
+		if(prob(3))
+			to_chat(src, "<span class='warning'>You feel a stabbing pain in your abdomen!</span>")
+			emote("me", 1, "winces painfully.")
+			adjustToxLoss(1)
+	if(appendicitis_stage > 2)
+		if(prob(1))
+			if(nutrition > 100)
+				vomit()
+			else
+				to_chat(src, "<span class='warning'>You gag as you want to throw up, but there's nothing in your stomach!</span>")
+				Knockdown(10)
+				adjustToxLoss(3)
+	if(appendicitis_stage > 3)
+		if(prob(1))
+			to_chat(src, "<span class='warning'>Your abdomen is a world of pain!</span>")
+			Knockdown(10)
+			op_stage.appendix = 2.0
+			var/datum/organ/external/groin = get_organ(LIMB_GROIN)
+			var/datum/wound/W = new /datum/wound/internal_bleeding(20)
+			adjustToxLoss(25)
+			groin.wounds += W
+			groin.internally_bleeding = TRUE
+			cure_appendicitis()

@@ -166,6 +166,7 @@ var/global/list/organ_damage_overlays = list(
 		//Random events (vomiting etc)
 		handle_random_events()
 		handle_virus_updates()
+		handle_appendicitis()
 		//Stuff in the stomach
 		handle_stomach()
 		handle_shock()
