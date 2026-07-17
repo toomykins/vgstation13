@@ -3083,6 +3083,7 @@
 #include "code\modules\virus2\effect\stage_3.dm"
 #include "code\modules\virus2\effect\stage_4.dm"
 #include "code\modules\virus2\effect\stage_special.dm"
+#include "code\modules\virus2\effect\migrated.dm"
 #include "code\modules\virus2\effect\wordlists.dm"
 #include "code\modules\ZAS\_docs.dm"
 #include "code\modules\ZAS\_gas_mixture.dm"
