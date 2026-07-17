@@ -1,0 +1,5 @@
+author: SECBATON-GRIFFON
+delete-after: true
+changes:
+- tweak: Pulse demons can now be detected by T-ray scanners if under tiles. (and picked
+    up through them)
