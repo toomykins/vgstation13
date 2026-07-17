@@ -945,3 +945,126 @@
 			to_chat(mob, "<span class='notice'>[pick("You notice someone in the corner of your eye.", "Is that footsteps?.")]</span>")
 		else
 			mob.hallucination += 5
+
+
+// ============================================================================
+// Predefined diseases bundling the migrated effects, so bottles/events/spells
+// can hand them out via infect_disease2_predefined(). Purely additive: nothing
+// references these categories yet - the rewire step points call sites here.
+// spread carries SPREAD_BLOOD so the disease stays curable/extractable, matching
+// the existing predefined diseases above.
+// ============================================================================
+
+/datum/disease2/disease/predefined/mig_flu
+	form = "The Flu"
+	category = DISEASE_MIG_FLU
+	max_stage = 3
+	spread = SPREAD_AIRBORNE | SPREAD_BLOOD
+	effects = list(new /datum/disease2/effect/flu)
+	origin = "H13N1 Flu Virion"
+
+/datum/disease2/disease/predefined/mig_cold
+	form = "The Cold"
+	category = DISEASE_MIG_COLD
+	max_stage = 3
+	spread = SPREAD_AIRBORNE | SPREAD_BLOOD
+	effects = list(new /datum/disease2/effect/cold)
+	origin = "XY-Rhinovirus"
+
+/datum/disease2/disease/predefined/mig_cold9
+	form = "The Cold"
+	category = DISEASE_MIG_COLD9
+	max_stage = 3
+	spread = SPREAD_CONTACT | SPREAD_BLOOD
+	effects = list(new /datum/disease2/effect/cold9)
+	origin = "ICE9-Rhinovirus"
+
+/datum/disease2/disease/predefined/mig_fluspanish
+	form = "Spanish Inquisition Flu"
+	category = DISEASE_MIG_FLUSPANISH
+	max_stage = 3
+	spread = SPREAD_AIRBORNE | SPREAD_BLOOD
+	effects = list(new /datum/disease2/effect/fluspanish)
+	origin = "1nqu1s1t10n Flu Virion"
+
+/datum/disease2/disease/predefined/mig_gbs
+	form = "GBS"
+	category = DISEASE_MIG_GBS
+	max_stage = 5
+	spread = SPREAD_CONTACT | SPREAD_BLOOD
+	effects = list(new /datum/disease2/effect/gbs)
+	origin = "Gravitokinetic Bipotential SADS+"
+
+/datum/disease2/disease/predefined/mig_fake_gbs
+	form = "GBS"
+	category = DISEASE_MIG_FAKE_GBS
+	max_stage = 5
+	spread = SPREAD_CONTACT | SPREAD_BLOOD
+	effects = list(new /datum/disease2/effect/fake_gbs)
+	origin = "Gravitokinetic Bipotential SADS-"
+
+/datum/disease2/disease/predefined/mig_brainrot
+	form = "Brainrot"
+	category = DISEASE_MIG_BRAINROT
+	max_stage = 4
+	spread = SPREAD_CONTACT | SPREAD_BLOOD
+	effects = list(new /datum/disease2/effect/brainrot)
+	origin = "Cryptococcus Cosmosis"
+
+/datum/disease2/disease/predefined/mig_rhumba
+	form = "The Rhumba Beat"
+	category = DISEASE_MIG_RHUMBA
+	max_stage = 5
+	spread = SPREAD_CONTACT | SPREAD_BLOOD
+	effects = list(new /datum/disease2/effect/rhumba_beat)
+	origin = "Unknown"
+
+/datum/disease2/disease/predefined/mig_pierrot
+	form = "Pierrot's Throat"
+	category = DISEASE_MIG_PIERROT
+	max_stage = 4
+	spread = SPREAD_AIRBORNE | SPREAD_BLOOD
+	effects = list(new /datum/disease2/effect/pierrot_throat)
+	origin = "H0NI<42 Virus"
+
+/datum/disease2/disease/predefined/mig_kingston
+	form = "Yildun Infectious Fusobacter Syndrome"
+	category = DISEASE_MIG_KINGSTON
+	max_stage = 4
+	spread = SPREAD_CONTACT | SPREAD_BLOOD
+	effects = list(new /datum/disease2/effect/kingston)
+	origin = "Baccilli Yiffus"
+
+/datum/disease2/disease/predefined/mig_wizarditis
+	form = "Wizarditis"
+	category = DISEASE_MIG_WIZARDITIS
+	max_stage = 4
+	spread = SPREAD_AIRBORNE | SPREAD_BLOOD
+	effects = list(new /datum/disease2/effect/wizarditis_legacy)
+	origin = "Rincewindus Vulgaris"
+
+/datum/disease2/disease/predefined/mig_magnitis
+	form = "Magnitis"
+	category = DISEASE_MIG_MAGNITIS
+	max_stage = 4
+	spread = SPREAD_AIRBORNE | SPREAD_BLOOD
+	effects = list(new /datum/disease2/effect/magnitis_legacy)
+	origin = "Fukkos Miracos"
+
+/datum/disease2/disease/predefined/mig_retrovirus
+	form = "Retrovirus"
+	category = DISEASE_MIG_RETROVIRUS
+	max_stage = 4
+	spread = SPREAD_CONTACT | SPREAD_BLOOD
+	effects = list(new /datum/disease2/effect/dna_retrovirus)
+	origin = "Retrovirus"
+
+/datum/disease2/disease/predefined/mig_petrification
+	form = "Rapid Petrification"
+	category = DISEASE_MIG_PETRIFICATION
+	max_stage = 4
+	infectionchance = 0
+	infectionchance_base = 0
+	spread = SPREAD_BLOOD
+	effects = list(new /datum/disease2/effect/petrification_warning, new /datum/disease2/effect/petrification)
+	origin = "Rapid Petrification Virus 11Y-ASD"
