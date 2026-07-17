@@ -1068,3 +1068,45 @@
 	spread = SPREAD_BLOOD
 	effects = list(new /datum/disease2/effect/petrification_warning, new /datum/disease2/effect/petrification)
 	origin = "Rapid Petrification Virus 11Y-ASD"
+
+
+// Advance-preset diseases (the culture bottles that used /datum/disease/advance/*).
+/datum/disease2/disease/predefined/mig_adv_cold
+	form = "Cold"
+	category = DISEASE_MIG_ADV_COLD
+	max_stage = 4
+	spread = SPREAD_AIRBORNE | SPREAD_BLOOD
+	effects = list(new /datum/disease2/effect/adv_sneeze)
+	origin = "Engineered Cold"
+
+/datum/disease2/disease/predefined/mig_adv_flu
+	form = "Flu"
+	category = DISEASE_MIG_ADV_FLU
+	max_stage = 4
+	spread = SPREAD_AIRBORNE | SPREAD_BLOOD
+	effects = list(new /datum/disease2/effect/adv_cough)
+	origin = "Engineered Flu"
+
+/datum/disease2/disease/predefined/mig_adv_voice
+	form = "Epiglottis Mutation"
+	category = DISEASE_MIG_ADV_VOICE
+	max_stage = 5
+	spread = SPREAD_AIRBORNE | SPREAD_BLOOD
+	effects = list(new /datum/disease2/effect/adv_voice_change)
+	origin = "Epiglottis Virion"
+
+/datum/disease2/disease/predefined/mig_adv_heal
+	form = "Liver Enhancer"
+	category = DISEASE_MIG_ADV_HEAL
+	max_stage = 5
+	spread = SPREAD_BLOOD
+	effects = list(new /datum/disease2/effect/adv_heal)
+	origin = "Liver Enhancement Virion"
+
+/datum/disease2/disease/predefined/mig_adv_hallucigen
+	form = "Reality Impairment"
+	category = DISEASE_MIG_ADV_HALLUCIGEN
+	max_stage = 5
+	spread = SPREAD_AIRBORNE | SPREAD_BLOOD
+	effects = list(new /datum/disease2/effect/adv_hallucigen)
+	origin = "Hullucigen Virion"

@@ -28,3 +28,8 @@
 #define DISEASE_MIG_MAGNITIS     "mig_magnitis"
 #define DISEASE_MIG_RETROVIRUS   "mig_retrovirus"
 #define DISEASE_MIG_PETRIFICATION "mig_petrification"
+#define DISEASE_MIG_ADV_COLD     "mig_adv_cold"
+#define DISEASE_MIG_ADV_FLU      "mig_adv_flu"
+#define DISEASE_MIG_ADV_VOICE    "mig_adv_voice"
+#define DISEASE_MIG_ADV_HEAL     "mig_adv_heal"
+#define DISEASE_MIG_ADV_HALLUCIGEN "mig_adv_hallucigen"

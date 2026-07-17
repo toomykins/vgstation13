@@ -178,6 +178,20 @@
 	..()
 	reagents.add_reagent(DIETHYLAMINE, 30)
 
+// Fills the bottle's blood with a virus2 disease (migration helper). The disease
+// rides in blood data["virus2"], keyed by ID - the pattern virus2 expects.
+/obj/item/weapon/reagent_containers/glass/bottle/proc/fill_with_virus2(var/datum/disease2/disease/D, var/amount = 20)
+	var/list/blood_data = list(
+		"viruses" = null,
+		"blood_DNA" = null,
+		"blood_type" = "O-",
+		"resistances" = null,
+		"trace_chem" = null,
+		"virus2" = list()
+	)
+	blood_data["virus2"]["[D.uniqueID]-[D.subID]"] = D
+	reagents.add_reagent(BLOOD, amount, blood_data)
+
 /obj/item/weapon/reagent_containers/glass/bottle/flu_virion
 	name = "Flu virion culture bottle"
 	desc = "A small bottle. Contains H13N1 flu virion culture in synthblood medium."
@@ -185,9 +199,7 @@
 
 /obj/item/weapon/reagent_containers/glass/bottle/flu_virion/New()
 	..()
-	var/datum/disease/F = new /datum/disease/advance/flu(0)
-	var/list/data = list("viruses"= list(F))
-	reagents.add_reagent(BLOOD, 20, data)
+	fill_with_virus2(new /datum/disease2/disease/predefined/mig_adv_flu)
 
 /obj/item/weapon/reagent_containers/glass/bottle/epiglottis_virion
 	name = "Epiglottis virion culture bottle"
@@ -196,9 +208,7 @@
 
 /obj/item/weapon/reagent_containers/glass/bottle/epiglottis_virion/New()
 	..()
-	var/datum/disease/F = new /datum/disease/advance/voice_change(0)
-	var/list/data = list("viruses"= list(F))
-	reagents.add_reagent(BLOOD, 20, data)
+	fill_with_virus2(new /datum/disease2/disease/predefined/mig_adv_voice)
 
 /obj/item/weapon/reagent_containers/glass/bottle/liver_enhance_virion
 	name = "Liver enhancement virion culture bottle"
@@ -207,9 +217,7 @@
 
 /obj/item/weapon/reagent_containers/glass/bottle/liver_enhance_virion/New()
 	..()
-	var/datum/disease/F = new /datum/disease/advance/heal(0)
-	var/list/data = list("viruses"= list(F))
-	reagents.add_reagent(BLOOD, 20, data)
+	fill_with_virus2(new /datum/disease2/disease/predefined/mig_adv_heal)
 
 /obj/item/weapon/reagent_containers/glass/bottle/hullucigen_virion
 	name = "Hullucigen virion culture bottle"
@@ -218,9 +226,7 @@
 
 /obj/item/weapon/reagent_containers/glass/bottle/hullucigen_virion/New()
 	..()
-	var/datum/disease/F = new /datum/disease/advance/hullucigen(0)
-	var/list/data = list("viruses"= list(F))
-	reagents.add_reagent(BLOOD, 20, data)
+	fill_with_virus2(new /datum/disease2/disease/predefined/mig_adv_hallucigen)
 
 /obj/item/weapon/reagent_containers/glass/bottle/pierrot_throat
 	name = "Pierrot's Throat culture bottle"
@@ -229,9 +235,7 @@
 
 /obj/item/weapon/reagent_containers/glass/bottle/pierrot_throat/New()
 	..()
-	var/datum/disease/F = new /datum/disease/pierrot_throat(0)
-	var/list/data = list("viruses"= list(F))
-	reagents.add_reagent(BLOOD, 20, data)
+	fill_with_virus2(new /datum/disease2/disease/predefined/mig_pierrot)
 
 /obj/item/weapon/reagent_containers/glass/bottle/cold
 	name = "Rhinovirus culture bottle"
@@ -240,9 +244,7 @@
 
 /obj/item/weapon/reagent_containers/glass/bottle/cold/New()
 	..()
-	var/datum/disease/advance/F = new /datum/disease/advance/cold(0)
-	var/list/data = list("viruses"= list(F))
-	reagents.add_reagent(BLOOD, 20, data)
+	fill_with_virus2(new /datum/disease2/disease/predefined/mig_adv_cold)
 
 /obj/item/weapon/reagent_containers/glass/bottle/random
 	name = "unknown culture bottle"
@@ -292,9 +294,7 @@
 
 /obj/item/weapon/reagent_containers/glass/bottle/retrovirus/New()
 	..()
-	var/datum/disease/F = new /datum/disease/dna_retrovirus(0)
-	var/list/data = list("viruses"= list(F))
-	reagents.add_reagent(BLOOD, 20, data)
+	fill_with_virus2(new /datum/disease2/disease/predefined/mig_retrovirus)
 
 /obj/item/weapon/reagent_containers/glass/bottle/gbs
 	name = "GBS culture bottle"
@@ -304,9 +304,7 @@
 
 /obj/item/weapon/reagent_containers/glass/bottle/gbs/New()
 	create_reagents(20)
-	var/datum/disease/F = new /datum/disease/gbs
-	var/list/data = list("virus"= F)
-	reagents.add_reagent(BLOOD, 20, data)
+	fill_with_virus2(new /datum/disease2/disease/predefined/mig_gbs)
 
 /obj/item/weapon/reagent_containers/glass/bottle/fake_gbs
 	name = "GBS culture bottle"
@@ -315,9 +313,7 @@
 
 /obj/item/weapon/reagent_containers/glass/bottle/fake_gbs/New()
 	..()
-	var/datum/disease/F = new /datum/disease/fake_gbs(0)
-	var/list/data = list("viruses"= list(F))
-	reagents.add_reagent(BLOOD, 20, data)
+	fill_with_virus2(new /datum/disease2/disease/predefined/mig_fake_gbs)
 
 /obj/item/weapon/reagent_containers/glass/bottle/chickenpox
 	name = "Chickenpox culture bottle"
@@ -351,9 +347,7 @@
 
 /obj/item/weapon/reagent_containers/glass/bottle/brainrot/New()
 	..()
-	var/datum/disease/F = new /datum/disease/brainrot(0)
-	var/list/data = list("viruses"= list(F))
-	reagents.add_reagent(BLOOD, 20, data)
+	fill_with_virus2(new /datum/disease2/disease/predefined/mig_brainrot)
 
 var/datum/disease2/disease/magnitis = null
 
