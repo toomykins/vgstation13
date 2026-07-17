@@ -34,15 +34,10 @@
 	bleeding = 1 // monkeys always bite
 	share_contact_diseases(target,block,bleeding)
 
-	if(iscarbon(target))
-		for(var/datum/disease/D in viruses)
-
-			if(istype(D, /datum/disease/jungle_fever) && ishuman(target)) //Jungle fever - special case
-				var/mob/living/carbon/human/H = target
-				var/mob/living/carbon/monkey/M = H.monkeyize()
-				M.contract_disease(D, 1, 0)
-
-			else if(D.spread == "Bite")
-				target.contract_disease(D, 1, 0)
+	// Jungle Fever (virus2): a biting monkey turns a bitten human into an infected monkey.
+	if(ishuman(target) && has_jungle_fever())
+		var/mob/living/carbon/human/H = target
+		var/mob/living/carbon/monkey/M = H.monkeyize()
+		M.infect_disease2_predefined(DISEASE_MIG_JUNGLE, 1, "Jungle Fever bite")
 
 	return ..()

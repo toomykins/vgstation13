@@ -33,3 +33,4 @@
 #define DISEASE_MIG_ADV_VOICE    "mig_adv_voice"
 #define DISEASE_MIG_ADV_HEAL     "mig_adv_heal"
 #define DISEASE_MIG_ADV_HALLUCIGEN "mig_adv_hallucigen"
+#define DISEASE_MIG_JUNGLE       "mig_jungle_fever"

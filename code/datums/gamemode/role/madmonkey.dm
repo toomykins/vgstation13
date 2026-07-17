@@ -1,25 +1,5 @@
-/datum/disease/jungle_fever
-	name = "Jungle Fever"
-	max_stages = 1
-	cure = "None"
-	spread = "Bites"
-	spread_type = SPECIAL
-	affected_species = list("Monkey", "Human")
-	curable = 0
-	desc = "Monkeys with this disease will bite humans, causing humans to spontaneously mutate into a monkey."
-	severity = "Medium"
-	//stage_prob = 100
-	agent = "Kongey Vibrion M-909"
-
-/datum/disease/jungle_fever/stage_act()
-	..()
-	if(!affected_mob || !affected_mob.mind || affected_mob.mind.GetRole(MADMONKEY))
-		return
-	var/datum/role/madmonkey/MM = new
-	MM.AssignToRole(affected_mob.mind,1)
-	MM.Greet(GREET_DEFAULT)
-	MM.OnPostSetup()
-	MM.AnnounceObjectives()
+// Jungle Fever is now a virus2 disease: /datum/disease2/effect/jungle_fever and
+// /datum/disease2/disease/predefined/mig_jungle_fever (see virus2/effect/migrated.dm).
 
 /*============
 *             *
@@ -73,7 +53,7 @@
 			to_chat(antag.current, "<span class='alert'>You feel like you're about to go ape.</span>")
 		else if (countdown <= 0)
 			var/mob/living/carbon/monkey/M = antag.current.monkeyize()
-			M.contract_disease(new /datum/disease/jungle_fever, 1)
+			M.infect_disease2_predefined(DISEASE_MIG_JUNGLE, 1, "Jungle Fever")
 	if (antag && antag.current.hud_used)
 		if(antag.current.hud_used.countdown_display)
 			antag.current.hud_used.countdown_display.overlays.len = 0

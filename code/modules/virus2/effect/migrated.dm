@@ -1110,3 +1110,43 @@
 	spread = SPREAD_AIRBORNE | SPREAD_BLOOD
 	effects = list(new /datum/disease2/effect/adv_hallucigen)
 	origin = "Hullucigen Virion"
+
+
+// --- Jungle Fever (was /datum/disease/jungle_fever, madmonkey antag) ---------
+// The disease makes its host the MADMONKEY antag; spread is the special monkey-
+// bite handling in monkey/combat.dm and other_mobs.dm (rewired to this disease).
+/datum/disease2/effect/jungle_fever
+	name = "Jungle Fever"
+	desc = "Kongey Vibrion M-909. The host goes ape."
+	stage = 1
+	badness = EFFECT_DANGER_HARMFUL
+	restricted = 2
+	chance = 100
+	max_chance = 100
+
+/datum/disease2/effect/jungle_fever/activate(var/mob/living/carbon/mob)
+	if(!mob.mind || mob.mind.GetRole(MADMONKEY))
+		return
+	var/datum/role/madmonkey/MM = new
+	MM.AssignToRole(mob.mind, 1)
+	MM.Greet(GREET_DEFAULT)
+	MM.OnPostSetup()
+	MM.AnnounceObjectives()
+
+/datum/disease2/disease/predefined/mig_jungle_fever
+	form = "Jungle Fever"
+	category = DISEASE_MIG_JUNGLE
+	max_stage = 1
+	infectionchance = 0
+	infectionchance_base = 0
+	spread = SPREAD_BLOOD
+	effects = list(new /datum/disease2/effect/jungle_fever)
+	origin = "Kongey Vibrion M-909"
+
+// TRUE if the mob currently carries the migrated Jungle Fever disease.
+/mob/living/proc/has_jungle_fever()
+	for(var/id in virus2)
+		var/datum/disease2/disease/D = virus2[id]
+		if(D.category == DISEASE_MIG_JUNGLE)
+			return TRUE
+	return FALSE

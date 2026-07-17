@@ -142,10 +142,8 @@
 			O.show_message("<span class='danger'>[name] has bit [ML]!</span>", 1)
 		if(armor >= 100)
 			return
-		if(ismonkey(ML))
-			for(var/datum/disease/D in viruses)
-				if(istype(D, /datum/disease/jungle_fever))
-					ML.contract_disease(D,1,0)
+		if(ismonkey(ML) && has_jungle_fever())
+			ML.infect_disease2_predefined(DISEASE_MIG_JUNGLE, 1, "Jungle Fever bite")
 	else
 		for(var/mob/O in viewers(ML, null))
 			O.show_message("<span class='danger'>[src] has attempted to bite [ML]!</span>", 1)

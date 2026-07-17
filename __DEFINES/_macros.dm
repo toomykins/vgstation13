@@ -315,7 +315,7 @@
 
 #define iswizconvert(H) (H.mind && H.mind.GetRole(WIZARD_CONVERT))
 
-#define isbadmonkey(H) ((/datum/disease/jungle_fever in H.viruses) || (H.mind && H.mind.GetRole(MADMONKEY)))
+#define isbadmonkey(H) ((istype(H, /mob/living) && H:has_jungle_fever()) || (H.mind && H.mind.GetRole(MADMONKEY)))
 
 #define isdeathsquad(H) (H.mind && H.mind.GetRole(DEATHSQUADIE))
 
