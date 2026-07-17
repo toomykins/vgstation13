@@ -302,7 +302,7 @@
 
 /obj/item/weapon/spellbook/oneuse/disabletech/recoil(mob/living/carbon/user as mob)
 	if(istype(user, /mob/living/carbon/human))
-		user.contract_disease(new /datum/disease/robotic_transformation(0), 1)
+		user.infect_disease2_predefined(DISEASE_CYBORG, 1, "Disabletech Spellbook")
 		to_chat(user, "<span class ='warning'>You feel a closer connection to technology...</span>")
 		qdel(src)
 
