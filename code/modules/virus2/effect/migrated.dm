@@ -840,3 +840,108 @@
 				return
 			if(prob(60))
 				scramble(prob(50), mob, rand(50, 75))
+
+
+// ============================================================================
+// Advance-engine symptoms used by the 5 presets (cold=sneeze, flu=cough,
+// voice_change, heal, hullucigen=hallucigen). The old /datum/symptom gated on
+// prob(SYMPTOM_ACTIVATION_PROB) (=3) each tick, so chance = 3 reproduces that.
+// The advance engine's generative/mutation/cure machinery is functionally
+// duplicated by virus2's own crafting, so only these concrete symptoms port.
+// ============================================================================
+
+// --- Sneezing (was /datum/symptom/sneeze) -----------------------------------
+/datum/disease2/effect/adv_sneeze
+	name = "Sneezing"
+	desc = "Sniffles at first, building to full sneezes that spread the disease."
+	stage = 1
+	badness = EFFECT_DANGER_FLAVOR
+	restricted = 2
+	chance = 3
+	max_chance = 3
+
+/datum/disease2/effect/adv_sneeze/activate(var/mob/living/carbon/mob)
+	switch(virus ? virus.stage : 0)
+		if(1, 2, 3)
+			mob.emote("sniff")
+		else
+			mob.emote("sneeze")
+			// Old bonus: forces an extra-range AIRBORNE spread. In virus2 the
+			// disease's own airborne vector + range handles propagation.
+
+// --- Cough (was /datum/symptom/cough) ---------------------------------------
+/datum/disease2/effect/adv_cough
+	name = "Cough"
+	desc = "A cough that, at later stages, forces the sufferer to drop small items."
+	stage = 1
+	badness = EFFECT_DANGER_FLAVOR
+	restricted = 2
+	chance = 3
+	max_chance = 3
+
+/datum/disease2/effect/adv_cough/activate(var/mob/living/carbon/mob)
+	switch(virus ? virus.stage : 0)
+		if(1, 2, 3)
+			to_chat(mob, "<span class='notice'>[pick("You swallow excess mucus.", "You lightly cough.")]</span>")
+		else
+			mob.audible_cough()
+			var/obj/item/I = mob.get_active_hand()
+			if(I && I.w_class < W_CLASS_MEDIUM)
+				mob.drop_item(I)
+
+// --- Voice Change (was /datum/symptom/voice_change) -------------------------
+/datum/disease2/effect/adv_voice_change
+	name = "Voice Change"
+	desc = "Alters the sufferer's voice, sowing confusion in communication."
+	stage = 1
+	badness = EFFECT_DANGER_ANNOYING
+	restricted = 2
+	chance = 3
+	max_chance = 3
+
+/datum/disease2/effect/adv_voice_change/activate(var/mob/living/carbon/mob)
+	switch(virus ? virus.stage : 0)
+		if(1, 2, 3, 4)
+			to_chat(mob, "<span class='notice'>[pick("Your throat hurts.", "You clear your throat.")]</span>")
+		else
+			if(ishuman(mob))
+				var/mob/living/carbon/human/H = mob
+				var/random_name = H.species.makeName(H.gender, H)
+				H.SetSpecialVoice(random_name)
+
+/datum/disease2/effect/adv_voice_change/deactivate(var/mob/living/carbon/mob)
+	if(ishuman(mob))
+		var/mob/living/carbon/human/H = mob
+		H.UnsetSpecialVoice()
+
+// --- Toxic Filter / Heal (was /datum/symptom/heal) --------------------------
+/datum/disease2/effect/adv_heal
+	name = "Toxic Filter"
+	desc = "The disease filters toxins from the host's bloodstream."
+	stage = 1
+	badness = EFFECT_DANGER_HELPFUL
+	restricted = 2
+	chance = 3
+	max_chance = 3
+
+/datum/disease2/effect/adv_heal/activate(var/mob/living/carbon/mob)
+	switch(virus ? virus.stage : 0)
+		if(4, 5)
+			mob.adjustToxLoss(-rand(1, 2))
+
+// --- Hallucigen (was /datum/symptom/hallucigen) -----------------------------
+/datum/disease2/effect/adv_hallucigen
+	name = "Hallucigen"
+	desc = "Brings on short bouts of hallucination."
+	stage = 1
+	badness = EFFECT_DANGER_HINDRANCE
+	restricted = 2
+	chance = 3
+	max_chance = 3
+
+/datum/disease2/effect/adv_hallucigen/activate(var/mob/living/carbon/mob)
+	switch(virus ? virus.stage : 0)
+		if(1, 2, 3, 4)
+			to_chat(mob, "<span class='notice'>[pick("You notice someone in the corner of your eye.", "Is that footsteps?.")]</span>")
+		else
+			mob.hallucination += 5
