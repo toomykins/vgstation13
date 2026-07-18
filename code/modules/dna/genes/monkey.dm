@@ -70,10 +70,6 @@
 			O.dna = M.dna
 			M.dna = null
 
-	for(var/datum/disease/D in M.viruses)
-		O.viruses += D
-		D.affected_mob = O
-		M.viruses -= D
 	O.virus2 = virus_copylist(M.virus2)
 	if (M.immune_system)
 		M.immune_system.transfer_to(O)

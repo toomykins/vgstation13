@@ -237,10 +237,6 @@ Subject's pulse: ??? BPM"})
 	else
 		message += "<br><span class='notice'>No pathogen detected in subject's blood.</span>"
 
-	for(var/datum/disease/D in M.viruses)
-		if(!D.hidden[SCANNER])
-			message += "<br><span class='warning'><b>Warning: [D.form] Detected</b><br>Name: [D.name].<br>Type: [D.spread].<br>Stage: [D.stage]/[D.max_stages].<br>Possible Cure: [D.cure]</span>"
-
 	if(M.getCloneLoss())
 		message += "<br><span class='warning'>Genetic decomposition detected.</span>"
 	if(M.has_brain_worms())

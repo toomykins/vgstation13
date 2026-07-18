@@ -159,10 +159,6 @@ var/list/infected_cleanables = list()
 		pathogen = null
 
 	blood_list -= src
-	for(var/datum/disease/D in viruses)
-		D.cure(0)
-		D.holder = null
-
 	if(counts_as_blood)
 		bloodspill_remove()
 

@@ -400,6 +400,26 @@
 	restricted = 2
 	chance = 100
 	max_chance = 100
+	affect_voice = 1
+	affect_voice_active = 1
+
+// Faithful port of the old say.dm HONK-garble: replaces up to `stage` words with
+// HONK, prob(3 * stage) each, skipping words with speech modifiers.
+/datum/disease2/effect/pierrot_throat/affect_mob_voice(var/datum/speech/speech)
+	if(!virus)
+		return
+	var/list/temp_message = splittext(speech.message, " ")
+	var/list/pick_list = list()
+	for(var/i = 1, i <= temp_message.len, i++)
+		pick_list += i
+	for(var/i = 1, ((i <= virus.stage) && (i <= temp_message.len)), i++)
+		if(prob(3 * virus.stage))
+			var/H = pick(pick_list)
+			if(findtext(temp_message[H], "*") || findtext(temp_message[H], ";") || findtext(temp_message[H], ":"))
+				continue
+			temp_message[H] = "HONK"
+			pick_list -= H
+		speech.message = jointext(temp_message, " ")
 
 /datum/disease2/effect/pierrot_throat/activate(var/mob/living/carbon/mob)
 	if(mob.reagents && mob.reagents.has_reagent(BANANA) && prob(75))

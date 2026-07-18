@@ -86,7 +86,6 @@
 		"all_chems" = H.reagents.reagent_list,
 		"btype" = H.dna.b_type,
 		"disabilities" = H.sdisabilities,
-		"tg_diseases_list" = H.viruses,
 		"lung_ruptured" = H.is_lung_ruptured(),
 		"external_organs" = H.organs.Copy(),
 		"internal_organs" = H.internal_organs.Copy()
@@ -149,10 +148,6 @@
 			continue //no repeats
 		else
 			dat += text("<font color='black'>Detected</font> <span class='notice'>[R.volume]</span> <font color='black'>units of</font> <span class='notice'>[R.name]</span><BR>")
-	for(var/datum/disease/D in occ["tg_diseases_list"])
-		if(!D.hidden[SCANNER])
-			dat += text("<BR><font color='red'><B>Warning: [D.form] Detected</B>\nName: [D.name].\nType: [D.spread].\nStage: [D.stage]/[D.max_stages].\nPossible Cure: [D.cure]</FONT><BR>")
-
 	dat += "<HR><table border='1'>"
 	dat += "<tr>"
 	dat += "<th>Organ</th>"

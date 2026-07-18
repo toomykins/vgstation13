@@ -74,10 +74,6 @@
 		Mo.setToxLoss(L.getToxLoss())
 		Mo.setOxyLoss(L.getOxyLoss())
 		Mo.stat = L.stat
-		for(var/datum/disease/D in L.viruses)
-			Mo.viruses += D
-			D.affected_mob = Mo
-			L.viruses -= D //But why?
 		Mo.virus2 = virus_copylist(L.virus2)
 		if (L.immune_system)
 			L.immune_system.transfer_to(Mo)

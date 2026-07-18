@@ -322,7 +322,7 @@
 
 /obj/item/weapon/reagent_containers/glass/bottle/chickenpox/New()
 	..()
-	var/datum/disease/F = new /datum/disease2/effect/chickenpox(0)
+	var/datum/disease2/effect/F = new /datum/disease2/effect/chickenpox(0)
 	var/list/data = list("viruses"= list(F))
 	reagents.add_reagent(BLOOD, 20, data)
 

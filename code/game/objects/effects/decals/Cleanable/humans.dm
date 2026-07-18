@@ -266,8 +266,6 @@ var/global/list/blood_list = list()
 	fake_DNA = "viral sputum splatters"
 
 /obj/effect/decal/cleanable/blood/viralsputum/Destroy()
-	for(var/datum/disease/D in viruses)
-		D.cure(0)
 	..()
 
 
@@ -286,11 +284,6 @@ var/global/list/blood_list = list()
 
 				if(virus2?.len)
 					b.virus2 = filter_disease_by_spread(virus_copylist(virus2),required = SPREAD_BLOOD)
-
-				for(var/datum/disease/D in src.viruses)
-					var/datum/disease/ND = D.Copy(1)
-					b.viruses += ND
-					ND.holder = b
 
 			anchored = FALSE
 			throw_at(get_step(src, direction),1,1)//will cover hit humans in blood

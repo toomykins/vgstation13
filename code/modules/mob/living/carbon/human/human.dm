@@ -945,9 +945,6 @@
 	for(var/datum/organ/internal/I in internal_organs)
 		I.damage = 0
 
-	for (var/datum/disease/virus in viruses)
-		virus.cure()
-
 	..()
 
 /mob/living/carbon/human/proc/is_lung_ruptured()

@@ -755,17 +755,20 @@ var/list/admin_verbs_mod = list(
 	log_admin("[key_name(usr)] toggled [key_name(T)] invisibility.")
 	message_admins("<span class='notice'>[key_name_admin(usr)] toggled [key_name(T)] invisibility.</span>", 1)
 
-/client/proc/give_disease(mob/T as mob in mob_list) // -- Giacom
+/client/proc/give_disease(mob/living/T as mob in mob_list) // -- Giacom
 	set category = "Fun"
 	set name = "Give Disease"
 	set desc = "Gives a Disease to a mob."
-	var/datum/disease/D = input("Choose the disease to give to that guy", "ACHOO") as null|anything in diseases
-	if(!D)
+	if(!istype(T))
+		to_chat(usr, "<span class='warning'>That mob can't carry diseases.</span>")
 		return
-	T.contract_disease(new D, 1)
+	var/category = input("Choose the disease to give to that guy", "ACHOO") as null|anything in global_diseases
+	if(!category)
+		return
+	T.infect_disease2_predefined(category, 1, "Admin (given by [key_name(usr)])")
 	feedback_add_details("admin_verb","GD") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	log_admin("[key_name(usr)] gave [key_name(T)] the disease [D].")
-	message_admins("<span class='notice'>[key_name_admin(usr)] gave [key_name(T)] the disease [D].</span>", 1)
+	log_admin("[key_name(usr)] gave [key_name(T)] the disease [category].")
+	message_admins("<span class='notice'>[key_name_admin(usr)] gave [key_name(T)] the disease [category].</span>", 1)
 
 /client/proc/togglebuildmodeself()
 	set name = "Toggle Build Mode Self"

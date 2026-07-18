@@ -132,18 +132,6 @@
 	if(..())
 		return 1
 
-	//--------------OLD DISEASE CODE----------------------
-	if(self.data && self.data["viruses"])
-		for(var/datum/disease/D in self.data["viruses"])
-			//var/datum/disease/virus = new D.type(0, D, 1)
-			if(D.spread_type == SPECIAL || D.spread_type == NON_CONTAGIOUS) //We don't spread
-				continue
-			if(method == TOUCH)
-				M.contract_disease(D)
-			else //Injected
-				M.contract_disease(D, 1, 0)
-	//----------------------------------------------------
-
 	if(iscarbon(M))
 		var/mob/living/L = M
 		if(L.can_be_infected() && self.data && self.data["virus2"]) //Infecting

@@ -68,10 +68,6 @@
 	src.visible_message("<span class='danger'>\The [M] has [attacktype] \the [src]!</span>", "<span class='userdanger'>You were [attacktype] by \the [M]!</span>")
 	M.do_attack_animation(src, M)
 
-	for(var/datum/disease/D in M.viruses)
-		if(D.spread == "Bite")
-			contract_disease(D,1,0)
-
 	apply_damage(damage, BRUTE, affecting)
 	attack_hand_contact_diseases(M, affecting, FALSE, TRUE)
 

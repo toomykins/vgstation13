@@ -305,9 +305,7 @@ var/list/infected_items = list()
 // Returns 1 if patient has old-style disease that medHUDs would pick up.
 // Otherwise returns 0
 /proc/has_recorded_disease(var/mob/living/carbon/patient)
-	for(var/datum/disease/D in patient.viruses)
-		if(!D.hidden[SCANNER])
-			return 1
+	// Legacy /datum/disease system removed; only virus2 remains.
 	return 0
 
 // combination of above two procs

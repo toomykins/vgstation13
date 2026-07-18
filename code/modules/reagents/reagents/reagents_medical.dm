@@ -68,11 +68,6 @@
 	M.confused = 0
 	M.sleeping = 0
 	M.remove_jitter()
-	for(var/datum/disease/D in M.viruses)
-		D.spread = "Remissive"
-		D.stage--
-		if(D.stage < 1)
-			D.cure()
 	for(var/A in M.virus2)
 		var/datum/disease2/disease/D2 = M.virus2[A]
 		D2.stage--
@@ -1206,11 +1201,6 @@ var/global/list/charcoal_doesnt_remove=list(
 		M.AdjustDizzy(-15)
 	if(M.confused)
 		M.remove_confused(5)
-	for(var/datum/disease/D in M.viruses) //Diseases that work under the second rework of viruses, or "Viro 3"
-		D.spread = "Remissive"
-		D.stage--
-		if(D.stage < 1)
-			D.cure()
 	if(iscarbon(M)) //Can we support "Viro 2" diseases?
 		var/mob/living/carbon/C = M
 		for(var/A in C.virus2)

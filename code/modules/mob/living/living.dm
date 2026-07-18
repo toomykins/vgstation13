@@ -627,8 +627,6 @@ Thanks.
 		H.op_stage.butt = SURGERY_HAS_A_BUTT
 		H.op_stage.butt_replace = SURGERY_BEGIN_BUTT_REPLACE
 
-	for(var/datum/disease/D in viruses)
-		D.cure(0)
 	for (var/ID in virus2)
 		var/datum/disease2/disease/V = virus2[ID]
 		V.cure(src)
