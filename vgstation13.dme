@@ -2573,7 +2573,6 @@
 #include "code\modules\reagents\machinery\chem_master.dm"
 #include "code\modules\reagents\machinery\electrolyzer.dm"
 #include "code\modules\reagents\machinery\mortar.dm"
-#include "code\modules\reagents\machinery\pandemic.dm"
 #include "code\modules\reagents\machinery\reagentgrinder.dm"
 #include "code\modules\reagents\machinery\thermometer.dm"
 #include "code\modules\reagents\reagent_containers\blood_pack.dm"
