@@ -1,4 +1,0 @@
-author: Inorien
-delete-after: true
-changes:
-- bugfix: Fixed a bug that could stall round start
