@@ -1,5 +1,0 @@
-author: west3436
-delete-after: true
-changes:
-- bugfix: Fixed imprecise teleportation sending players to adjacent vLevels or into
-    vLevel border turfs.
