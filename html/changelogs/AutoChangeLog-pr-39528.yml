@@ -1,4 +1,0 @@
-author: gallywix4
-delete-after: true
-changes:
-- bugfix: Cult tomes are no longer invisible inside bookshelfs.
