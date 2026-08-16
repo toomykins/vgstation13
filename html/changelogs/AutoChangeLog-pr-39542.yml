@@ -1,4 +1,0 @@
-author: Pancakemines
-delete-after: true
-changes:
-- bugfix: Fixed a bug that made the protolathe stuck when printing portable magnets.

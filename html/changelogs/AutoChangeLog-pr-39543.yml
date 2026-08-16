@@ -1,4 +1,0 @@
-author: Pancakemines
-delete-after: true
-changes:
-- tweak: Device analyzers show loaded designs when examined.
