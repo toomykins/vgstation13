@@ -1,0 +1,4 @@
+author: hacker-on-steroids
+delete-after: true
+changes:
+- bugfix: body scanners no longer print reports without power
