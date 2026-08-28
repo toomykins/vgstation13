@@ -94,6 +94,13 @@
 		if(!goal)
 			break
 
+		if(get_dist(src, goal) <= chase_min)
+			chase_stuck = 0
+			chase_jps_steps = 0
+			chase_path = null
+			sleep(delay)
+			continue
+
 		if(chase_jps_steps > 0)
 			// Routing mode.
 			if(!length(chase_path) || chase_path_target != chase_target || (chase_path_goal && get_dist(chase_path_goal, goal) > CHASE_REPLAN_DRIFT))
