@@ -104,6 +104,7 @@
 		return 0
 	if(!.)
 		walk(src, 0)
+		stop_chase()
 		return 0
 	if(client && !deny_client_move)
 		return 0
@@ -122,6 +123,10 @@
 					EscapeConfinement()
 				var/new_target = FindTarget()
 				GiveTarget(new_target)
+				// Chase on the acquiring tick rather than idling a full 2s AI tick.
+				if(stance == HOSTILE_STANCE_ATTACK && !(flags & INVULNERABLE))
+					MoveToTarget()
+					DestroySurroundings()
 
 			if(HOSTILE_STANCE_ATTACK)
 				if(!(flags & INVULNERABLE))
@@ -313,9 +318,6 @@
 
 	LostTarget()
 
-/mob/living/simple_animal/hostile/proc/Goto(var/target, var/delay, var/minimum_distance)
-	start_walk_to(target, minimum_distance, delay)
-
 /mob/living/simple_animal/hostile/adjustBruteLoss(var/damage)
 	..(damage)
 	if(!stat && search_objects < 3)//Not unconscious, and we don't ignore mobs
@@ -363,11 +365,13 @@
 	stance = HOSTILE_STANCE_IDLE
 	target = null
 	walk(src, 0)
+	stop_chase()
 	LoseAggro()
 
 /mob/living/simple_animal/hostile/proc/LostTarget()
 	stance = HOSTILE_STANCE_IDLE
 	walk(src, 0)
+	stop_chase()
 	LoseAggro()
 
 //////////////END HOSTILE MOB TARGETTING AND AGGRESSION////////////
@@ -375,6 +379,7 @@
 /mob/living/simple_animal/hostile/death(var/gibbed = FALSE)
 	LoseAggro()
 	walk(src, 0)
+	stop_chase()
 	if(hivelord)
 		if(src in hivelord.broods)
 			hivelord.broods.Remove(src)
