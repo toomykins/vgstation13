@@ -39,6 +39,7 @@
 		return
 	if(!target)
 		return
+	walk(src, 0)
 	if(delay > 0)
 		set_glide_size(DELAY2GLIDESIZE(delay))
 	chase_target = target

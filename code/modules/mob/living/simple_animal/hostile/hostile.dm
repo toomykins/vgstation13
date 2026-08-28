@@ -299,6 +299,7 @@
 			if(canmove && space_check())
 				if(retreat_distance != null && target_distance <= retreat_distance) //If we have a retreat distance, check if we need to run from our target
 					before_retreat()
+					stop_chase()
 					walk_away(src,target,retreat_distance,move_to_delay)
 				else
 					Goto(target,move_to_delay,minimum_distance)//Otherwise, get to our minimum distance so we chase them
