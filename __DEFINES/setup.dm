@@ -1780,6 +1780,7 @@ var/proccalls = 1
 
 //Glidesize
 #define INERTIA_MOVEDELAY 5
+#define PUSH_SWAP_GLIDE_DELAY 2
 #define FRACTIONAL_GLIDESIZES 1
 #ifdef FRACTIONAL_GLIDESIZES
 #define DELAY2GLIDESIZE(delay) (WORLD_ICON_SIZE / max(Ceiling(delay / world.tick_lag), 1))
