@@ -1,0 +1,4 @@
+author: Pancakemines
+delete-after: true
+changes:
+- bugfix: Spiders wont get stuck trying to web things infinitely.
