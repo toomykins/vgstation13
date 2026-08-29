@@ -494,7 +494,7 @@ var/global/jps_chase_searches = 0
 	return smash_flags & SMASH_LIGHT_STRUCTURES
 
 /obj/structure/girder/is_smashable_barrier(smash_flags)
-	return smash_flags & SMASH_LIGHT_STRUCTURES
+	return smash_flags & SMASH_WALLS
 
 /obj/structure/emergency_shield/is_smashable_barrier(smash_flags)
 	return smash_flags & SMASH_LIGHT_STRUCTURES

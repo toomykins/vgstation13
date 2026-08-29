@@ -215,7 +215,7 @@
 	if(loc == get_turf(target))
 		return at_path_target()
 	var/turf/next = path[1]
-	if(istype(next, /turf/simulated) || (bot_flags & BOT_SPACEWORTHY))
+	if(!SSpathfinder.space_type_cache[next.type] || (bot_flags & BOT_SPACEWORTHY))
 		step_to(src, next)
 		if(get_turf(src) == next)
 			path -= next
@@ -289,7 +289,7 @@
 		patrol_path = list()
 		return at_patrol_target()
 	var/turf/next = patrol_path[1]
-	if(istype(next, /turf/simulated) || (bot_flags & BOT_SPACEWORTHY))
+	if(!SSpathfinder.space_type_cache[next.type] || (bot_flags & BOT_SPACEWORTHY))
 		step_to(src, next)
 		if(get_turf(src) == next)
 			frustration = 0

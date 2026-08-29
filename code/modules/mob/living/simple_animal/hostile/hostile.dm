@@ -497,6 +497,11 @@
 /mob/living/simple_animal/hostile/proc/DestroySurroundings()
 	if(environment_smash_flags & SMASH_LIGHT_STRUCTURES)
 		EscapeConfinement()
+		var/obj/blocker = path_barrier()
+		if(blocker)
+			hostile_interest = initial(hostile_interest)
+			UnarmedAttack(blocker, TRUE)
+			return
 		var/list/smash_dirs = list(0)
 		if(!target || !CanAttack(target))
 			smash_dirs |= alldirs //if no target, attack everywhere

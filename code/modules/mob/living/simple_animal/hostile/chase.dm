@@ -58,15 +58,16 @@
 /mob/living/simple_animal/hostile/proc/compute_chase_path(turf/goal)
 	var/reach = vision_range * 3
 	var/direct = get_dist(src, goal)
+	var/stop_at = (chase_min > 1) ? chase_min : 0
 	// Clean route only.
-	var/list/clean = get_path_to(src, chase_target, max_distance = reach, mintargetdist = chase_min, simulated_only = FALSE, diagonally = TRUE, best_effort = FALSE)
+	var/list/clean = get_path_to(src, chase_target, max_distance = reach, mintargetdist = stop_at, simulated_only = FALSE, diagonally = TRUE, best_effort = FALSE)
 	jps_chase_searches++
 	if(length(clean) && length(clean) <= max(direct * CHASE_SMASH_DETOUR_FACTOR, direct + 4))
 		chase_smashing = FALSE
 		return clean
 	// No clean route worth taking - smash through, if we can.
 	if(environment_smash_flags & (SMASH_LIGHT_STRUCTURES | SMASH_CONTAINERS))
-		var/list/smashed = get_path_to(src, chase_target, max_distance = reach, mintargetdist = chase_min, simulated_only = FALSE, diagonally = TRUE, best_effort = TRUE, smash_flags = environment_smash_flags)
+		var/list/smashed = get_path_to(src, chase_target, max_distance = reach, mintargetdist = stop_at, simulated_only = FALSE, diagonally = TRUE, best_effort = TRUE, smash_flags = environment_smash_flags)
 		jps_chase_searches++
 		if(length(smashed))
 			chase_smashing = TRUE
@@ -75,7 +76,37 @@
 	chase_smashing = FALSE
 	if(length(clean))
 		return clean
-	return get_path_to(src, chase_target, max_distance = reach, mintargetdist = chase_min, simulated_only = FALSE, diagonally = TRUE, best_effort = TRUE)
+	return get_path_to(src, chase_target, max_distance = reach, mintargetdist = stop_at, simulated_only = FALSE, diagonally = TRUE, best_effort = TRUE)
+
+/mob/living/simple_animal/hostile/proc/path_barrier()
+	if(!chase_smashing || !length(chase_path))
+		return null
+	var/turf/here = get_turf(src)
+	var/turf/next_step = chase_path[1]
+	if(!here || !next_step)
+		return null
+	for(var/obj/O in here)
+		if((O.flow_flags & ON_BORDER) && !O.CanPathPass(null, get_dir(here, next_step), src) && O.is_smashable_barrier(environment_smash_flags) && Adjacent(O))
+			return O
+	for(var/obj/O in next_step)
+		if(!O.CanPathPass(null, get_dir(next_step, here), src) && O.is_smashable_barrier(environment_smash_flags) && Adjacent(O))
+			return O
+	return null
+
+/mob/living/simple_animal/hostile/proc/step_diagonal(turf/next_step)
+	var/turf/here = get_turf(src)
+	var/heading = get_dir(here, next_step)
+	if(!here || !(heading & (heading - 1)))
+		return Move(next_step, heading)
+	var/turf/vertical = get_step(here, heading & (NORTH|SOUTH))
+	if(vertical && !vertical.density && !here.LinkBlockedWithAccess(vertical, src, null) && !vertical.LinkBlockedWithAccess(next_step, src, null))
+		return Move(next_step, heading)
+	var/turf/horizontal = get_step(here, heading & (EAST|WEST))
+	if(horizontal && !horizontal.density && !here.LinkBlockedWithAccess(horizontal, src, null) && !horizontal.LinkBlockedWithAccess(next_step, src, null))
+		if(Move(horizontal, heading & (EAST|WEST)))
+			return Move(next_step, heading & (NORTH|SOUTH))
+		return FALSE
+	return Move(next_step, heading)
 
 // Self-scheduling walker: charge by beeline, fall back to a short JPS burst when blocked.
 // A runtime anywhere in the step loop kills the proc outright, so the `chase_walking = FALSE` at the
@@ -91,16 +122,21 @@
 	chase_walking = TRUE
 	while(!gcDestroyed && !stat && chase_target && world.time < chase_active_until)
 		chase_heartbeat = world.time
+		set_glide_size(DELAY2GLIDESIZE(delay))
 		var/turf/goal = get_turf(chase_target)
 		if(!goal)
 			break
 
 		if(get_dist(src, goal) <= chase_min)
-			chase_stuck = 0
-			chase_jps_steps = 0
-			chase_path = null
-			sleep(delay)
-			continue
+			if(chase_min > 1 || chase_target.Adjacent(src))
+				chase_stuck = 0
+				chase_jps_steps = 0
+				chase_path = null
+				sleep(delay)
+				continue
+			if(chase_jps_steps <= 0)
+				chase_jps_steps = CHASE_JPS_BURST
+				chase_path = null
 
 		if(chase_jps_steps > 0)
 			// Routing mode.
@@ -108,21 +144,23 @@
 				chase_path = compute_chase_path(goal)
 				chase_path_target = chase_target
 				chase_path_goal = goal
-				// Commit to the whole smash route; a plain detour only needs the burst budget.
-				if(length(chase_path) && chase_smashing)
+				if(length(chase_path))
 					chase_jps_steps = max(chase_jps_steps, length(chase_path))
 			if(!length(chase_path))
 				chase_jps_steps = 0
 			else
 				var/turf/next_step = chase_path[1]
-				// Pass the dir: dir-less Move() would cut diagonally through wall corners.
-				if(Move(next_step, get_dir(src, next_step)))
+				var/turf/before_step = get_turf(src)
+				step_diagonal(next_step)
+				var/turf/after_step = get_turf(src)
+				if(after_step == next_step)
 					chase_path.Cut(1, 2)
 					chase_jps_steps--
 					chase_stuck = 0
+				else if(after_step != before_step)
+					chase_path = null
+					chase_stuck = 0
 				else
-					// A barrier on a smash-route is EXPECTED - it's being broken by DestroySurroundings (~2s
-					// a hit). Wait it out patiently. A plain block is just crowd jostle: give up sooner.
 					chase_stuck++
 					if(chase_stuck >= (chase_smashing ? CHASE_SMASH_PATIENCE : CHASE_STUCK_LIMIT))
 						chase_path = null
@@ -131,7 +169,7 @@
 		else
 			// ---- CHARGE MODE: dumb, fast, cheap beeline straight at the target ----
 			var/olddist = get_dist(src, goal)
-			step_to(src, chase_target, chase_min) // native per-step mover, handles the min-distance stop
+			step_to(src, chase_target, chase_min, delay)
 			var/newdist = get_dist(src, goal)
 			if(newdist < olddist)
 				chase_stuck = 0 // gaining ground - keep barreling
