@@ -1,0 +1,13 @@
+author: DeityLink
+delete-after: true
+changes:
+- rscadd: Added pomegranates as a new fruit tree to grow, available from the Hydroponics's
+    MegaSeed Servitor. The fruit must be open with a knife (or something sharp) before
+    you can consume it, and it can be processed into pomegranate juice.
+- rscadd: Pomegranate juice may be mixed with sugar to produce pomegranate syrup,
+    and adding water turns it into grenadine. Add more or less water depending on
+    your tastes !
+- rscadd: Also added a funny mutated pomegrenade variant because this is all in fact
+    a celebration for Blasterbug !
+- imageadd: And finally added in-hand icons for 25 of our pre-existing fruits because
+    it had been some time since I last did one of those surprise batches
