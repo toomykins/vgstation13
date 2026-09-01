@@ -256,6 +256,36 @@
 	alpha = 255
 	nutriment_factor = 2.5 * REAGENTS_METABOLISM
 
+/datum/reagent/drink/pomegranatejuice
+	name = "Pomegranate Juice"
+	id = POMEGRANATEJUICE
+	description = "Acidic yet also sweet"
+	color = "#A60134"
+	alpha = 255
+	nutriment_factor = 2.5 * REAGENTS_METABOLISM
+	sport = SPORTINESS_SUGAR
+	flags = CHEMFLAG_PIGMENT
+
+/datum/reagent/drink/pomegranatesyrup
+	name = "Pomegranate Syrup"
+	id = POMEGRANATESYRUP
+	description = "Exceedingly sweet"
+	color = "#370011"
+	alpha = 255
+	nutriment_factor = 2.5 * REAGENTS_METABOLISM
+	sport = SPORTINESS_SUGAR
+	flags = CHEMFLAG_PIGMENT
+
+/datum/reagent/drink/grenadine
+	name = "Grenadine"
+	id = GRENADINE
+	description = "Sweet and refreshing !"
+	color = "#7E0127"
+	alpha = 255
+	nutriment_factor = 2.5 * REAGENTS_METABOLISM
+	sport = SPORTINESS_SUGAR
+	flags = CHEMFLAG_PIGMENT
+
 /datum/reagent/drink/nothing
 	name = "Nothing"
 	id = NOTHING
