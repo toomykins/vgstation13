@@ -170,7 +170,7 @@
 
 /obj/item/device/mmi/posibrain/proc/ghost_ping(var/streak)
 	if(streak >= loud_ping_streak)
-		visible_message(message = "<span class='warning'>\The [src] pings insistently.</span>", blind_message = "<span class='danger'>You hear an insistent electronic chime.</span>")
+		visible_message(message = "<span class='warning'><b>\The [src] pings insistently.</b></span>", blind_message = "<span class='danger'><b>You hear an insistent electronic chime.</b></span>")
 		playsound(src, 'sound/machines/twobeep.ogg', 100, 0, 5)
 	else
 		visible_message(message = "<span class='notice'>\The [src] pings softly.</span>", blind_message = "<span class='danger'>You hear what you think is a microwave finishing.</span>")
